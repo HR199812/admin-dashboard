@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   Atom,
@@ -18,14 +18,15 @@ import {
   SquareTerminal,
   Star,
   Turtle,
-} from "lucide-react"
+} from "lucide-react";
 
-import { NavMain } from "@/components/nav-main"
-import { NavProjects } from "@/components/nav-projects"
-import { NavSecondary } from "@/components/nav-secondary"
-import { NavUser } from "@/components/nav-user"
-import { StorageCard } from "@/components/storage-card"
-import { TeamSwitcher } from "@/components/team-switcher"
+import { ROUTES } from "../utils/constants";
+import { NavMain } from "@/components/nav-main";
+import { NavProjects } from "@/components/nav-projects";
+import { NavSecondary } from "@/components/nav-secondary";
+import { NavUser } from "@/components/nav-user";
+import { StorageCard } from "@/components/storage-card";
+import { TeamSwitcher } from "@/components/team-switcher";
 import {
   Sidebar,
   SidebarContent,
@@ -33,7 +34,7 @@ import {
   SidebarHeader,
   SidebarItem,
   SidebarLabel,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
 const data = {
   teams: [
     {
@@ -191,8 +192,8 @@ const data = {
       icon: LifeBuoy,
     },
     {
-      title: "Feedback",
-      url: "#",
+      title: "Expert AI",
+      url: ROUTES.EXPERT_AI,
       icon: Send,
     },
   ],
@@ -245,7 +246,7 @@ const data = {
       url: "#",
     },
   ],
-}
+};
 
 export function AppSidebar() {
   return (
@@ -274,5 +275,5 @@ export function AppSidebar() {
         <NavUser user={data.user} />
       </SidebarFooter>
     </Sidebar>
-  )
+  );
 }
