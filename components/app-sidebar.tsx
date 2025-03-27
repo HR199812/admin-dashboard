@@ -2,22 +2,17 @@
 
 import {
   Atom,
-  Bird,
   BookOpen,
-  Bot,
-  Code2,
   Eclipse,
   Frame,
   History,
   LifeBuoy,
   Map,
   PieChart,
-  Rabbit,
   Send,
   Settings2,
   SquareTerminal,
   Star,
-  Turtle,
 } from "lucide-react";
 
 import { ROUTES } from "../utils/constants";
@@ -35,35 +30,30 @@ import {
   SidebarItem,
   SidebarLabel,
 } from "@/components/ui/sidebar";
+import { NavDashboard } from "./nav-dashboard";
 const data = {
   teams: [
     {
-      name: "Acme Inc",
+      name: "Influential Inc",
       logo: Atom,
       plan: "Enterprise",
     },
     {
-      name: "Acme Corp.",
+      name: "HighAllTheTime",
       logo: Eclipse,
       plan: "Startup",
     },
-    {
-      name: "Evil Corp.",
-      logo: Rabbit,
-      plan: "Free",
-    },
   ],
   user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
+    name: "Influential",
+    email: "admin@influential.com",
+    avatar: "https://github.com/shadcn.png",
   },
   navMain: [
     {
       title: "Playground",
       url: "#",
       icon: SquareTerminal,
-      isActive: true,
       items: [
         {
           title: "History",
@@ -86,76 +76,20 @@ const data = {
       ],
     },
     {
-      title: "Models",
-      url: "#",
-      icon: Bot,
-      items: [
-        {
-          title: "Genesis",
-          url: "#",
-          icon: Rabbit,
-          description: "Our fastest model for general use cases.",
-        },
-        {
-          title: "Explorer",
-          url: "#",
-          icon: Bird,
-          description: "Performance and speed for efficiency.",
-        },
-        {
-          title: "Quantum",
-          url: "#",
-          icon: Turtle,
-          description: "The most powerful model for complex computations.",
-        },
-      ],
-    },
-    {
-      title: "Documentation",
+      title: "Research",
       url: "#",
       icon: BookOpen,
       items: [
         {
-          title: "Introduction",
+          title: "Trending Now",
           url: "#",
         },
         {
-          title: "Get Started",
+          title: "Ideas",
           url: "#",
         },
         {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "API",
-      url: "#",
-      icon: Code2,
-      items: [
-        {
-          title: "Chat",
-          url: "#",
-        },
-        {
-          title: "Completion",
-          url: "#",
-        },
-        {
-          title: "Images",
-          url: "#",
-        },
-        {
-          title: "Video",
-          url: "#",
-        },
-        {
-          title: "Speech",
+          title: "Reflect",
           url: "#",
         },
       ],
@@ -184,7 +118,6 @@ const data = {
       ],
     },
   ],
-
   navSecondary: [
     {
       title: "Support",
@@ -246,6 +179,13 @@ const data = {
       url: "#",
     },
   ],
+  dashboard:[
+    {
+      name: "Dashboard",
+      url: "/dashboard",
+      icon: Frame,
+    }
+  ]
 };
 
 export function AppSidebar() {
@@ -257,6 +197,7 @@ export function AppSidebar() {
       <SidebarContent>
         <SidebarItem>
           <SidebarLabel>Platform</SidebarLabel>
+          <NavDashboard projects={data.dashboard} />
           <NavMain items={data.navMain} searchResults={data.searchResults} />
         </SidebarItem>
         <SidebarItem>
