@@ -110,6 +110,57 @@ export function AppearanceSettingsForm() {
         />
         <FormField
           control={form.control}
+          name="username"
+          render={() => (
+            <FormItem>
+              <FormLabel>Sidebar</FormLabel>
+              <FormDescription>
+                Select the items you want to display in the sidebar.
+              </FormDescription>
+              <div className="space-x-2 grid grid-cols-2 gap-4">
+                <FormControl>
+                  <div className="items-center rounded-md border-2 border-muted p-1 hover:border-accent">
+                    <div className="space-y-2 rounded-sm bg-[#ecedef] p-2">
+                      <div className="space-y-2 rounded-md bg-white p-2 shadow-sm">
+                        <div className="h-2 w-[80px] rounded-lg bg-[#ecedef]"></div>
+                        <div className="h-2 w-[100px] rounded-lg bg-[#ecedef]"></div>
+                      </div>
+                      <div className="flex items-center space-x-2 rounded-md bg-white p-2 shadow-sm">
+                        <div className="h-4 w-4 rounded-full bg-[#ecedef]"></div>
+                        <div className="h-2 w-[100px] rounded-lg bg-[#ecedef]"></div>
+                      </div>
+                      <div className="flex items-center space-x-2 rounded-md bg-white p-2 shadow-sm">
+                        <div className="h-4 w-4 rounded-full bg-[#ecedef]"></div>
+                        <div className="h-2 w-[100px] rounded-lg bg-[#ecedef]"></div>
+                      </div>
+                    </div>
+                  </div>
+                </FormControl>
+                <FormControl>
+                  <div className="items-center rounded-md border-2 border-muted p-1 hover:border-accent">
+                    <div className="space-y-2 rounded-sm bg-[#020617] p-2">
+                      <div className="space-y-2 rounded-md bg-[#94A3B8] p-2 shadow-sm">
+                        <div className="h-2 w-[80px] rounded-lg bg-[#1E293B]"></div>
+                        <div className="h-2 w-[100px] rounded-lg bg-[#1E293B]"></div>
+                      </div>
+                      <div className="flex items-center space-x-2 rounded-md bg-[#94A3B8] p-2 shadow-sm">
+                        <div className="h-4 w-4 rounded-full bg-[#020617]"></div>
+                        <div className="h-2 w-[100px] rounded-lg bg-[#020617]"></div>
+                      </div>
+                      <div className="flex items-center space-x-2 rounded-md bg-[#94A3B8] p-2 shadow-sm">
+                        <div className="h-4 w-4 rounded-full bg-[#020617]"></div>
+                        <div className="h-2 w-[100px] rounded-lg bg-[#020617]"></div>
+                      </div>
+                    </div>
+                  </div>
+                </FormControl>
+              </div>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
           name="items"
           render={() => (
             <FormItem>
@@ -132,10 +183,13 @@ export function AppearanceSettingsForm() {
                       >
                         <FormControl>
                           <Checkbox
-                            checked={field.value?.includes(item.id)|| false}
+                            checked={field.value?.includes(item.id) || false}
                             onCheckedChange={(checked) => {
                               return checked
-                                ? field.onChange([...field.value||[], item.id])
+                                ? field.onChange([
+                                    ...(field.value || []),
+                                    item.id,
+                                  ])
                                 : field.onChange(
                                     field.value?.filter(
                                       (value) => value !== item.id
