@@ -54,6 +54,7 @@ body {
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
   }
+
   .dark {
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
@@ -80,13 +81,40 @@ body {
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
-}
-
-@layer base {
   * {
     @apply border-border;
   }
+  
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Apply color styling globally */
+.revenue-chart {
+  --color-revenue: hsl(var(--primary));
+}
+
+.dark .revenue-chart {
+  --color-revenue: hsl(var(--primary));
+}
+
+.subscription-card {
+  --color-subscription: hsl(var(--primary));
+}
+
+.dark .subscription-card {
+  --color-subscription: hsl(var(--primary));
+}
+
+.chart-container {
+  display: flex;
+  aspect-ratio: 16/9;
+  justify-content: center;
+  height: 80px;
+  width: 100%;
+}
+
+[data-chart="chart-subscriptions"] {
+  --color-subscription: hsl(var(--primary));
 }
