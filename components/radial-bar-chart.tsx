@@ -37,9 +37,9 @@ export default function RadialChart({ className, ...props }: CardProps) {
             <Legend />
             {/* Radial Bars with Rounded Edges */}
             <RadialBar
-              minAngle={15}
+              // minAngle={15}
               background
-              clockWise
+              // clockWise
               dataKey="value"
               cornerRadius={20} // Smooth edges
             />

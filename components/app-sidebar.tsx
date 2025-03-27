@@ -96,24 +96,24 @@ const data = {
     },
     {
       title: "Settings",
-      url: "#",
+      url: "/appSettings/general",
       icon: Settings2,
       items: [
         {
           title: "General",
-          url: "#",
+          url: "/appSettings/general",
+        },
+        {
+          title: "Appearance",
+          url: "/appSettings/appearance",
         },
         {
           title: "Team",
-          url: "#",
+          url: "/appSettings/team",
         },
         {
           title: "Billing",
-          url: "#",
-        },
-        {
-          title: "Limits",
-          url: "#",
+          url: "/appSettings/billing",
         },
       ],
     },
@@ -179,13 +179,13 @@ const data = {
       url: "#",
     },
   ],
-  dashboard:[
+  dashboard: [
     {
       name: "Dashboard",
       url: "/dashboard",
       icon: Frame,
-    }
-  ]
+    },
+  ],
 };
 
 export function AppSidebar() {
