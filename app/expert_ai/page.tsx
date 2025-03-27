@@ -9,14 +9,17 @@ export default function Page() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
-    async function fetchCookies() {
-      const { cookies } = await import("next/headers");
-      setSidebarOpen(cookies().get("sidebar:state")?.value === "true");
-    }
-
-    fetchCookies();
+    (async function fetchCookies() {
+      try {
+        const res = await fetch("/api/cookies");
+        const data = await res.json();
+        setSidebarOpen(data.sidebarState === "true");
+      } catch (error) {
+        console.error("Error fetching cookies:", error);
+      }
+    })();
   }, []);
-
+  
   const heading = "Ask your queries!";
   const speed = 60;
 
