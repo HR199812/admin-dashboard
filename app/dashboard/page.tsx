@@ -23,6 +23,8 @@ import {
   notificationsData,
   dashboardCampaignsData,
 } from "../server/dashboard-response.js";
+import TaskManager from "@/components/task-manager";
+
 export default function Page() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -190,6 +192,12 @@ export default function Page() {
                   </CardFooter>
                 </Card>
               </div>
+            </div>
+            <div
+              id="third-row-div"
+              className="grid grid-cols-2 gap-6 my-6 max-w-full"
+            >
+              <TaskManager />
             </div>
           </div>
         </div>

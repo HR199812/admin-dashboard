@@ -64,7 +64,7 @@ export default function GeneralSettings() {
               );
             })}
           </div>
-          <div className="grid grid-cols-[80%_20%] gap-4 p-8">
+          <div className="grid grid-cols-[70%_30%] gap-4 p-8">
             <PaymentsTable />
             <PaymentForm />
           </div>
