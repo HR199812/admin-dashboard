@@ -1,0 +1,57 @@
+export const billingPageCardsData = [
+    {
+      title: "Total Inflow",
+      content: "$45,231.89",
+      footer: "+20.1% from last month",
+      component: "LineChartForCards",
+      data: [
+        { month: "Jan", revenue: 1200 },
+        { month: "Feb", revenue: 2100 },
+        { month: "Mar", revenue: 1800 },
+        { month: "Apr", revenue: 1600 },
+        { month: "May", revenue: 2200 },
+        { month: "Jun", revenue: 1900 },
+        { month: "Jul", revenue: 2400 },
+        { month: "Aug", revenue: 4200 },
+      ],
+    },
+    {
+      title: "Total Outflow",
+      content: "$45,231.89",
+      footer: "+13% from last month",
+      component: "BarChartForCards",
+      data: [
+        { name: "Jan", value: 400 },
+        { name: "Feb", value: 600 },
+        { name: "Mar", value: 800 },
+      ],
+    },
+    {
+      title: "Total Debt Inflow",
+      content: "$54,223",
+      footer: "+5.93% from last month",
+      component: "LineChartForCards",
+      data: [
+        { month: "Jan", revenue: 1200 },
+        { month: "Feb", revenue: 2100 },
+        { month: "Mar", revenue: 1800 },
+        { month: "Apr", revenue: 1600 },
+        { month: "May", revenue: 2200 },
+        { month: "Jun", revenue: 1900 },
+        { month: "Jul", revenue: 2400 },
+        { month: "Aug", revenue: 4200 },
+      ],
+    },
+    {
+      title: "Total Debt Outflow",
+      content: "$5,231.89",
+      footer: "-20.1% from last month",
+      component: "BarChartForCards",
+      data: [
+        { name: "Jan", value: 400 },
+        { name: "Feb", value: 600 },
+        { name: "Mar", value: 800 },
+        { name: "Apr", value: 800 },
+      ],
+    },
+  ];

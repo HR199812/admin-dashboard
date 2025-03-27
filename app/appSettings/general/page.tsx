@@ -3,6 +3,7 @@ import { AppSidebar } from "@/components/app-sidebar";
 import { SidebarLayout, SidebarTrigger } from "@/components/ui/sidebar";
 import { useState, useEffect } from "react";
 import { GeneralSettingsForm } from "@/components/general-settings-form";
+import { NotificationsSettingsForm } from "@/components/notifications-settings-form";
 import { Separator } from "@/components/ui/separator";
 
 export default function GeneralSettings() {
@@ -32,7 +33,11 @@ export default function GeneralSettings() {
               </div>
             </div>
             <Separator />
+            <p className="mt-8 text-lg font-bold">Profile</p>
             <GeneralSettingsForm />
+            <Separator className="mt-8"/>
+            <p className="mt-8 text-lg font-bold">Notifications</p>
+            <NotificationsSettingsForm />
           </div>
         </div>
       </main>
