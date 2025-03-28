@@ -117,7 +117,7 @@ export default function PaymentForm() {
         </div>
       </CardContent>
       <CardFooter className="flex items-center p-6 pt-0">
-        <Button className="w-full">Continue</Button>
+        <Button className="w-full bg-blue-600 hover:bg-blue-500 text-white">Continue</Button>
       </CardFooter>
     </Card>
   )

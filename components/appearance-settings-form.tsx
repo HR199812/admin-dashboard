@@ -210,7 +210,7 @@ export function AppearanceSettingsForm() {
             </FormItem>
           )}
         />
-        <Button type="submit">Update Preferences</Button>
+        <Button className="bg-blue-600 hover:bg-blue-500 text-white" type="submit">Update Preferences</Button>
       </form>
     </Form>
   );

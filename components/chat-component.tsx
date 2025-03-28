@@ -42,8 +42,8 @@ export default function ChatComponent() {
             key={index}
             className={`flex w-max max-w-[75%] flex-col gap-2 rounded-lg px-3 py-2 text-sm ${
               msg.sender === "user"
-                ? "ml-auto bg-primary text-primary-foreground"
-                : "bg-muted"
+                ? "ml-auto bg-[#D2E3FC] text-black"
+                : "bg-[#E0E3E7]"
             }`}
           >
             {msg.text}

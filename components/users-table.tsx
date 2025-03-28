@@ -25,207 +25,16 @@ import {
 import { Input } from "@/components/ui/input";
 import { Popover, PopoverTrigger } from "@/components/ui/popover";
 import { LucideCirclePlus, LucideColumns2 } from "lucide-react";
-
+import { usersData } from "@/app/server/users-response";
 // Sample data
-const users = [
-  {
-    id: "1",
-    name: "Stern Thireau",
-    role: "Construction Foreman",
-    plan: "Basic",
-    email: "sthireau0@prlog.org",
-    country: "Portugal",
-    status: "active",
-    avatar: "https://bundui-images.netlify.app/avatars/01.png",
-  },
-  {
-    id: "2",
-    name: "Ford McKibbin",
-    role: "Project Manager",
-    plan: "Team",
-    email: "fmckibbin1@slate.com",
-    country: "Mexico",
-    status: "pending",
-    avatar: "https://bundui-images.netlify.app/avatars/02.png",
-  },
-  {
-    id: "2",
-    name: "Ford McKibbin",
-    role: "Project Manager",
-    plan: "Team",
-    email: "fmckibbin1@slate.com",
-    country: "Mexico",
-    status: "pending",
-    avatar: "https://bundui-images.netlify.app/avatars/02.png",
-  },
-  {
-    id: "2",
-    name: "Ford McKibbin",
-    role: "Project Manager",
-    plan: "Team",
-    email: "fmckibbin1@slate.com",
-    country: "Mexico",
-    status: "pending",
-    avatar: "https://bundui-images.netlify.app/avatars/02.png",
-  },
-  {
-    id: "2",
-    name: "Ford McKibbin",
-    role: "Project Manager",
-    plan: "Team",
-    email: "fmckibbin1@slate.com",
-    country: "Mexico",
-    status: "pending",
-    avatar: "https://bundui-images.netlify.app/avatars/02.png",
-  },
-  {
-    id: "2",
-    name: "Ford McKibbin",
-    role: "Project Manager",
-    plan: "Team",
-    email: "fmckibbin1@slate.com",
-    country: "Mexico",
-    status: "pending",
-    avatar: "https://bundui-images.netlify.app/avatars/02.png",
-  },
-  {
-    id: "2",
-    name: "Ford McKibbin",
-    role: "Project Manager",
-    plan: "Team",
-    email: "fmckibbin1@slate.com",
-    country: "Mexico",
-    status: "pending",
-    avatar: "https://bundui-images.netlify.app/avatars/02.png",
-  },
-  {
-    id: "2",
-    name: "Ford McKibbin",
-    role: "Project Manager",
-    plan: "Team",
-    email: "fmckibbin1@slate.com",
-    country: "Mexico",
-    status: "pending",
-    avatar: "https://bundui-images.netlify.app/avatars/02.png",
-  },
-  {
-    id: "2",
-    name: "Ford McKibbin",
-    role: "Project Manager",
-    plan: "Team",
-    email: "fmckibbin1@slate.com",
-    country: "Mexico",
-    status: "pending",
-    avatar: "https://bundui-images.netlify.app/avatars/02.png",
-  },
-  {
-    id: "2",
-    name: "Ford McKibbin",
-    role: "Project Manager",
-    plan: "Team",
-    email: "fmckibbin1@slate.com",
-    country: "Mexico",
-    status: "pending",
-    avatar: "https://bundui-images.netlify.app/avatars/02.png",
-  },
-  {
-    id: "2",
-    name: "Ford McKibbin",
-    role: "Project Manager",
-    plan: "Team",
-    email: "fmckibbin1@slate.com",
-    country: "Mexico",
-    status: "pending",
-    avatar: "https://bundui-images.netlify.app/avatars/02.png",
-  },
-  {
-    id: "2",
-    name: "Ford McKibbin",
-    role: "Project Manager",
-    plan: "Team",
-    email: "fmckibbin1@slate.com",
-    country: "Mexico",
-    status: "pending",
-    avatar: "https://bundui-images.netlify.app/avatars/02.png",
-  },
-  {
-    id: "2",
-    name: "Ford McKibbin",
-    role: "Project Manager",
-    plan: "Team",
-    email: "fmckibbin1@slate.com",
-    country: "Mexico",
-    status: "pending",
-    avatar: "https://bundui-images.netlify.app/avatars/02.png",
-  },
-  {
-    id: "2",
-    name: "Ford McKibbin",
-    role: "Project Manager",
-    plan: "Team",
-    email: "fmckibbin1@slate.com",
-    country: "Mexico",
-    status: "pending",
-    avatar: "https://bundui-images.netlify.app/avatars/02.png",
-  },
-  {
-    id: "2",
-    name: "Ford McKibbin",
-    role: "Project Manager",
-    plan: "Team",
-    email: "fmckibbin1@slate.com",
-    country: "Mexico",
-    status: "pending",
-    avatar: "https://bundui-images.netlify.app/avatars/02.png",
-  },
-  {
-    id: "2",
-    name: "Ford McKibbin",
-    role: "Project Manager",
-    plan: "Team",
-    email: "fmckibbin1@slate.com",
-    country: "Mexico",
-    status: "pending",
-    avatar: "https://bundui-images.netlify.app/avatars/02.png",
-  },
-  {
-    id: "2",
-    name: "Ford McKibbin",
-    role: "Project Manager",
-    plan: "Team",
-    email: "fmckibbin1@slate.com",
-    country: "Mexico",
-    status: "pending",
-    avatar: "https://bundui-images.netlify.app/avatars/02.png",
-  },
-  {
-    id: "2",
-    name: "Ford McKibbin",
-    role: "Project Manager",
-    plan: "Team",
-    email: "fmckibbin1@slate.com",
-    country: "Mexico",
-    status: "pending",
-    avatar: "https://bundui-images.netlify.app/avatars/02.png",
-  },
-  {
-    id: "2",
-    name: "Ford McKibbin",
-    role: "Project Manager",
-    plan: "Team",
-    email: "fmckibbin1@slate.com",
-    country: "Mexico",
-    status: "pending",
-    avatar: "https://bundui-images.netlify.app/avatars/02.png",
-  },
-];
+const users = usersData;
 
 // Status badge variants
 const statusVariants = {
-  active: "default",
-  pending: "outline",
-  inactive: "secondary",
-  banned: "destructive",
+  active: "bg-green-300 text-green-800", // Softer yet noticeable green
+  pending: "bg-yellow-200 text-yellow-800", // Warm muted yellow
+  inactive: "bg-gray-300 text-gray-800", // Neutral but distinct gray
+  banned: "bg-red-300 text-red-800", // Soft warning red
 } as const;
 
 export default function UsersTable() {
@@ -378,12 +187,11 @@ export default function UsersTable() {
                   <TableCell>{user.country}</TableCell>
                   <TableCell>
                     <Badge
-                      variant={
+                      className={`${
                         statusVariants[
                           user.status as keyof typeof statusVariants
-                        ] || "secondary"
-                      }
-                      className="capitalize"
+                        ] || "bg-gray-300 text-gray-800"
+                      } capitalize`}
                     >
                       {user.status}
                     </Badge>

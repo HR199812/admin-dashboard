@@ -110,7 +110,7 @@ export default function Page() {
                           key={ind}
                           name={elem.name}
                           email={elem.email}
-                          avatarUrl={elem.avatarUrl}
+                          avatarUrl={elem.avatar}
                           amount={elem.amount}
                         />
                       );
@@ -134,15 +134,24 @@ export default function Page() {
                   <div className="grid grid-cols-3 gap-2">
                     <CardContent className="grid gap-4">
                       <p>Male</p>
-                      <Progress value={60} />
+                      <Progress
+                        value={60}
+                        className="bg-gray-200 [&>div]:bg-[#0EA5E9]"
+                      />
                     </CardContent>
                     <CardContent className="grid gap-4">
                       <p>Female</p>
-                      <Progress value={60} />
+                      <Progress
+                        value={60}
+                        className="bg-gray-200 [&>div]:bg-[#EC4899]"
+                      />
                     </CardContent>
                     <CardContent className="grid gap-4">
                       <p>Others</p>
-                      <Progress value={60} />
+                      <Progress
+                        value={60}
+                        className="bg-gray-200 [&>div]:bg-[#8B5CF6]"
+                      />
                     </CardContent>
                   </div>
                 </Card>
@@ -186,7 +195,7 @@ export default function Page() {
                     </div>
                   </CardContent>
                   <CardFooter>
-                    <Button className="w-full">
+                    <Button className="w-full bg-blue-600 hover:bg-blue-500 text-white">
                       <Check /> Mark all as read
                     </Button>
                   </CardFooter>

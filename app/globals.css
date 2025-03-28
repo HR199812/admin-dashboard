@@ -118,3 +118,39 @@ body {
 [data-chart="chart-subscriptions"] {
   --color-subscription: hsl(var(--primary));
 }
+
+/* Card (Generic) */
+#card + label {
+  border-color: #64748b; /* Slate */
+  color: #1e293b; /* Dark Slate */
+}
+
+#card:hover,
+#card:checked + label {
+  background-color: #e2e8f0; /* Light Blue Gray */
+  color: #1e293b;
+}
+
+/* PayPal */
+#paypal + label {
+  border-color: #003087;
+  color: #003087;
+}
+
+#paypal:hover,
+#paypal:checked + label {
+  background-color: #009cde;
+  color: white;
+}
+
+/* Apple */
+#apple + label {
+  border-color: #000;
+  color: #000;
+}
+
+#apple:hover,
+#apple:checked + label {
+  background-color: #f5f5f7;
+  color: black;
+}

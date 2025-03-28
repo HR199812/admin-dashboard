@@ -10,10 +10,10 @@ import {
 } from "recharts";
 
 const data = [
-  { name: "USA", value: 30, color: "#D4D4D8" }, // Light Gray
-  { name: "India", value: 25, color: "#A1A1AA" }, // Medium Gray
-  { name: "Mexico", value: 20, color: "#71717A" }, // Dark Gray
-  { name: "China", value: 25, color: "#3F3F46" }, // Almost Black
+  { name: "USA", value: 30, color: "#76C7C0" }, // Deeper Teal  
+  { name: "India", value: 25, color: "#E76F51" }, // Rich Muted Orange  
+  { name: "Mexico", value: 20, color: "#D4A373" }, // Warm Golden Brown  
+  { name: "China", value: 25, color: "#6B728E" }, // Muted Blue-Gray  
 ];
 
 export default function DoughnutChart() {

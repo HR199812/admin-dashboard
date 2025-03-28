@@ -63,7 +63,7 @@ export default function GeneralSettings() {
           <div className="px-8">
             <div className="flex justify-between items-centertext-2xl font-bold my-4">
               <h2 className="font-bold text-2xl">Team</h2>
-              <Button className="gap-2 px-4 py-2 has-[>svg]:px-3 shadow-xs">
+              <Button className="gap-2 px-4 py-2 has-[>svg]:px-3 shadow-xs bg-blue-600 hover:bg-blue-500 text-white">
                 <PlusCircle className="size-4" />
                 Add New User
               </Button>

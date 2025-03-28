@@ -143,20 +143,21 @@ export function NotificationsSettingsForm() {
         <div className="flex items-center space-x-2">
           <Checkbox id="terms" />
           <div>
-            <label
-              className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-            >
+            <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
               Use different settings for my mobile devices.
             </label>
-            <p
-              className="text-[12px] text-muted-foreground font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-            >
+            <p className="text-[12px] text-muted-foreground font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
               You can manage your mobile notifications in the mobile settings
               page.
             </p>
           </div>
         </div>
-        <Button type="submit">Update Preferences</Button>
+        <Button
+          className="bg-blue-600 hover:bg-blue-500 text-white"
+          type="submit"
+        >
+          Update Preferences
+        </Button>
       </form>
     </Form>
   );

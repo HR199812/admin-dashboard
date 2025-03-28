@@ -123,7 +123,7 @@ export function GeneralSettingsForm() {
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <Button className="bg-blue-600 hover:bg-blue-500 text-white" type="submit">Submit</Button>
       </form>
     </Form>
   );

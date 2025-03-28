@@ -5,7 +5,7 @@ const ProfileCard = () => {
   return (
     <div className="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 relative">
       <div className="px-6">
-        <span className="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 gap-1 overflow-hidden border-transparent bg-primary text-primary-foreground absolute start-4 top-4">
+        <span className="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 gap-1 overflow-hidden border-transparent bg-blue-600 text-white absolute start-4 top-4">
           Pro
         </span>
         <div className="space-y-12">

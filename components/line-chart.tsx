@@ -31,21 +31,21 @@ export default function LineChartForCards({
           }}
         >
           <Line
-            type="monotone"
-            dataKey="revenue"
-            stroke="var(--color-revenue)"
-            strokeWidth={2}
-            dot={{
-              r: 3,
-              strokeWidth: 2,
-              stroke: "var(--color-revenue)",
-              fill: "#fff",
-            }}
-            activeDot={{
-              r: 4,
-              strokeWidth: 2,
-            }}
-          />
+  type="monotone"
+  dataKey="revenue"
+  stroke="#4F46E5"
+  strokeWidth={2}
+  dot={{
+    r: 3,
+    strokeWidth: 2,
+    stroke: "#4F46E5",
+    fill: "#fff",
+  }}
+  activeDot={{
+    r: 4,
+    strokeWidth: 2,
+  }}
+/>
         </LineChart>
       </ResponsiveContainer>
     </div>

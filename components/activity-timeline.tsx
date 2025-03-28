@@ -15,10 +15,10 @@ export default function ActivityTimeline() {
         </div>
       </CardHeader>
       <CardContent className="px-6">
-        <ol className="relative border-s">
+        <ol className="relative border-s border-blue-500">
           <li className="ms-6 mb-10 space-y-2">
-            <span className="bg-muted absolute -start-3 flex h-6 w-6 items-center justify-center rounded-full border">
-              <BriefcaseBusiness className="text-primary size-3" />
+            <span className="bg-muted absolute -start-3 flex h-6 w-6 items-center justify-center rounded-full border-blue-600">
+              <BriefcaseBusiness className="text-primary size-3 text-brown-600" />
             </span>
             <h3 className="flex items-center font-semibold">
               Shadcn UI Kit Application UI v2.0.0
@@ -27,7 +27,7 @@ export default function ActivityTimeline() {
               </Badge>
             </h3>
             <time className="text-muted-foreground flex items-center gap-1.5 text-sm leading-none">
-              <Clock className="size-3" /> Released on December 2nd, 2025
+            <Clock className="w-3 h-3 text-green-600" /> Released on December 2nd, 2025
             </time>
             <p className="text-muted-foreground">
               Get access to over 20+ pages including a dashboard layout, charts, kanban board, calendar, and pre-order
@@ -42,11 +42,11 @@ export default function ActivityTimeline() {
 
           <li className="ms-6 mb-10 space-y-2">
             <span className="bg-muted absolute -start-3 flex h-6 w-6 items-center justify-center rounded-full border">
-              <BadgeCheck className="text-primary size-3" />
+              <BadgeCheck className="text-primary size-3 text-blue-600" />
             </span>
             <h3 className="font-semibold">Shadcn UI Kit Figma v1.3.0</h3>
             <time className="text-muted-foreground flex items-center gap-1.5 text-sm leading-none">
-              <Clock className="size-3" /> Released on December 2nd, 2025
+              <Clock className="w-3 h-3 text-green-600" /> Released on December 2nd, 2025
             </time>
             <p className="text-muted-foreground">
               All of the pages and components are first designed in Figma and we keep a parity between the two versions
@@ -56,11 +56,11 @@ export default function ActivityTimeline() {
 
           <li className="ms-6 space-y-2">
             <span className="bg-muted absolute -start-3 flex h-6 w-6 items-center justify-center rounded-full border">
-              <BriefcaseBusiness className="text-primary size-3" />
+              <BriefcaseBusiness className="text-primary size-3 text-brown-600" />
             </span>
             <h3 className="font-semibold">Shadcn UI Kit Library v1.2.2</h3>
             <time className="text-muted-foreground flex items-center gap-1.5 text-sm leading-none">
-              <Clock className="size-3" /> Released on December 2nd, 2025
+              <Clock className="w-3 h-3 text-green-600" /> Released on December 2nd, 2025
             </time>
             <p className="text-muted-foreground">
               Get started with dozens of web components and interactive elements built on top of Tailwind CSS.
