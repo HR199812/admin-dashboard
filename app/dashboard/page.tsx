@@ -78,7 +78,6 @@ export default function Page() {
                     <CardContent className="grid gap-2 mt-6">
                       <div className="flex justify-between items-center">
                         <p className="text-md font-semibold">{elem.title}</p>
-                        <p className="text-md font-semibold">{elem.title}</p>
                       </div>
                       <p className="text-2xl font-bold">{elem.content}</p>
                       <p className="text-sm text-[#737680]">{elem.footer}</p>

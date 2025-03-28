@@ -26,7 +26,7 @@ export default function ChatComponent() {
       <div className="p-6 flex flex-row items-center">
         <div className="flex items-center space-x-4">
           <Avatar>
-            <AvatarImage src="/avatars/01.png" alt="Sofia Davis" />
+            <AvatarImage src="https://bundui-images.netlify.app/avatars/02.png" alt="Sofia Davis" />
           </Avatar>
           <div>
             <p className="text-sm font-medium">Sofia Davis</p>

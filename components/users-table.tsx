@@ -252,7 +252,7 @@ export default function UsersTable() {
 
   return (
     <div className="w-full">
-      <div className="flex items-center gap-4 py-4">
+      <div className="flex items-center gap-4 pb-4">
         {/* Search Input */}
         <div className="flex gap-2 max-w-sm">
           <Input
