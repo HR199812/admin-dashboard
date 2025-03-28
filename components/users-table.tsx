@@ -222,8 +222,8 @@ const users = [
 
 // Status badge variants
 const statusVariants = {
-  active: "success",
-  pending: "warning",
+  active: "default",
+  pending: "outline",
   inactive: "secondary",
   banned: "destructive",
 } as const;
