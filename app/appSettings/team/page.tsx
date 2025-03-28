@@ -3,41 +3,44 @@ import { AppSidebar } from "@/components/app-sidebar";
 import { SidebarLayout, SidebarTrigger } from "@/components/ui/sidebar";
 import { useState, useEffect } from "react";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+// import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+// import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { PlusCircle, Columns2 } from "lucide-react";
-import {
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuItem,
-} from "@/components/ui/dropdown-menu";
-import { ChevronDown } from "lucide-react";
-import { Input } from "@/components/ui/input";
+import { PlusCircle, 
+  // Columns2 
+} from "lucide-react";
+// import {
+//   DropdownMenu,
+//   DropdownMenuTrigger,
+//   DropdownMenuContent,
+//   DropdownMenuItem,
+// } from "@/components/ui/dropdown-menu";
+// import { ChevronDown } from "lucide-react";
+// import { Input } from "@/components/ui/input";
 import ChatComponent from "@/components/chat-component";
+import UsersTable from "@/components/users-table";
 
 export default function GeneralSettings() {
-  const teamMembers = [
-    {
-      name: "Sofia Davis",
-      email: "m@example.com",
-      avatar: "/avatars/01.png",
-      role: "Owner",
-    },
-    {
-      name: "Jackson Lee",
-      email: "p@example.com",
-      avatar: "/avatars/02.png",
-      role: "Member",
-    },
-    {
-      name: "Isabella Nguyen",
-      email: "i@example.com",
-      avatar: "/avatars/03.png",
-      role: "Member",
-    },
-  ];
+  // const teamMembers = [
+  //   {
+  //     name: "Sofia Davis",
+  //     email: "m@example.com",
+  //     avatar: "/avatars/01.png",
+  //     role: "Owner",
+  //   },
+  //   {
+  //     name: "Jackson Lee",
+  //     email: "p@example.com",
+  //     avatar: "/avatars/02.png",
+  //     role: "Member",
+  //   },
+  //   {
+  //     name: "Isabella Nguyen",
+  //     email: "i@example.com",
+  //     avatar: "/avatars/03.png",
+  //     role: "Member",
+  //   },
+  // ];
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
@@ -59,45 +62,18 @@ export default function GeneralSettings() {
           <SidebarTrigger />
           <div className="px-8">
             <div className="flex justify-between items-centertext-2xl font-bold my-4">
-              <h2>My Team</h2>
+              <h2 className="font-bold text-2xl">Team</h2>
               <Button className="gap-2 px-4 py-2 has-[>svg]:px-3 shadow-xs">
                 <PlusCircle className="size-4" />
                 Add New User
               </Button>
             </div>
           </div>
-          <div>
-            <div className="flex items-center gap-4 py-4">
-              {/* Search Input */}
-              <div className="flex gap-2">
-                <Input className="max-w-sm" placeholder="Search users..." />
-
-                {/* Status Button */}
-                <Button variant="outline">
-                  <PlusCircle className="size-4" />
-                  Status
-                </Button>
-
-                {/* Plan Button */}
-                <Button variant="outline">
-                  <PlusCircle className="size-4" />
-                  Plan
-                </Button>
-
-                {/* Role Button */}
-                <Button variant="outline">
-                  <PlusCircle className="size-4" />
-                  Role
-                </Button>
-              </div>
-
-              {/* Dropdown Menu Button */}
-              <Button variant="outline" className="ml-auto size-9">
-                <Columns2 className="size-4" />
-              </Button>
-            </div>
+          <div className="grid grid-cols-[70%_30%] h-[600px] gap-4 p-8 mb-4 mb-16">
+            <UsersTable />
+            <ChatComponent />
           </div>
-          <div className="grid grid-cols-[70%_30%] min-h-[600px] gap-4 p-8">
+          {/* <div className="mt-16">
             <Card className="w-full max-w-md">
               <CardHeader>
                 <CardTitle>Team Members</CardTitle>
@@ -144,8 +120,7 @@ export default function GeneralSettings() {
                 ))}
               </CardContent>
             </Card>
-            <ChatComponent />
-          </div>
+          </div> */}
         </div>
       </main>
     </SidebarLayout>

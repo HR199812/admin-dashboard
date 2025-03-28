@@ -24,6 +24,7 @@ import {
   dashboardCampaignsData,
 } from "../server/dashboard-response.js";
 import TaskManager from "@/components/task-manager";
+import ActivityTimeline from "@/components/activity-timeline";
 
 export default function Page() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -195,9 +196,10 @@ export default function Page() {
             </div>
             <div
               id="third-row-div"
-              className="grid grid-cols-2 gap-6 my-6 max-w-full"
+              className="grid grid-cols-[30%_70%] my-6 max-w-full"
             >
               <TaskManager />
+              <ActivityTimeline />
             </div>
           </div>
         </div>

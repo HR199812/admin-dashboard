@@ -1,16 +1,12 @@
 import {
   BadgeCheck,
-  Bell,
+  // Bell,
   ChevronsUpDown,
-  CreditCard,
+  // CreditCard,
   LogOut,
-} from "lucide-react"
+} from "lucide-react";
 
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/components/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -19,16 +15,17 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
+import Link from "next/link";
 
 export function NavUser({
   user,
 }: {
   user: {
-    name: string
-    email: string
-    avatar: string
-  }
+    name: string;
+    email: string;
+    avatar: string;
+  };
 }) {
   return (
     <DropdownMenu>
@@ -73,18 +70,20 @@ export function NavUser({
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem className="gap-2">
-            <BadgeCheck className="h-4 w-4 text-muted-foreground" />
-            Account
-          </DropdownMenuItem>
-          <DropdownMenuItem className="gap-2">
+          <Link href="/appSettings/general">
+            <DropdownMenuItem className="gap-2">
+              <BadgeCheck className="h-4 w-4 text-muted-foreground" />
+              Account
+            </DropdownMenuItem>
+          </Link>
+          {/* <DropdownMenuItem className="gap-2">
             <CreditCard className="h-4 w-4 text-muted-foreground" />
             Billing
           </DropdownMenuItem>
           <DropdownMenuItem className="gap-2">
             <Bell className="h-4 w-4 text-muted-foreground" />
             Notifications
-          </DropdownMenuItem>
+          </DropdownMenuItem> */}
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem className="gap-2">
@@ -93,5 +92,5 @@ export function NavUser({
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
-  )
+  );
 }

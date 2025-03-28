@@ -48,7 +48,7 @@ export function GeneralSettingsForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-8 mt-8 w-[40%]"
+        className="space-y-8 mt-8 w-[50%]"
       >
         <FormField
           control={form.control}

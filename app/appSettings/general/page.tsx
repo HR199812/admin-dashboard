@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { GeneralSettingsForm } from "@/components/general-settings-form";
 import { NotificationsSettingsForm } from "@/components/notifications-settings-form";
 import { Separator } from "@/components/ui/separator";
+import ProfileCard from "@/components/profile-card";
 
 export default function GeneralSettings() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -34,10 +35,18 @@ export default function GeneralSettings() {
             </div>
             <Separator />
             <p className="mt-8 text-lg font-bold">Profile</p>
-            <GeneralSettingsForm />
-            <Separator className="mt-8"/>
+            <div className="grid grid-cols-[70%_30%] gap-2">
+              <GeneralSettingsForm />
+              <div className="grid grid-row-3 gap-6 my-6 max-w-full px-8">
+                <ProfileCard />
+              </div>
+            </div>
+            <Separator className="mt-8" />
             <p className="mt-8 text-lg font-bold">Notifications</p>
-            <NotificationsSettingsForm />
+            <div className="grid grid-cols-[70%_30%] gap-2">
+              <NotificationsSettingsForm />
+              <div className="grid grid-row-3 gap-6 my-6 max-w-full px-8"></div>
+            </div>
           </div>
         </div>
       </main>

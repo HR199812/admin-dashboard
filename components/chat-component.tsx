@@ -21,7 +21,7 @@ export default function ChatComponent() {
   };
 
   return (
-    <div className="rounded-xl border bg-card text-card-foreground shadow">
+    <div className="rounded-xl h-full border bg-card text-card-foreground shadow flex flex-col">
       {/* Header */}
       <div className="p-6 flex flex-row items-center">
         <div className="flex items-center space-x-4">
@@ -36,7 +36,7 @@ export default function ChatComponent() {
       </div>
 
       {/* Chat Messages */}
-      <div className="p-6 pt-0 space-y-4">
+      <div className="p-6 pt-0 space-y-4 flex-1 overflow-y-auto">
         {messages.map((msg, index) => (
           <div
             key={index}
@@ -52,7 +52,7 @@ export default function ChatComponent() {
       </div>
 
       {/* Message Input */}
-      <div className="p-6 pt-0">
+      <div className="p-6 pt-0 mt-auto">
         <form className="flex items-center space-x-2" onSubmit={sendMessage}>
           <Input
             className="flex-1"
