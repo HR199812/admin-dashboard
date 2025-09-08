@@ -25,9 +25,9 @@ export default function MultiLineChart() {
             <YAxis />
             <Tooltip />
             <Legend />
-            <Line type="monotone" dataKey="insta" stroke="#3b82f6" strokeWidth={3} />
-            <Line type="monotone" dataKey="X" stroke="#f97316" strokeWidth={3} />
-            <Line type="monotone" dataKey="youtube" stroke="#10b981" strokeWidth={3} />
+            <Line type="monotone" dataKey="insta" stroke="#A8D8EA" strokeWidth={3} />
+            <Line type="monotone" dataKey="X" stroke="#FFD3A5" strokeWidth={3} />
+            <Line type="monotone" dataKey="youtube" stroke="#A8E6CF" strokeWidth={3} />
           </LineChart>
         </ResponsiveContainer>
       </CardContent>

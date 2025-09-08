@@ -10,10 +10,10 @@ import {
 } from "recharts";
 
 const data = [
-  { name: "USA", value: 30, color: "#76C7C0" }, // Deeper Teal  
-  { name: "India", value: 25, color: "#E76F51" }, // Rich Muted Orange  
-  { name: "Mexico", value: 20, color: "#D4A373" }, // Warm Golden Brown  
-  { name: "China", value: 25, color: "#6B728E" }, // Muted Blue-Gray  
+  { name: "USA", value: 30, color: "#B39DDB" }, // Soft Purple
+  { name: "India", value: 25, color: "#A8E6CF" }, // Soft Green
+  { name: "Mexico", value: 20, color: "#FFD3A5" }, // Soft Orange
+  { name: "China", value: 25, color: "#A8D8EA" }, // Soft Blue
 ];
 
 export default function DoughnutChart() {
@@ -34,8 +34,8 @@ export default function DoughnutChart() {
             <Cell
               key={`cell-${index}`}
               fill={entry.color}
-              stroke="#fff"
-              strokeWidth={3}
+              stroke="#FFFFFF"
+              strokeWidth={2}
             />
           ))}
         </Pie>

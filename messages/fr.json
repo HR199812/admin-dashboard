@@ -1,0 +1,58 @@
+{
+  "navigation": {
+    "dashboard": "Tableau de bord",
+    "campaigns": "Campagnes",
+    "analytics": "Analyses",
+    "aiChat": "Chat IA",
+    "practice": "Pratique",
+    "history": "Historique",
+    "research": "Recherche",
+    "settings": "Paramètres",
+    "home": "Accueil",
+    "about": "À propos",
+    "pricing": "Tarifs",
+    "contact": "Contact",
+    "demo": "Démo"
+  },
+  "settings": {
+    "title": "Paramètres",
+    "description": "Gérez votre profil, préférences et paramètres de compte",
+    "tabs": {
+      "general": "Général",
+      "appearance": "Apparence",
+      "notifications": "Notifications",
+      "billing": "Facturation",
+      "subscription": "Abonnement",
+      "team": "Équipe",
+      "language": "Langue"
+    },
+    "language": {
+      "title": "Langue et Région",
+      "description": "Choisissez votre langue et paramètres de région préférés",
+      "currentLanguage": "Langue Actuelle",
+      "selectLanguage": "Sélectionner la Langue",
+      "languages": {
+        "en": "English",
+        "es": "Español",
+        "fr": "Français",
+        "de": "Deutsch",
+        "zh": "中文",
+        "ja": "日本語"
+      },
+      "region": "Région",
+      "timezone": "Fuseau Horaire",
+      "dateFormat": "Format de Date",
+      "timeFormat": "Format d'Heure"
+    }
+  },
+  "common": {
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "apply": "Appliquer",
+    "reset": "Réinitialiser",
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "success": "Succès",
+    "close": "Fermer"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "navigation": {
+    "dashboard": "Dashboard",
+    "campaigns": "Campaigns",
+    "analytics": "Analytics",
+    "aiChat": "AI Chat",
+    "practice": "Practice",
+    "history": "History",
+    "research": "Research",
+    "settings": "Settings",
+    "home": "Home",
+    "about": "About",
+    "pricing": "Pricing",
+    "contact": "Contact",
+    "demo": "Demo"
+  },
+  "settings": {
+    "title": "Settings",
+    "description": "Manage your profile, preferences, and account settings",
+    "tabs": {
+      "general": "General",
+      "appearance": "Appearance",
+      "notifications": "Notifications",
+      "billing": "Billing",
+      "subscription": "Subscription",
+      "team": "Team",
+      "language": "Language"
+    },
+    "language": {
+      "title": "Language & Region",
+      "description": "Choose your preferred language and region settings",
+      "currentLanguage": "Current Language",
+      "selectLanguage": "Select Language",
+      "languages": {
+        "en": "English",
+        "es": "Español",
+        "fr": "Français",
+        "de": "Deutsch",
+        "zh": "中文",
+        "ja": "日本語"
+      },
+      "region": "Region",
+      "timezone": "Timezone",
+      "dateFormat": "Date Format",
+      "timeFormat": "Time Format"
+    }
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "apply": "Apply",
+    "reset": "Reset",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "close": "Close"
+  }
+}

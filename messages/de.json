@@ -1,0 +1,58 @@
+{
+  "navigation": {
+    "dashboard": "Dashboard",
+    "campaigns": "Kampagnen",
+    "analytics": "Analysen",
+    "aiChat": "KI-Chat",
+    "practice": "Übung",
+    "history": "Verlauf",
+    "research": "Forschung",
+    "settings": "Einstellungen",
+    "home": "Startseite",
+    "about": "Über uns",
+    "pricing": "Preise",
+    "contact": "Kontakt",
+    "demo": "Demo"
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "description": "Verwalten Sie Ihr Profil, Präferenzen und Kontoeinstellungen",
+    "tabs": {
+      "general": "Allgemein",
+      "appearance": "Erscheinungsbild",
+      "notifications": "Benachrichtigungen",
+      "billing": "Abrechnung",
+      "subscription": "Abonnement",
+      "team": "Team",
+      "language": "Sprache"
+    },
+    "language": {
+      "title": "Sprache und Region",
+      "description": "Wählen Sie Ihre bevorzugte Sprache und Regionseinstellungen",
+      "currentLanguage": "Aktuelle Sprache",
+      "selectLanguage": "Sprache Auswählen",
+      "languages": {
+        "en": "English",
+        "es": "Español",
+        "fr": "Français",
+        "de": "Deutsch",
+        "zh": "中文",
+        "ja": "日本語"
+      },
+      "region": "Region",
+      "timezone": "Zeitzone",
+      "dateFormat": "Datumsformat",
+      "timeFormat": "Zeitformat"
+    }
+  },
+  "common": {
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "apply": "Anwenden",
+    "reset": "Zurücksetzen",
+    "loading": "Laden...",
+    "error": "Fehler",
+    "success": "Erfolg",
+    "close": "Schließen"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "navigation": {
+    "dashboard": "ダッシュボード",
+    "campaigns": "キャンペーン",
+    "analytics": "分析",
+    "aiChat": "AIチャット",
+    "practice": "練習",
+    "history": "履歴",
+    "research": "研究",
+    "settings": "設定",
+    "home": "ホーム",
+    "about": "について",
+    "pricing": "料金",
+    "contact": "お問い合わせ",
+    "demo": "デモ"
+  },
+  "settings": {
+    "title": "設定",
+    "description": "プロフィール、設定、アカウント設定を管理",
+    "tabs": {
+      "general": "一般",
+      "appearance": "外観",
+      "notifications": "通知",
+      "billing": "請求",
+      "subscription": "サブスクリプション",
+      "team": "チーム",
+      "language": "言語"
+    },
+    "language": {
+      "title": "言語と地域",
+      "description": "お好みの言語と地域設定を選択",
+      "currentLanguage": "現在の言語",
+      "selectLanguage": "言語を選択",
+      "languages": {
+        "en": "English",
+        "es": "Español",
+        "fr": "Français",
+        "de": "Deutsch",
+        "zh": "中文",
+        "ja": "日本語"
+      },
+      "region": "地域",
+      "timezone": "タイムゾーン",
+      "dateFormat": "日付形式",
+      "timeFormat": "時間形式"
+    }
+  },
+  "common": {
+    "save": "保存",
+    "cancel": "キャンセル",
+    "apply": "適用",
+    "reset": "リセット",
+    "loading": "読み込み中...",
+    "error": "エラー",
+    "success": "成功",
+    "close": "閉じる"
+  }
+}

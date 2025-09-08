@@ -42,7 +42,7 @@ export default function ActivityTimeline() {
 
           <li className="ms-6 mb-10 space-y-2">
             <span className="bg-muted absolute -start-3 flex h-6 w-6 items-center justify-center rounded-full border">
-              <BadgeCheck className="text-primary size-3 text-blue-600" />
+              <BadgeCheck className="text-primary size-3 text-purple-600" />
             </span>
             <h3 className="font-semibold">Shadcn UI Kit Figma v1.3.0</h3>
             <time className="text-muted-foreground flex items-center gap-1.5 text-sm leading-none">

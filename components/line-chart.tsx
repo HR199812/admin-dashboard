@@ -33,17 +33,19 @@ export default function LineChartForCards({
           <Line
   type="monotone"
   dataKey="revenue"
-  stroke="#4F46E5"
-  strokeWidth={2}
+  stroke="#B39DDB"
+  strokeWidth={3}
   dot={{
-    r: 3,
-    strokeWidth: 2,
-    stroke: "#4F46E5",
-    fill: "#fff",
-  }}
-  activeDot={{
     r: 4,
     strokeWidth: 2,
+    stroke: "#9575CD",
+    fill: "#E1BEE7",
+  }}
+  activeDot={{
+    r: 6,
+    strokeWidth: 3,
+    stroke: "#7E57C2",
+    fill: "#B39DDB",
   }}
 />
         </LineChart>

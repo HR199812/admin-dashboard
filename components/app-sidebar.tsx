@@ -2,23 +2,19 @@
 
 import {
   Atom,
-  BookOpen,
   Eclipse,
   Frame,
   History,
-  LifeBuoy,
-  Map,
-  PieChart,
-  Send,
   Settings2,
-  SquareTerminal,
-  Star,
+  BarChart3,
+  MessageSquare,
+  Lightbulb,
+  TrendingUp,
+  DollarSign,
 } from "lucide-react";
 
 import { ROUTES } from "../utils/constants";
 import { NavMain } from "@/components/nav-main";
-import { NavProjects } from "@/components/nav-projects";
-import { NavSecondary } from "@/components/nav-secondary";
 import { NavUser } from "@/components/nav-user";
 import { StorageCard } from "@/components/storage-card";
 import { TeamSwitcher } from "@/components/team-switcher";
@@ -31,6 +27,7 @@ import {
   SidebarLabel,
 } from "@/components/ui/sidebar";
 import { NavDashboard } from "./nav-dashboard";
+import { ThemeToggle } from "@/components/theme-toggle";
 const data = {
   teams: [
     {
@@ -51,100 +48,53 @@ const data = {
   },
   navMain: [
     {
-      title: "Playground",
-      url: "#",
-      icon: SquareTerminal,
-      items: [
-        {
-          title: "History",
-          url: "#",
-          icon: History,
-          description: "View your recent prompts",
-        },
-        {
-          title: "Starred",
-          url: "#",
-          icon: Star,
-          description: "Browse your starred prompts",
-        },
-        {
-          title: "Settings",
-          url: "#",
-          icon: Settings2,
-          description: "Configure your playground",
-        },
-      ],
+      title: "Campaigns",
+      url: ROUTES.CAMPAIGNS,
+      icon: DollarSign,
+      description: "List, collaborations, manage deals",
+      color: "text-green-600",
+    },
+    {
+      title: "Analytics",
+      url: ROUTES.ANALYTICS,
+      icon: BarChart3,
+      description: "Followers, engagement, revenue trends",
+      color: "text-purple-600",
+    },
+    {
+      title: "AI Chat",
+      url: ROUTES.AI_CHAT,
+      icon: MessageSquare,
+      description: "Interactive assistant for improvements",
+      color: "text-pink-600",
+    },
+    {
+      title: "Practice",
+      url: ROUTES.PRACTICE,
+      icon: Lightbulb,
+      description: "AI-suggested post ideas, content calendar",
+      color: "text-yellow-600",
+    },
+    {
+      title: "History",
+      url: ROUTES.HISTORY,
+      icon: History,
+      description: "Past revenue, payout logs, sponsor reports",
+      color: "text-orange-600",
     },
     {
       title: "Research",
-      url: "#",
-      icon: BookOpen,
-      items: [
-        {
-          title: "Trending Now",
-          url: "#",
-        },
-        {
-          title: "Ideas",
-          url: "#",
-        },
-        {
-          title: "Reflect",
-          url: "#",
-        },
-      ],
+      url: ROUTES.RESEARCH,
+      icon: TrendingUp,
+      description: "Trending topics, brand insights, competitor analysis",
+      color: "text-cyan-600",
     },
     {
       title: "Settings",
-      url: "/appSettings/general",
+      url: ROUTES.SETTINGS,
       icon: Settings2,
-      items: [
-        {
-          title: "General",
-          url: "/appSettings/general",
-        },
-        {
-          title: "Appearance",
-          url: "/appSettings/appearance",
-        },
-        {
-          title: "Team",
-          url: "/appSettings/team",
-        },
-        {
-          title: "Billing",
-          url: "/appSettings/billing",
-        },
-      ],
-    },
-  ],
-  navSecondary: [
-    {
-      title: "Support",
-      url: "#",
-      icon: LifeBuoy,
-    },
-    {
-      title: "Expert AI",
-      url: ROUTES.EXPERT_AI,
-      icon: Send,
-    },
-  ],
-  projects: [
-    {
-      name: "Design Engineering",
-      url: "#",
-      icon: Frame,
-    },
-    {
-      name: "Sales & Marketing",
-      url: "#",
-      icon: PieChart,
-    },
-    {
-      name: "Travel",
-      url: "#",
-      icon: Map,
+      description: "Profile, appearance, billing",
+      color: "text-gray-600",
     },
   ],
   searchResults: [
@@ -201,12 +151,9 @@ export function AppSidebar() {
           <NavMain items={data.navMain} searchResults={data.searchResults} />
         </SidebarItem>
         <SidebarItem>
-          <SidebarLabel>Projects</SidebarLabel>
-          <NavProjects projects={data.projects} />
-        </SidebarItem>
-        <SidebarItem className="mt-auto">
-          <SidebarLabel>Help</SidebarLabel>
-          <NavSecondary items={data.navSecondary} />
+          <div className="px-2 py-1">
+            <ThemeToggle />
+          </div>
         </SidebarItem>
         <SidebarItem>
           <StorageCard />

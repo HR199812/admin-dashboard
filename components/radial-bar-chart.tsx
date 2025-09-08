@@ -11,9 +11,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
 const data = [
-  { name: "Instagram", value: 80, fill: "#3b82f6" }, // Blue
-  { name: "X", value: 65, fill: "#f97316" }, // Orange
-  { name: "YouTube", value: 50, fill: "#ef4444" }, // Red
+  { name: "Instagram", value: 80, fill: "#A8D8EA" }, // Soft Blue
+  { name: "X", value: 65, fill: "#FFD3A5" }, // Soft Orange
+  { name: "YouTube", value: 50, fill: "#FFB3BA" }, // Soft Pink
 ];
 
 type CardProps = React.ComponentProps<typeof Card>;

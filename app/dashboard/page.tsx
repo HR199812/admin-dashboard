@@ -11,7 +11,6 @@ import {
 } from "@/components/ui/card";
 import { SidebarLayout, SidebarTrigger } from "@/components/ui/sidebar";
 import { BellRing, Check } from "lucide-react";
-import { useEffect, useState } from "react";
 import React from "react";
 import BarChartForCards from "@/components/bar-chart";
 import LineChartForCards from "@/components/line-chart";
@@ -25,21 +24,10 @@ import {
 } from "../server/dashboard-response.js";
 import TaskManager from "@/components/task-manager";
 import ActivityTimeline from "@/components/activity-timeline";
+import { useSidebarStore } from "@/lib/store";
 
 export default function Page() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-
-  useEffect(() => {
-    (async function fetchCookies() {
-      try {
-        const res = await fetch("/api/cookies");
-        const data = await res.json();
-        setSidebarOpen(data.sidebarState === "true");
-      } catch (error) {
-        console.error("Error fetching cookies:", error);
-      }
-    })();
-  }, []);
+  const { isOpen } = useSidebarStore();
 
   // const [date, setDate] = React.useState<Date | undefined>(new Date());
 
@@ -56,7 +44,7 @@ export default function Page() {
   };
 
   return (
-    <SidebarLayout defaultOpen={sidebarOpen}>
+    <SidebarLayout defaultOpen={isOpen}>
       <AppSidebar />
       <main className="flex flex-1 flex-col p-2 transition-all duration-300 ease-in-out">
         <div className="h-full rounded-md border-2 border-dashed">
@@ -80,7 +68,7 @@ export default function Page() {
                         <p className="text-md font-semibold">{elem.title}</p>
                       </div>
                       <p className="text-2xl font-bold">{elem.content}</p>
-                      <p className="text-sm text-[#737680]">{elem.footer}</p>
+                      <p className="text-sm text-muted-foreground">{elem.footer}</p>
                       {ChartComponent && <ChartComponent data={elem.data} />}
                     </CardContent>
                   </Card>
@@ -90,38 +78,30 @@ export default function Page() {
 
             <div
               id="second-row-div"
-              className="grid grid-cols-2 gap-6 my-6 max-w-full"
+              className="grid grid-cols-2 gap-6 mt-6 max-w-full"
             >
-              <div
-                id="second-row-div-child-two"
-                className="grid grid-cols-1 gap-6 my-6 max-w-full"
-              >
-                <Card className="min-w-[300px] min-h-[240px] max-h-[440px] flex flex-col overflow-hidden">
-                  <CardHeader>
-                    <CardTitle>Campaigns List</CardTitle>
-                    <CardDescription>
-                      All your ongoing projects, collabs and campaigns
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="flex-1 overflow-y-auto p-4 space-y-6">
-                    {campaginsData.map((elem, ind) => {
-                      return (
-                        <UserCard
-                          key={ind}
-                          name={elem.name}
-                          email={elem.email}
-                          avatarUrl={elem.avatar}
-                          amount={elem.amount}
-                        />
-                      );
-                    })}
-                  </CardContent>
-                </Card>
-              </div>
-              <div
-                id="second-row-div-child-one"
-                className="grid grid-cols-2 gap-6 my-6 max-w-full"
-              >
+              <Card className="min-w-[300px] min-h-[240px] max-h-[440px] flex flex-col overflow-hidden">
+                <CardHeader>
+                  <CardTitle>Campaigns List</CardTitle>
+                  <CardDescription>
+                    All your ongoing projects, collabs and campaigns
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="flex-1 overflow-y-auto p-4 space-y-4">
+                  {campaginsData.map((elem, ind) => {
+                    return (
+                      <UserCard
+                        key={ind}
+                        name={elem.name}
+                        email={elem.email}
+                        avatarUrl={elem.avatar}
+                        amount={elem.amount}
+                      />
+                    );
+                  })}
+                </CardContent>
+              </Card>
+              <div className="grid grid-cols-2 gap-4">
                 {/* <RadialChart /> */}
                 <Card className="min-w-[200px] min-h-[240px] max-h-[440px]">
                   <CardHeader>
@@ -136,21 +116,21 @@ export default function Page() {
                       <p>Male</p>
                       <Progress
                         value={60}
-                        className="bg-gray-200 [&>div]:bg-[#0EA5E9]"
+                        className="bg-muted [&>div]:bg-[#0EA5E9]"
                       />
                     </CardContent>
                     <CardContent className="grid gap-4">
                       <p>Female</p>
                       <Progress
                         value={60}
-                        className="bg-gray-200 [&>div]:bg-[#EC4899]"
+                        className="bg-muted [&>div]:bg-[#EC4899]"
                       />
                     </CardContent>
                     <CardContent className="grid gap-4">
                       <p>Others</p>
                       <Progress
                         value={60}
-                        className="bg-gray-200 [&>div]:bg-[#8B5CF6]"
+                        className="bg-muted [&>div]:bg-[#8B5CF6]"
                       />
                     </CardContent>
                   </div>
@@ -195,7 +175,7 @@ export default function Page() {
                     </div>
                   </CardContent>
                   <CardFooter>
-                    <Button className="w-full bg-blue-600 hover:bg-blue-500 text-white">
+                    <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
                       <Check /> Mark all as read
                     </Button>
                   </CardFooter>
@@ -204,7 +184,7 @@ export default function Page() {
             </div>
             <div
               id="third-row-div"
-              className="grid grid-cols-[30%_70%] my-6 max-w-full"
+              className="grid grid-cols-[30%_70%] gap-6 mt-6 max-w-full"
             >
               <TaskManager />
               <ActivityTimeline />
