@@ -51,7 +51,7 @@ export default function Page() {
           <SidebarTrigger />
           <div className="px-8">
             <div className="text-2xl font-bold my-4">
-              <h2>Welcome back, Morty!</h2>
+              <h2>Welcome back, Rick!</h2>
             </div>
 
             {/* First Row Cards */}

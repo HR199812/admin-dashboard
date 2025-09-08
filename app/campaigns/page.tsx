@@ -116,7 +116,7 @@ export default function CampaignsPage() {
               </div>
               <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                 <DialogTrigger asChild>
-                  <Button className="bg-blue-600 hover:bg-blue-700">
+                  <Button className="bg-purple-600 hover:bg-purple-700">
                     <Plus className="w-4 h-4 mr-2" />
                     New Campaign
                   </Button>

@@ -78,7 +78,7 @@ const trendingTopics = [
 // Mock data for competitor analysis
 const competitorData = [
   {
-    name: "Sarah Johnson",
+    name: "Beth Smith",
     followers: "2.1M",
     engagement: "4.8%",
     avgRevenue: "$25K",
@@ -87,7 +87,7 @@ const competitorData = [
     growth: "+15%",
   },
   {
-    name: "Emma Chen",
+    name: "Birdperson",
     followers: "1.8M",
     engagement: "5.2%",
     avgRevenue: "$22K",
@@ -96,7 +96,7 @@ const competitorData = [
     growth: "+22%",
   },
   {
-    name: "Alex Rodriguez",
+    name: "Squanchy",
     followers: "3.2M",
     engagement: "3.9%",
     avgRevenue: "$35K",
@@ -352,7 +352,7 @@ export default function ResearchPage() {
                         </div>
                       </div>
                       <div className="flex space-x-2 pt-2">
-                        <Button size="sm" className="flex-1 bg-blue-600 hover:bg-blue-700">
+                        <Button size="sm" className="flex-1 bg-purple-600 hover:bg-purple-700">
                           <Target className="w-4 h-4 mr-1" />
                           Apply Now
                         </Button>

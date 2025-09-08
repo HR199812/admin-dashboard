@@ -221,13 +221,13 @@ export default function AnalyticsPage() {
                   <CardDescription>Engagement metrics by type</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid grid-cols-2 gap-6">
+                  <div className="grid grid-cols-2 gap-8 p-4">
                     {engagementData.map((item, index) => (
-                      <div key={index} className="text-center">
-                        <div className="text-3xl font-bold mb-2" style={{ color: item.color }}>
+                      <div key={index} className="text-center p-4 rounded-lg bg-muted/30 hover:bg-muted/50 transition-colors">
+                        <div className="text-4xl font-bold mb-3" style={{ color: item.color }}>
                           {item.count.toLocaleString()}
                         </div>
-                        <div className="text-sm font-medium text-muted-foreground">
+                        <div className="text-sm font-medium text-muted-foreground uppercase tracking-wide">
                           {item.type}
                         </div>
                       </div>

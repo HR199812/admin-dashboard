@@ -21,7 +21,6 @@ import { TeamSwitcher } from "@/components/team-switcher";
 import {
   Sidebar,
   SidebarContent,
-  SidebarFooter,
   SidebarHeader,
   SidebarItem,
   SidebarLabel,
@@ -42,8 +41,8 @@ const data = {
     },
   ],
   user: {
-    name: "Influential",
-    email: "admin@influential.com",
+    name: "Rick Sanchez",
+    email: "rick.sanchez@influential.com",
     avatar: "https://github.com/shadcn.png",
   },
   navMain: [
@@ -150,18 +149,14 @@ export function AppSidebar() {
           <NavDashboard projects={data.dashboard} />
           <NavMain items={data.navMain} searchResults={data.searchResults} />
         </SidebarItem>
-        <SidebarItem>
-          <div className="px-2 py-1">
-            <ThemeToggle />
-          </div>
-        </SidebarItem>
-        <SidebarItem>
-          <StorageCard />
-        </SidebarItem>
       </SidebarContent>
-      <SidebarFooter>
+      <div className="mt-auto space-y-2 p-2">
+        <div className="px-2 py-1">
+          <ThemeToggle />
+        </div>
+        <StorageCard />
         <NavUser user={data.user} />
-      </SidebarFooter>
+      </div>
     </Sidebar>
   );
 }

@@ -73,13 +73,13 @@ export default function SettingsPage() {
 
             <Tabs defaultValue="general" className="space-y-6">
               <TabsList className="grid w-full grid-cols-7">
-                <TabsTrigger value="general">General</TabsTrigger>
-                <TabsTrigger value="appearance">Appearance</TabsTrigger>
-                <TabsTrigger value="notifications">Notifications</TabsTrigger>
-                <TabsTrigger value="billing">Billing</TabsTrigger>
-                <TabsTrigger value="subscription">Subscription</TabsTrigger>
-                <TabsTrigger value="team">Team</TabsTrigger>
-                <TabsTrigger value="language">Language</TabsTrigger>
+                <TabsTrigger value="general" className="data-[state=active]:bg-purple-600 data-[state=active]:text-white">General</TabsTrigger>
+                <TabsTrigger value="appearance" className="data-[state=active]:bg-purple-600 data-[state=active]:text-white">Appearance</TabsTrigger>
+                <TabsTrigger value="notifications" className="data-[state=active]:bg-purple-600 data-[state=active]:text-white">Notifications</TabsTrigger>
+                <TabsTrigger value="billing" className="data-[state=active]:bg-purple-600 data-[state=active]:text-white">Billing</TabsTrigger>
+                <TabsTrigger value="subscription" className="data-[state=active]:bg-purple-600 data-[state=active]:text-white">Subscription</TabsTrigger>
+                <TabsTrigger value="team" className="data-[state=active]:bg-purple-600 data-[state=active]:text-white">Team</TabsTrigger>
+                <TabsTrigger value="language" className="data-[state=active]:bg-purple-600 data-[state=active]:text-white">Language</TabsTrigger>
               </TabsList>
 
               {/* General Settings */}
@@ -114,15 +114,15 @@ export default function SettingsPage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <Label htmlFor="firstName">First Name</Label>
-                        <Input id="firstName" defaultValue="Sarah" />
+                        <Input id="firstName" defaultValue="Rick" />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="lastName">Last Name</Label>
-                        <Input id="lastName" defaultValue="Chen" />
+                        <Input id="lastName" defaultValue="Sanchez" />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="email">Email</Label>
-                        <Input id="email" type="email" defaultValue="sarah@example.com" />
+                        <Input id="email" type="email" defaultValue="rick.sanchez@influential.com" />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="phone">Phone</Label>
@@ -141,13 +141,13 @@ export default function SettingsPage() {
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="website">Website</Label>
-                        <Input id="website" defaultValue="https://sarahchen.com" />
+                        <Input id="website" defaultValue="https://ricksanchez.com" />
                       </div>
                     </div>
 
                     <div className="flex justify-end space-x-2">
                       <Button variant="outline">Cancel</Button>
-                      <Button className="bg-blue-600 hover:bg-blue-700">Save Changes</Button>
+                      <Button className="bg-purple-600 hover:bg-purple-700">Save Changes</Button>
                     </div>
                   </CardContent>
                 </Card>
@@ -175,7 +175,7 @@ export default function SettingsPage() {
                       <Label htmlFor="confirmPassword">Confirm New Password</Label>
                       <Input id="confirmPassword" type="password" />
                     </div>
-                    <Button className="bg-blue-600 hover:bg-blue-700">Update Password</Button>
+                    <Button className="bg-purple-600 hover:bg-purple-700">Update Password</Button>
                   </CardContent>
                 </Card>
               </TabsContent>
@@ -336,7 +336,7 @@ export default function SettingsPage() {
                           $29/month • Next billing: Feb 15, 2024
                         </p>
                       </div>
-                      <Button variant="outline">Change Plan</Button>
+                      <Button className="bg-purple-600 hover:bg-purple-700 text-white" variant="outline">Change Plan</Button>
                     </div>
 
                     <div className="space-y-4">
@@ -390,7 +390,7 @@ export default function SettingsPage() {
                           <p className="text-sm text-muted-foreground">
                             $29/month • Billed annually
                           </p>
-                          <Badge className="mt-1">Active</Badge>
+                          <Badge className="mt-1 bg-gradient-to-r from-green-500 to-emerald-500 text-white border-0">Active</Badge>
                         </div>
                       </div>
                       <div className="text-right">
@@ -430,7 +430,7 @@ export default function SettingsPage() {
                           View All Plans
                         </Button>
                       </Link>
-                      <Button variant="outline">
+                      <Button className="bg-purple-600 hover:bg-purple-700 text-white">
                         <Calendar className="w-4 h-4 mr-2" />
                         Change Plan
                       </Button>
@@ -554,7 +554,7 @@ export default function SettingsPage() {
                           You have 2 team members
                         </p>
                       </div>
-                      <Button className="bg-blue-600 hover:bg-blue-700">
+                      <Button className="bg-purple-600 hover:bg-purple-700">
                         <Users className="w-4 h-4 mr-2 text-white" />
                         Invite Member
                       </Button>
@@ -565,32 +565,32 @@ export default function SettingsPage() {
                         <div className="flex items-center space-x-3">
                           <Avatar>
                             <AvatarImage src="https://github.com/shadcn.png" />
-                            <AvatarFallback>SC</AvatarFallback>
+                            <AvatarFallback>MS</AvatarFallback>
                           </Avatar>
                           <div>
-                            <p className="font-medium">Sarah Chen</p>
-                            <p className="text-sm text-muted-foreground">sarah@example.com</p>
+                            <p className="font-medium">Morty Smith</p>
+                            <p className="text-sm text-muted-foreground">morty.smith@influential.com</p>
                           </div>
                         </div>
                         <div className="flex items-center space-x-2">
-                          <Badge>Owner</Badge>
-                          <Button variant="outline" size="sm">Edit</Button>
+                          <Badge className="bg-gradient-to-r from-amber-500 to-orange-500 text-white border-0">Owner</Badge>
+                          <Button className="bg-purple-600 hover:bg-purple-700 text-white" size="sm">Edit</Button>
                         </div>
                       </div>
 
                       <div className="flex items-center justify-between p-4 border rounded-lg">
                         <div className="flex items-center space-x-3">
                           <Avatar>
-                            <AvatarFallback>JD</AvatarFallback>
+                            <AvatarFallback>SS</AvatarFallback>
                           </Avatar>
                           <div>
-                            <p className="font-medium">John Doe</p>
-                            <p className="text-sm text-muted-foreground">john@example.com</p>
+                            <p className="font-medium">Summer Smith</p>
+                            <p className="text-sm text-muted-foreground">summer.smith@influential.com</p>
                           </div>
                         </div>
                         <div className="flex items-center space-x-2">
-                          <Badge variant="outline">Editor</Badge>
-                          <Button variant="outline" size="sm">Edit</Button>
+                          <Badge className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white border-0">Editor</Badge>
+                          <Button className="bg-purple-600 hover:bg-purple-700 text-white" size="sm">Edit</Button>
                         </div>
                       </div>
                     </div>

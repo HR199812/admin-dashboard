@@ -164,7 +164,7 @@ export default function PracticePage() {
                   AI-powered content suggestions and calendar management
                 </p>
               </div>
-              <Button className="bg-blue-600 hover:bg-blue-700">
+              <Button className="bg-purple-600 hover:bg-purple-700">
                 <Plus className="w-4 h-4 mr-2" />
                 Generate New Ideas
               </Button>
@@ -302,7 +302,7 @@ export default function PracticePage() {
                       </Button>
                       <Button
                         size="sm"
-                        className="flex-1 bg-blue-600 hover:bg-blue-700"
+                        className="flex-1 bg-purple-600 hover:bg-purple-700"
                         onClick={() => handleScheduleIdea(idea.id)}
                       >
                         <Calendar className="w-4 h-4 mr-1" />

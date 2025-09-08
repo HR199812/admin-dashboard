@@ -18,27 +18,27 @@ import { ThemeToggle } from "@/components/theme-toggle";
 
 const team = [
   {
-    name: "Sarah Johnson",
+    name: "Rick Sanchez",
     role: "CEO & Founder",
-    avatar: "SJ",
+    avatar: "RS",
     description: "Former influencer with 2M+ followers, passionate about empowering creators."
   },
   {
-    name: "Michael Chen",
+    name: "Morty Smith",
     role: "CTO",
-    avatar: "MC",
+    avatar: "MS",
     description: "Tech veteran with 10+ years building scalable platforms for creators."
   },
   {
-    name: "Emily Rodriguez",
+    name: "Summer Smith",
     role: "Head of Product",
-    avatar: "ER",
+    avatar: "SS",
     description: "Product strategist focused on user experience and creator success."
   },
   {
-    name: "David Kim",
+    name: "Jerry Smith",
     role: "Head of AI",
-    avatar: "DK",
+    avatar: "JS",
     description: "AI researcher specializing in content optimization and audience insights."
   }
 ];
@@ -314,8 +314,8 @@ export default function AboutPage() {
                 </p>
                 
                 <p>
-                  Our founder, Sarah Johnson, experienced this firsthand. As a successful lifestyle 
-                  influencer with over 2 million followers, she realized that the creator economy 
+                  Our founder, Rick Sanchez, experienced this firsthand. As a successful lifestyle 
+                  influencer with over 2 million followers, he realized that the creator economy 
                   was broken. Brands were taking advantage of creators, analytics were scattered 
                   across multiple platforms, and there was no unified way to track performance 
                   and optimize content strategy.

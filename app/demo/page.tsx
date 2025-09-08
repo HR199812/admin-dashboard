@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -12,21 +12,37 @@ import {
   MessageSquare, 
   DollarSign, 
   TrendingUp,
-  Loader2
+  Loader2,
+  Monitor
 } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 export default function DemoPage() {
   const router = useRouter();
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    // Auto-redirect to dashboard after 3 seconds
-    const timer = setTimeout(() => {
-      router.push("/dashboard");
-    }, 3000);
+    // Check if device is mobile
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
-    return () => clearTimeout(timer);
-  }, [router]);
+  useEffect(() => {
+    // Auto-redirect to dashboard after 3 seconds only on desktop
+    if (!isMobile) {
+      const timer = setTimeout(() => {
+        router.push("/dashboard");
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [router, isMobile]);
 
   const features = [
     {
@@ -89,59 +105,119 @@ export default function DemoPage() {
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="py-20 lg:py-32">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-4xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="mb-8"
-            >
-              <Loader2 className="h-16 w-16 text-primary mx-auto mb-6 animate-spin" />
-              <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
-                Loading Your{" "}
-                <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-                  Demo
-                </span>
-              </h1>
-            </motion.div>
-            
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto"
-            >
-              We&apos;re preparing your personalized dashboard experience. You&apos;ll be redirected 
-              to the full platform in just a moment.
-            </motion.p>
-            
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-            >
-              <Link href="/dashboard">
-                <Button size="lg" className="text-lg px-8 py-6">
-                  Go to Dashboard Now
+      {/* Desktop-Specific Message */}
+      {isMobile && (
+        <section className="py-20 lg:py-32">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-4xl mx-auto">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="mb-8"
+              >
+                <div className="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Monitor className="h-12 w-12 text-primary" />
+                </div>
+                <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
+                  Desktop{" "}
+                  <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+                    Optimized
+                  </span>
+                </h1>
+              </motion.div>
+              
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto"
+              >
+                For the best experience, please open this demo on a desktop browser. 
+                Our dashboard is designed to showcase the full power of our platform on larger screens.
+              </motion.p>
+              
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+              >
+                <Button 
+                  size="lg" 
+                  className="text-lg px-8 py-6"
+                  onClick={() => window.open('/dashboard', '_blank')}
+                >
+                  Open in Desktop Browser
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
-              </Link>
-              <Link href="/">
-                <Button variant="outline" size="lg" className="text-lg px-8 py-6">
-                  Back to Home
-                </Button>
-              </Link>
-            </motion.div>
+                <Link href="/">
+                  <Button variant="outline" size="lg" className="text-lg px-8 py-6">
+                    Back to Home
+                  </Button>
+                </Link>
+              </motion.div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
-      {/* Demo Preview Section */}
-      <section className="py-20 bg-muted/50">
+      {/* Hero Section - Desktop Only */}
+      {!isMobile && (
+        <section className="py-20 lg:py-32">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-4xl mx-auto">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="mb-8"
+              >
+                <Loader2 className="h-16 w-16 text-primary mx-auto mb-6 animate-spin" />
+                <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
+                  Loading Your{" "}
+                  <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+                    Demo
+                  </span>
+                </h1>
+              </motion.div>
+              
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto"
+              >
+                We&apos;re preparing your personalized dashboard experience. You&apos;ll be redirected 
+                to the full platform in just a moment.
+              </motion.p>
+              
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+              >
+                <Link href="/dashboard">
+                  <Button size="lg" className="text-lg px-8 py-6">
+                    Go to Dashboard Now
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </Link>
+                <Link href="/">
+                  <Button variant="outline" size="lg" className="text-lg px-8 py-6">
+                    Back to Home
+                  </Button>
+                </Link>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Demo Preview Section - Desktop Only */}
+      {!isMobile && (
+        <section className="py-20 bg-muted/50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <motion.h2 
@@ -188,9 +264,11 @@ export default function DemoPage() {
           </div>
         </div>
       </section>
+      )}
 
-      {/* Demo Stats Section */}
-      <section className="py-20">
+      {/* Demo Stats Section - Desktop Only */}
+      {!isMobile && (
+        <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <motion.h2 
@@ -236,9 +314,11 @@ export default function DemoPage() {
           </motion.div>
         </div>
       </section>
+      )}
 
-      {/* CTA Section */}
-      <section className="py-20 bg-primary">
+      {/* CTA Section - Desktop Only */}
+      {!isMobile && (
+        <section className="py-20 bg-primary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -260,6 +340,7 @@ export default function DemoPage() {
           </motion.div>
         </div>
       </section>
+      )}
 
       {/* Footer */}
       <footer className="bg-muted/50 py-12">
