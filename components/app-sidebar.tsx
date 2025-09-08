@@ -25,7 +25,6 @@ import {
   SidebarItem,
   SidebarLabel,
 } from "@/components/ui/sidebar";
-import { NavDashboard } from "./nav-dashboard";
 import { ThemeToggle } from "@/components/theme-toggle";
 const data = {
   teams: [
@@ -46,6 +45,13 @@ const data = {
     avatar: "https://github.com/shadcn.png",
   },
   navMain: [
+    {
+      title: "Dashboard",
+      url: ROUTES.DASHBOARD,
+      icon: Frame,
+      description: "Overview, KPIs, growth insights",
+      color: "text-purple-600",
+    },
     {
       title: "Campaigns",
       url: ROUTES.CAMPAIGNS,
@@ -93,7 +99,7 @@ const data = {
       url: ROUTES.SETTINGS,
       icon: Settings2,
       description: "Profile, appearance, billing",
-      color: "text-gray-600",
+      color: "text-gray-600 dark:text-white",
     },
   ],
   searchResults: [
@@ -128,29 +134,21 @@ const data = {
       url: "#",
     },
   ],
-  dashboard: [
-    {
-      name: "Dashboard",
-      url: "/dashboard",
-      icon: Frame,
-    },
-  ],
 };
 
 export function AppSidebar() {
   return (
-    <Sidebar>
-      <SidebarHeader>
+    <Sidebar className="border-r border-subtle bg-surface">
+      <SidebarHeader className="border-b border-subtle bg-surface">
         <TeamSwitcher teams={data.teams} />
       </SidebarHeader>
-      <SidebarContent>
+      <SidebarContent className="bg-surface">
         <SidebarItem>
-          <SidebarLabel>Platform</SidebarLabel>
-          <NavDashboard projects={data.dashboard} />
+          <SidebarLabel className="text-secondary font-medium">Platform</SidebarLabel>
           <NavMain items={data.navMain} searchResults={data.searchResults} />
         </SidebarItem>
       </SidebarContent>
-      <div className="mt-auto space-y-2 p-2">
+      <div className="mt-auto space-y-2 p-2 bg-surface border-t border-subtle">
         <div className="px-2 py-1">
           <ThemeToggle />
         </div>

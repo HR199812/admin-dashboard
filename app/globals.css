@@ -25,6 +25,43 @@ body {
     text-wrap: balance;
   }
   
+  /* Enhanced Theme Utilities */
+  .bg-elevated {
+    @apply bg-white/95 dark:bg-gray-800/95;
+  }
+  
+  .bg-surface {
+    @apply bg-gray-50/50 dark:bg-gray-900/95;
+  }
+  
+  .text-primary {
+    @apply text-gray-900 dark:text-white;
+  }
+  
+  .text-secondary {
+    @apply text-gray-600 dark:text-gray-400;
+  }
+  
+  .text-muted {
+    @apply text-gray-500 dark:text-gray-500;
+  }
+  
+  .border-subtle {
+    @apply border-gray-200 dark:border-gray-300;
+  }
+  
+  .shadow-elevated {
+    @apply shadow-sm dark:shadow-2xl;
+  }
+  
+  .hover-lift {
+    @apply transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5;
+  }
+  
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:ring-offset-2 dark:focus:ring-offset-gray-900;
+  }
+  
   /* Colorful gradient backgrounds */
   .bg-gradient-primary {
     background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(262 83% 45%) 100%);
@@ -154,30 +191,30 @@ body {
   }
 
   .dark {
-    --background: 222 84% 5%;
-    --foreground: 210 40% 98%;
-    --card: 222 84% 5%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222 84% 5%;
-    --popover-foreground: 210 40% 98%;
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
     --primary: 262 83% 58%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 217 32% 17%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217 32% 17%;
-    --muted-foreground: 215 20% 65%;
-    --accent: 217 32% 17%;
-    --accent-foreground: 210 40% 98%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
     --success: 142 76% 36%;
-    --success-foreground: 210 40% 98%;
+    --success-foreground: 0 0% 98%;
     --warning: 38 92% 50%;
-    --warning-foreground: 210 40% 98%;
+    --warning-foreground: 0 0% 98%;
     --info: 199 89% 48%;
-    --info-foreground: 210 40% 98%;
-    --border: 217 32% 17%;
-    --input: 217 32% 17%;
+    --info-foreground: 0 0% 98%;
+    --border: 0 0% 25%;
+    --input: 0 0% 14.9%;
     --ring: 262 83% 58%;
     --chart-1: 262 83% 58%;
     --chart-2: 142 76% 36%;

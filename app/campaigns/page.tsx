@@ -86,13 +86,13 @@ const campaignsData = [
 const getStatusColor = (status: string) => {
   switch (status) {
     case "active":
-      return "bg-green-100 text-green-800";
+      return "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400";
     case "pending":
-      return "bg-yellow-100 text-yellow-800";
+      return "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400";
     case "completed":
-      return "bg-purple-100 text-purple-800";
+      return "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-400";
     default:
-      return "bg-gray-100 text-gray-800";
+      return "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300";
   }
 };
 
@@ -103,14 +103,14 @@ export default function CampaignsPage() {
   return (
     <SidebarLayout defaultOpen={isOpen}>
       <AppSidebar />
-      <main className="flex flex-1 flex-col p-2 transition-all duration-300 ease-in-out">
-        <div className="h-full rounded-md border-2 border-dashed">
+      <main className="flex flex-1 flex-col p-2 transition-all duration-300 ease-in-out bg-surface">
+        <div className="h-full rounded-md border-2 border-dashed border-subtle bg-surface">
           <SidebarTrigger />
           <div className="px-8 py-6">
             <div className="flex justify-between items-center mb-6">
               <div>
-                <h1 className="text-3xl font-bold text-gray-900">Campaigns</h1>
-                <p className="text-muted-foreground">
+                <h1 className="text-3xl font-bold text-primary">Campaigns</h1>
+                <p className="text-secondary">
                   Manage your brand collaborations and deals
                 </p>
               </div>
@@ -121,16 +121,16 @@ export default function CampaignsPage() {
                     New Campaign
                   </Button>
                 </DialogTrigger>
-                <DialogContent className="sm:max-w-[425px]">
+                <DialogContent className="sm:max-w-[425px] bg-elevated border-subtle">
                   <DialogHeader>
-                    <DialogTitle>Add New Campaign</DialogTitle>
-                    <DialogDescription>
+                    <DialogTitle className="text-primary">Add New Campaign</DialogTitle>
+                    <DialogDescription className="text-secondary">
                       Create a new brand collaboration campaign.
                     </DialogDescription>
                   </DialogHeader>
                   <div className="grid gap-4 py-4">
                     <div className="grid grid-cols-4 items-center gap-4">
-                      <Label htmlFor="brand" className="text-right">
+                      <Label htmlFor="brand" className="text-right text-primary">
                         Brand
                       </Label>
                       <Input
@@ -140,7 +140,7 @@ export default function CampaignsPage() {
                       />
                     </div>
                     <div className="grid grid-cols-4 items-center gap-4">
-                      <Label htmlFor="amount" className="text-right">
+                      <Label htmlFor="amount" className="text-right text-primary">
                         Amount
                       </Label>
                       <Input
@@ -151,7 +151,7 @@ export default function CampaignsPage() {
                       />
                     </div>
                     <div className="grid grid-cols-4 items-center gap-4">
-                      <Label htmlFor="platform" className="text-right">
+                      <Label htmlFor="platform" className="text-right text-primary">
                         Platform
                       </Label>
                       <Input
@@ -161,7 +161,7 @@ export default function CampaignsPage() {
                       />
                     </div>
                     <div className="grid grid-cols-4 items-center gap-4">
-                      <Label htmlFor="deliverables" className="text-right">
+                      <Label htmlFor="deliverables" className="text-right text-primary">
                         Deliverables
                       </Label>
                       <Input
@@ -175,7 +175,7 @@ export default function CampaignsPage() {
                     <Button
                       type="submit"
                       onClick={() => setIsDialogOpen(false)}
-                      className="bg-blue-600 hover:bg-blue-700"
+                      className="bg-purple-600 hover:bg-purple-700"
                     >
                       Create Campaign
                     </Button>
@@ -186,53 +186,53 @@ export default function CampaignsPage() {
 
             {/* Campaign Stats Cards */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-              <Card className="rounded-2xl shadow-sm">
+              <Card className="rounded-2xl shadow-elevated bg-elevated border-subtle hover-lift">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm font-medium text-muted-foreground">
+                      <p className="text-sm font-medium text-secondary">
                         Total Revenue
                       </p>
-                      <p className="text-2xl font-bold">$78,000</p>
+                      <p className="text-2xl font-bold text-primary">$78,000</p>
                     </div>
                     <DollarSign className="h-8 w-8 text-green-600" />
                   </div>
                 </CardContent>
               </Card>
-              <Card className="rounded-2xl shadow-sm">
+              <Card className="rounded-2xl shadow-elevated bg-elevated border-subtle hover-lift">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm font-medium text-muted-foreground">
+                      <p className="text-sm font-medium text-secondary">
                         Active Campaigns
                       </p>
-                      <p className="text-2xl font-bold">2</p>
+                      <p className="text-2xl font-bold text-primary">2</p>
                     </div>
                     <Users className="h-8 w-8 text-purple-600" />
                   </div>
                 </CardContent>
               </Card>
-              <Card className="rounded-2xl shadow-sm">
+              <Card className="rounded-2xl shadow-elevated bg-elevated border-subtle hover-lift">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm font-medium text-muted-foreground">
+                      <p className="text-sm font-medium text-secondary">
                         Pending Deals
                       </p>
-                      <p className="text-2xl font-bold">1</p>
+                      <p className="text-2xl font-bold text-primary">1</p>
                     </div>
                     <Clock className="h-8 w-8 text-yellow-600" />
                   </div>
                 </CardContent>
               </Card>
-              <Card className="rounded-2xl shadow-sm">
+              <Card className="rounded-2xl shadow-elevated bg-elevated border-subtle hover-lift">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm font-medium text-muted-foreground">
+                      <p className="text-sm font-medium text-secondary">
                         Completed
                       </p>
-                      <p className="text-2xl font-bold">1</p>
+                      <p className="text-2xl font-bold text-primary">1</p>
                     </div>
                     <Calendar className="h-8 w-8 text-purple-600" />
                   </div>
@@ -241,10 +241,10 @@ export default function CampaignsPage() {
             </div>
 
             {/* Campaigns Table */}
-            <Card className="rounded-2xl shadow-sm">
+            <Card className="rounded-2xl shadow-elevated bg-elevated border-subtle hover-lift">
               <CardHeader>
-                <CardTitle>All Campaigns</CardTitle>
-                <CardDescription>
+                <CardTitle className="text-primary">All Campaigns</CardTitle>
+                <CardDescription className="text-secondary">
                   Overview of all your brand collaborations
                 </CardDescription>
               </CardHeader>
@@ -270,19 +270,19 @@ export default function CampaignsPage() {
                               <AvatarImage src={campaign.logo} alt={campaign.brandName} />
                               <AvatarFallback>{campaign.brandName.charAt(0)}</AvatarFallback>
                             </Avatar>
-                            <span>{campaign.brandName}</span>
+                            <span className="text-primary">{campaign.brandName}</span>
                           </div>
                         </TableCell>
-                        <TableCell>${campaign.dealAmount.toLocaleString()}</TableCell>
-                        <TableCell>{campaign.platform}</TableCell>
-                        <TableCell>{campaign.startDate}</TableCell>
-                        <TableCell>{campaign.endDate}</TableCell>
+                        <TableCell className="text-primary">${campaign.dealAmount.toLocaleString()}</TableCell>
+                        <TableCell className="text-primary">{campaign.platform}</TableCell>
+                        <TableCell className="text-primary">{campaign.startDate}</TableCell>
+                        <TableCell className="text-primary">{campaign.endDate}</TableCell>
                         <TableCell>
                           <Badge className={getStatusColor(campaign.status)}>
                             {campaign.status}
                           </Badge>
                         </TableCell>
-                        <TableCell>{campaign.deliverables}</TableCell>
+                        <TableCell className="text-primary">{campaign.deliverables}</TableCell>
                       </TableRow>
                     ))}
                   </TableBody>

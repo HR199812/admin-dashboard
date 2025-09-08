@@ -153,23 +153,23 @@ const trendAnalysisData = [
 const getEngagementColor = (level: string) => {
   switch (level) {
     case "Very High":
-      return "bg-green-100 text-green-800";
+      return "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400";
     case "High":
-      return "bg-purple-100 text-purple-800";
+      return "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-400";
     case "Medium":
-      return "bg-yellow-100 text-yellow-800";
+      return "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400";
     case "Low":
-      return "bg-gray-100 text-gray-800";
+      return "bg-gray-100 text-gray-800 dark:bg-gray-800/50 dark:text-gray-400";
     default:
-      return "bg-gray-100 text-gray-800";
+      return "bg-gray-100 text-gray-800 dark:bg-gray-800/50 dark:text-gray-400";
   }
 };
 
 const getMatchScoreColor = (score: number) => {
-  if (score >= 90) return "bg-green-100 text-green-800";
-  if (score >= 80) return "bg-purple-100 text-purple-800";
-  if (score >= 70) return "bg-yellow-100 text-yellow-800";
-  return "bg-gray-100 text-gray-800";
+  if (score >= 90) return "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400";
+  if (score >= 80) return "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-400";
+  if (score >= 70) return "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400";
+  return "bg-gray-100 text-gray-800 dark:bg-gray-800/50 dark:text-gray-400";
 };
 
 export default function ResearchPage() {
@@ -178,13 +178,13 @@ export default function ResearchPage() {
   return (
     <SidebarLayout defaultOpen={isOpen}>
       <AppSidebar />
-      <main className="flex flex-1 flex-col p-2 transition-all duration-300 ease-in-out">
-        <div className="h-full rounded-md border-2 border-dashed">
+      <main className="flex flex-1 flex-col p-2 transition-all duration-300 ease-in-out bg-surface">
+        <div className="h-full rounded-md border-2 border-dashed border-subtle">
           <SidebarTrigger />
           <div className="px-8 py-6">
             <div className="mb-6">
-              <h1 className="text-3xl font-bold text-gray-900">Research & Insights</h1>
-              <p className="text-muted-foreground">
+              <h1 className="text-3xl font-bold text-primary">Research & Insights</h1>
+              <p className="text-secondary">
                 Discover trending topics, analyze competitors, and find brand opportunities
               </p>
             </div>
@@ -192,8 +192,8 @@ export default function ResearchPage() {
             {/* Trending Topics */}
             <div className="mb-8">
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-2xl font-bold text-gray-900">Trending Topics</h2>
-                <Button variant="outline" className="flex items-center">
+                <h2 className="text-2xl font-bold text-primary">Trending Topics</h2>
+                <Button variant="outline" className="flex items-center border-subtle text-primary">
                   <Search className="w-4 h-4 mr-2" />
                   Search Trends
                 </Button>
@@ -201,12 +201,12 @@ export default function ResearchPage() {
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {trendingTopics.map((topic) => (
-                  <Card key={topic.id} className="rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                  <Card key={topic.id} className="rounded-2xl shadow-elevated bg-elevated border-subtle hover-lift">
                     <CardContent className="p-6">
                       <div className="flex items-start justify-between mb-4">
                         <div>
-                          <h3 className="font-semibold text-lg">{topic.topic}</h3>
-                          <p className="text-sm text-muted-foreground">{topic.hashtag}</p>
+                          <h3 className="font-semibold text-lg text-primary">{topic.topic}</h3>
+                          <p className="text-sm text-secondary">{topic.hashtag}</p>
                         </div>
                         <div className="flex items-center space-x-1">
                           {topic.trend === "up" ? (
@@ -222,20 +222,20 @@ export default function ResearchPage() {
                         </div>
                       </div>
                       
-                      <div className="space-y-3">
+                        <div className="space-y-3">
                         <div className="flex justify-between items-center">
-                          <span className="text-sm text-muted-foreground">Posts</span>
-                          <span className="font-medium">{topic.posts}</span>
+                          <span className="text-sm text-secondary">Posts</span>
+                          <span className="font-medium text-primary">{topic.posts}</span>
                         </div>
                         <div className="flex justify-between items-center">
-                          <span className="text-sm text-muted-foreground">Engagement</span>
+                          <span className="text-sm text-secondary">Engagement</span>
                           <Badge className={getEngagementColor(topic.engagement)}>
                             {topic.engagement}
                           </Badge>
                         </div>
                         <div className="flex justify-between items-center">
-                          <span className="text-sm text-muted-foreground">Category</span>
-                          <Badge variant="outline">{topic.category}</Badge>
+                          <span className="text-sm text-secondary">Category</span>
+                          <Badge variant="outline" className="border-subtle">{topic.category}</Badge>
                         </div>
                       </div>
                     </CardContent>
@@ -245,10 +245,10 @@ export default function ResearchPage() {
             </div>
 
             {/* Trend Analysis Chart */}
-            <Card className="rounded-2xl shadow-sm mb-8">
+            <Card className="rounded-2xl shadow-elevated bg-elevated border-subtle hover-lift mb-8">
               <CardHeader>
-                <CardTitle>Category Trend Analysis</CardTitle>
-                <CardDescription>Monthly trend performance across different content categories</CardDescription>
+                <CardTitle className="text-primary">Category Trend Analysis</CardTitle>
+                <CardDescription className="text-secondary">Monthly trend performance across different content categories</CardDescription>
               </CardHeader>
               <CardContent>
                 <ResponsiveContainer width="100%" height={300}>
@@ -268,17 +268,17 @@ export default function ResearchPage() {
 
             {/* Competitor Analysis */}
             <div className="mb-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Competitor Analysis</h2>
+              <h2 className="text-2xl font-bold text-primary mb-6">Competitor Analysis</h2>
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 {competitorData.map((competitor, index) => (
-                  <Card key={index} className="rounded-2xl shadow-sm">
+                  <Card key={index} className="rounded-2xl shadow-elevated bg-elevated border-subtle hover-lift">
                     <CardHeader>
                       <div className="flex items-center justify-between">
                         <div>
-                          <CardTitle className="text-lg">{competitor.name}</CardTitle>
-                          <CardDescription>{competitor.category} • {competitor.followers} followers</CardDescription>
+                          <CardTitle className="text-lg text-primary">{competitor.name}</CardTitle>
+                          <CardDescription className="text-secondary">{competitor.category} • {competitor.followers} followers</CardDescription>
                         </div>
-                        <Badge variant="outline" className="text-green-600">
+                        <Badge variant="outline" className="text-green-600 border-subtle">
                           {competitor.growth}
                         </Badge>
                       </div>
@@ -286,16 +286,16 @@ export default function ResearchPage() {
                     <CardContent className="space-y-4">
                       <div className="grid grid-cols-2 gap-4">
                         <div>
-                          <p className="text-sm text-muted-foreground">Engagement</p>
-                          <p className="font-semibold">{competitor.engagement}</p>
+                          <p className="text-sm text-secondary">Engagement</p>
+                          <p className="font-semibold text-primary">{competitor.engagement}</p>
                         </div>
                         <div>
-                          <p className="text-sm text-muted-foreground">Avg Revenue</p>
-                          <p className="font-semibold">{competitor.avgRevenue}</p>
+                          <p className="text-sm text-secondary">Avg Revenue</p>
+                          <p className="font-semibold text-primary">{competitor.avgRevenue}</p>
                         </div>
                       </div>
                       <div>
-                        <p className="text-sm text-muted-foreground mb-2">Platforms</p>
+                        <p className="text-sm text-secondary mb-2">Platforms</p>
                         <div className="flex flex-wrap gap-1">
                           {competitor.platforms.map((platform, idx) => (
                             <Badge key={idx} variant="secondary" className="text-xs">
@@ -312,21 +312,21 @@ export default function ResearchPage() {
 
             {/* Brand Opportunities */}
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Brand Opportunities</h2>
+              <h2 className="text-2xl font-bold text-primary mb-6">Brand Opportunities</h2>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {brandOpportunities.map((opportunity) => (
-                  <Card key={opportunity.id} className="rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                  <Card key={opportunity.id} className="rounded-2xl shadow-elevated bg-elevated border-subtle hover-lift">
                     <CardHeader>
                       <div className="flex items-start justify-between">
                         <div>
-                          <CardTitle className="text-lg">{opportunity.brandName}</CardTitle>
-                          <CardDescription>{opportunity.category}</CardDescription>
+                          <CardTitle className="text-lg text-primary">{opportunity.brandName}</CardTitle>
+                          <CardDescription className="text-secondary">{opportunity.category}</CardDescription>
                         </div>
                         <div className="text-right">
                           <Badge className={getMatchScoreColor(opportunity.matchScore)}>
                             {opportunity.matchScore}% Match
                           </Badge>
-                          <p className="text-sm text-muted-foreground mt-1">
+                          <p className="text-sm text-secondary mt-1">
                             Due: {opportunity.deadline}
                           </p>
                         </div>
@@ -334,18 +334,18 @@ export default function ResearchPage() {
                     </CardHeader>
                     <CardContent className="space-y-4">
                       <div>
-                        <p className="text-sm text-muted-foreground mb-1">Budget Range</p>
+                        <p className="text-sm text-secondary mb-1">Budget Range</p>
                         <p className="font-semibold text-green-600">{opportunity.budget}</p>
                       </div>
                       <div>
-                        <p className="text-sm text-muted-foreground mb-1">Why it&apos;s a good match</p>
-                        <p className="text-sm">{opportunity.reason}</p>
+                        <p className="text-sm text-secondary mb-1">Why it&apos;s a good match</p>
+                        <p className="text-sm text-primary">{opportunity.reason}</p>
                       </div>
                       <div>
-                        <p className="text-sm text-muted-foreground mb-2">Platforms</p>
+                        <p className="text-sm text-secondary mb-2">Platforms</p>
                         <div className="flex flex-wrap gap-1">
                           {opportunity.platforms.map((platform, idx) => (
-                            <Badge key={idx} variant="outline" className="text-xs">
+                            <Badge key={idx} variant="outline" className="text-xs border-subtle">
                               {platform}
                             </Badge>
                           ))}
@@ -356,7 +356,7 @@ export default function ResearchPage() {
                           <Target className="w-4 h-4 mr-1" />
                           Apply Now
                         </Button>
-                        <Button size="sm" variant="outline" className="flex-1">
+                        <Button size="sm" variant="outline" className="flex-1 border-subtle">
                           <Lightbulb className="w-4 h-4 mr-1" />
                           Save
                         </Button>
@@ -368,29 +368,29 @@ export default function ResearchPage() {
             </div>
 
             {/* AI Insights Card */}
-            <Card className="rounded-2xl shadow-sm mt-8 bg-gradient-to-r from-purple-50 to-blue-50 border-purple-200">
+            <Card className="rounded-2xl shadow-elevated bg-elevated border-subtle hover-lift mt-8 bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 border-purple-200 dark:border-purple-800">
               <CardHeader>
-                <CardTitle className="flex items-center">
+                <CardTitle className="flex items-center text-primary">
                   <Zap className="w-5 h-5 mr-2 text-purple-600" />
                   AI Insights & Recommendations
                 </CardTitle>
-                <CardDescription>
+                <CardDescription className="text-secondary">
                   Personalized recommendations based on your content performance and market trends
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <h4 className="font-semibold mb-2">Content Opportunities</h4>
-                    <ul className="space-y-2 text-sm text-muted-foreground">
+                    <h4 className="font-semibold mb-2 text-primary">Content Opportunities</h4>
+                    <ul className="space-y-2 text-sm text-secondary">
                       <li>• Sustainable fashion content is trending +45% - perfect for your lifestyle niche</li>
                       <li>• AI beauty tools are gaining traction - consider reviewing beauty tech products</li>
                       <li>• Morning routine content performs well with your audience demographics</li>
                     </ul>
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-2">Brand Partnership Tips</h4>
-                    <ul className="space-y-2 text-sm text-muted-foreground">
+                    <h4 className="font-semibold mb-2 text-primary">Brand Partnership Tips</h4>
+                    <ul className="space-y-2 text-sm text-secondary">
                       <li>• Patagonia has a 92% match score - high alignment with your values</li>
                       <li>• Beauty brands are increasing budgets for Q2 campaigns</li>
                       <li>• Consider reaching out to sustainable fashion brands this month</li>

@@ -108,15 +108,15 @@ const earningsData = [
 const getStatusColor = (status: string) => {
   switch (status) {
     case "paid":
-      return "bg-green-100 text-green-800";
+      return "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400";
     case "pending":
-      return "bg-yellow-100 text-yellow-800";
+      return "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400";
     case "processing":
-      return "bg-purple-100 text-purple-800";
+      return "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-400";
     case "cancelled":
-      return "bg-red-100 text-red-800";
+      return "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400";
     default:
-      return "bg-gray-100 text-gray-800";
+      return "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300";
   }
 };
 
@@ -165,14 +165,14 @@ export default function HistoryPage() {
   return (
     <SidebarLayout defaultOpen={isOpen}>
       <AppSidebar />
-      <main className="flex flex-1 flex-col p-2 transition-all duration-300 ease-in-out">
-        <div className="h-full rounded-md border-2 border-dashed">
+      <main className="flex flex-1 flex-col p-2 transition-all duration-300 ease-in-out bg-surface">
+        <div className="h-full rounded-md border-2 border-dashed border-subtle bg-surface">
           <SidebarTrigger />
           <div className="px-8 py-6">
             <div className="flex justify-between items-center mb-6">
               <div>
-                <h1 className="text-3xl font-bold text-gray-900">Earnings History</h1>
-                <p className="text-muted-foreground">
+                <h1 className="text-3xl font-bold text-primary">Earnings History</h1>
+                <p className="text-secondary">
                   Track your past revenue, deals, and payment history
                 </p>
               </div>
@@ -180,7 +180,7 @@ export default function HistoryPage() {
                 <Button
                   variant="outline"
                   onClick={() => handleExport("csv")}
-                  className="flex items-center"
+                  className="flex items-center border-purple-200 dark:border-purple-800 text-purple-600 dark:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 hover:border-purple-300 dark:hover:border-purple-700"
                 >
                   <Download className="w-4 h-4 mr-2" />
                   Export CSV
@@ -188,7 +188,7 @@ export default function HistoryPage() {
                 <Button
                   variant="outline"
                   onClick={() => handleExport("pdf")}
-                  className="flex items-center"
+                  className="flex items-center border-purple-200 dark:border-purple-800 text-purple-600 dark:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 hover:border-purple-300 dark:hover:border-purple-700"
                 >
                   <FileText className="w-4 h-4 mr-2" />
                   Export PDF
@@ -198,40 +198,40 @@ export default function HistoryPage() {
 
             {/* Stats Cards */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-              <Card className="rounded-2xl shadow-sm">
+              <Card className="rounded-2xl shadow-elevated bg-elevated border-subtle hover-lift">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm font-medium text-muted-foreground">
+                      <p className="text-sm font-medium text-secondary">
                         Total Earnings
                       </p>
-                      <p className="text-2xl font-bold">${totalEarnings.toLocaleString()}</p>
+                      <p className="text-2xl font-bold text-primary">${totalEarnings.toLocaleString()}</p>
                     </div>
                     <DollarSign className="h-8 w-8 text-green-600" />
                   </div>
                 </CardContent>
               </Card>
-              <Card className="rounded-2xl shadow-sm">
+              <Card className="rounded-2xl shadow-elevated bg-elevated border-subtle hover-lift">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm font-medium text-muted-foreground">
+                      <p className="text-sm font-medium text-secondary">
                         Pending Payments
                       </p>
-                      <p className="text-2xl font-bold">${pendingEarnings.toLocaleString()}</p>
+                      <p className="text-2xl font-bold text-primary">${pendingEarnings.toLocaleString()}</p>
                     </div>
                     <Clock className="h-8 w-8 text-yellow-600" />
                   </div>
                 </CardContent>
               </Card>
-              <Card className="rounded-2xl shadow-sm">
+              <Card className="rounded-2xl shadow-elevated bg-elevated border-subtle hover-lift">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm font-medium text-muted-foreground">
+                      <p className="text-sm font-medium text-secondary">
                         Completed Campaigns
                       </p>
-                      <p className="text-2xl font-bold">
+                      <p className="text-2xl font-bold text-primary">
                         {earningsData.filter(item => item.status === "paid").length}
                       </p>
                     </div>
@@ -239,14 +239,14 @@ export default function HistoryPage() {
                   </div>
                 </CardContent>
               </Card>
-              <Card className="rounded-2xl shadow-sm">
+              <Card className="rounded-2xl shadow-elevated bg-elevated border-subtle hover-lift">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm font-medium text-muted-foreground">
+                      <p className="text-sm font-medium text-secondary">
                         Avg. Campaign Value
                       </p>
-                      <p className="text-2xl font-bold">
+                      <p className="text-2xl font-bold text-primary">
                         ${Math.round(earningsData.reduce((sum, item) => sum + item.amount, 0) / earningsData.length).toLocaleString()}
                       </p>
                     </div>
@@ -257,12 +257,12 @@ export default function HistoryPage() {
             </div>
 
             {/* Filters */}
-            <Card className="rounded-2xl shadow-sm mb-6">
+            <Card className="rounded-2xl shadow-elevated bg-elevated border-subtle hover-lift mb-6">
               <CardContent className="p-6">
                 <div className="flex flex-col md:flex-row gap-4">
                   <div className="flex-1">
                     <div className="relative">
-                      <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+                      <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-secondary w-4 h-4" />
                       <Input
                         placeholder="Search brands or campaigns..."
                         value={searchTerm}
@@ -301,10 +301,10 @@ export default function HistoryPage() {
             </Card>
 
             {/* Earnings Table */}
-            <Card className="rounded-2xl shadow-sm">
+            <Card className="rounded-2xl shadow-elevated bg-elevated border-subtle hover-lift">
               <CardHeader>
-                <CardTitle>Earnings History</CardTitle>
-                <CardDescription>
+                <CardTitle className="text-primary">Earnings History</CardTitle>
+                <CardDescription className="text-secondary">
                   Complete history of all your brand collaborations and payments
                 </CardDescription>
               </CardHeader>
@@ -325,21 +325,21 @@ export default function HistoryPage() {
                   <TableBody>
                     {filteredData.map((earning) => (
                       <TableRow key={earning.id}>
-                        <TableCell className="font-medium">
+                        <TableCell className="font-medium text-primary">
                           {earning.brandName}
                         </TableCell>
                         <TableCell>
                           <div>
-                            <p className="font-medium">{earning.campaignName}</p>
-                            <p className="text-sm text-muted-foreground">
+                            <p className="font-medium text-primary">{earning.campaignName}</p>
+                            <p className="text-sm text-secondary">
                               {earning.deliverables}
                             </p>
                           </div>
                         </TableCell>
-                        <TableCell className="font-bold">
+                        <TableCell className="font-bold text-primary">
                           ${earning.amount.toLocaleString()}
                         </TableCell>
-                        <TableCell>{earning.platform}</TableCell>
+                        <TableCell className="text-primary">{earning.platform}</TableCell>
                         <TableCell>
                           <Badge variant="outline" className="flex items-center w-fit">
                             <Tag className="w-3 h-3 mr-1" />
@@ -359,7 +359,7 @@ export default function HistoryPage() {
                               {earning.paymentDate}
                             </div>
                           ) : (
-                            <span className="text-muted-foreground">-</span>
+                            <span className="text-secondary">-</span>
                           )}
                         </TableCell>
                         <TableCell>

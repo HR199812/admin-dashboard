@@ -108,28 +108,28 @@ const contentIdeas = [
 const getEngagementColor = (level: string) => {
   switch (level) {
     case "Very High":
-      return "bg-green-100 text-green-800";
+      return "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400";
     case "High":
-      return "bg-purple-100 text-purple-800";
+      return "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-400";
     case "Medium":
-      return "bg-yellow-100 text-yellow-800";
+      return "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400";
     case "Low":
-      return "bg-gray-100 text-gray-800";
+      return "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300";
     default:
-      return "bg-gray-100 text-gray-800";
+      return "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300";
   }
 };
 
 const getDifficultyColor = (level: string) => {
   switch (level) {
     case "Easy":
-      return "bg-green-100 text-green-800";
+      return "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400";
     case "Medium":
-      return "bg-yellow-100 text-yellow-800";
+      return "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400";
     case "Hard":
-      return "bg-red-100 text-red-800";
+      return "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400";
     default:
-      return "bg-gray-100 text-gray-800";
+      return "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300";
   }
 };
 
@@ -153,14 +153,14 @@ export default function PracticePage() {
   return (
     <SidebarLayout defaultOpen={isOpen}>
       <AppSidebar />
-      <main className="flex flex-1 flex-col p-2 transition-all duration-300 ease-in-out">
-        <div className="h-full rounded-md border-2 border-dashed">
+      <main className="flex flex-1 flex-col p-2 transition-all duration-300 ease-in-out bg-surface">
+        <div className="h-full rounded-md border-2 border-dashed border-subtle bg-surface">
           <SidebarTrigger />
           <div className="px-8 py-6">
             <div className="flex justify-between items-center mb-6">
               <div>
-                <h1 className="text-3xl font-bold text-gray-900">Content Ideas</h1>
-                <p className="text-muted-foreground">
+                <h1 className="text-3xl font-bold text-primary">Content Ideas</h1>
+                <p className="text-secondary">
                   AI-powered content suggestions and calendar management
                 </p>
               </div>
@@ -172,53 +172,53 @@ export default function PracticePage() {
 
             {/* Stats Cards */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-              <Card className="rounded-2xl shadow-sm">
+              <Card className="rounded-2xl shadow-elevated bg-elevated border-subtle hover-lift">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm font-medium text-muted-foreground">
+                      <p className="text-sm font-medium text-secondary">
                         Ideas Generated
                       </p>
-                      <p className="text-2xl font-bold">24</p>
+                      <p className="text-2xl font-bold text-primary">24</p>
                     </div>
                     <Lightbulb className="h-8 w-8 text-yellow-600" />
                   </div>
                 </CardContent>
               </Card>
-              <Card className="rounded-2xl shadow-sm">
+              <Card className="rounded-2xl shadow-elevated bg-elevated border-subtle hover-lift">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm font-medium text-muted-foreground">
+                      <p className="text-sm font-medium text-secondary">
                         Saved Ideas
                       </p>
-                      <p className="text-2xl font-bold">{savedIdeas.length}</p>
+                      <p className="text-2xl font-bold text-primary">{savedIdeas.length}</p>
                     </div>
                     <Bookmark className="h-8 w-8 text-purple-600" />
                   </div>
                 </CardContent>
               </Card>
-              <Card className="rounded-2xl shadow-sm">
+              <Card className="rounded-2xl shadow-elevated bg-elevated border-subtle hover-lift">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm font-medium text-muted-foreground">
+                      <p className="text-sm font-medium text-secondary">
                         Scheduled Posts
                       </p>
-                      <p className="text-2xl font-bold">12</p>
+                      <p className="text-2xl font-bold text-primary">12</p>
                     </div>
                     <Calendar className="h-8 w-8 text-green-600" />
                   </div>
                 </CardContent>
               </Card>
-              <Card className="rounded-2xl shadow-sm">
+              <Card className="rounded-2xl shadow-elevated bg-elevated border-subtle hover-lift">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm font-medium text-muted-foreground">
+                      <p className="text-sm font-medium text-secondary">
                         Avg. Engagement
                       </p>
-                      <p className="text-2xl font-bold">4.2%</p>
+                      <p className="text-2xl font-bold text-primary">4.2%</p>
                     </div>
                     <TrendingUp className="h-8 w-8 text-purple-600" />
                   </div>
@@ -229,14 +229,14 @@ export default function PracticePage() {
             {/* Content Ideas Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {contentIdeas.map((idea) => (
-                <Card key={idea.id} className="rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                <Card key={idea.id} className="rounded-2xl shadow-elevated bg-elevated border-subtle hover-lift">
                   <CardHeader>
                     <div className="flex items-start justify-between">
                       <div className="flex items-center space-x-2">
                         <span className="text-2xl">{idea.thumbnail}</span>
                         <div>
-                          <CardTitle className="text-lg">{idea.title}</CardTitle>
-                          <CardDescription className="text-sm">
+                          <CardTitle className="text-lg text-primary">{idea.title}</CardTitle>
+                          <CardDescription className="text-sm text-secondary">
                             {idea.platform} • {idea.category}
                           </CardDescription>
                         </div>
@@ -247,13 +247,13 @@ export default function PracticePage() {
                     </div>
                   </CardHeader>
                   <CardContent className="space-y-4">
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-sm text-secondary">
                       {idea.description}
                     </p>
                     
                     {/* Hashtags */}
                     <div>
-                      <p className="text-xs font-medium text-muted-foreground mb-2">Suggested Hashtags:</p>
+                      <p className="text-xs font-medium text-secondary mb-2">Suggested Hashtags:</p>
                       <div className="flex flex-wrap gap-1">
                         {idea.hashtags.slice(0, 3).map((tag, index) => (
                           <Badge key={index} variant="secondary" className="text-xs">
@@ -270,14 +270,16 @@ export default function PracticePage() {
 
                     {/* Caption Preview */}
                     <div>
-                      <p className="text-xs font-medium text-muted-foreground mb-1">Caption Preview:</p>
-                      <p className="text-xs bg-gray-50 p-2 rounded-lg">
-                        {idea.caption}
-                      </p>
+                      <p className="text-xs font-medium text-secondary mb-2">Caption Preview:</p>
+                      <div className="bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 p-3 rounded-lg">
+                        <p className="text-xs text-primary leading-relaxed">
+                          {idea.caption}
+                        </p>
+                      </div>
                     </div>
 
                     {/* Metadata */}
-                    <div className="flex items-center justify-between text-xs text-muted-foreground">
+                    <div className="flex items-center justify-between text-xs text-secondary">
                       <div className="flex items-center space-x-3">
                         <div className="flex items-center space-x-1">
                           <Clock className="w-3 h-3" />
@@ -315,21 +317,21 @@ export default function PracticePage() {
             </div>
 
             {/* AI Content Calendar Generator */}
-            <Card className="rounded-2xl shadow-sm mt-8 bg-gradient-to-r from-purple-50 to-pink-50 border-purple-200">
+            <Card className="rounded-2xl shadow-elevated bg-elevated border-subtle hover-lift mt-8 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border-purple-200 dark:border-purple-800">
               <CardHeader>
-                <CardTitle className="flex items-center">
+                <CardTitle className="flex items-center text-primary">
                   <Sparkles className="w-5 h-5 mr-2 text-purple-600" />
                   AI Content Calendar Generator
                 </CardTitle>
-                <CardDescription>
+                <CardDescription className="text-secondary">
                   Generate a complete content calendar for the next month
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Platform</label>
-                    <select className="w-full mt-1 p-2 border rounded-lg">
+                    <label className="text-sm font-medium text-secondary">Platform</label>
+                    <select className="w-full mt-1 p-2 border border-subtle rounded-lg bg-surface text-primary">
                       <option>All Platforms</option>
                       <option>Instagram</option>
                       <option>TikTok</option>
@@ -337,8 +339,8 @@ export default function PracticePage() {
                     </select>
                   </div>
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Content Focus</label>
-                    <select className="w-full mt-1 p-2 border rounded-lg">
+                    <label className="text-sm font-medium text-secondary">Content Focus</label>
+                    <select className="w-full mt-1 p-2 border border-subtle rounded-lg bg-surface text-primary">
                       <option>Mixed Content</option>
                       <option>Beauty & Fashion</option>
                       <option>Lifestyle</option>

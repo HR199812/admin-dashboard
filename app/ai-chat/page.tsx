@@ -83,13 +83,13 @@ export default function AIChatPage() {
   return (
     <SidebarLayout defaultOpen={isOpen}>
       <AppSidebar />
-      <main className="flex flex-1 flex-col p-2 transition-all duration-300 ease-in-out">
-        <div className="h-full rounded-md border-2 border-dashed">
+      <main className="flex flex-1 flex-col p-2 transition-all duration-300 ease-in-out bg-surface">
+        <div className="h-full rounded-md border-2 border-dashed border-subtle">
           <SidebarTrigger />
           <div className="px-8 py-6 h-full flex flex-col">
             <div className="mb-6">
-              <h1 className="text-3xl font-bold text-gray-900">AI Assistant</h1>
-              <p className="text-muted-foreground">
+              <h1 className="text-3xl font-bold text-primary">AI Assistant</h1>
+              <p className="text-secondary">
                 Get personalized advice for your influencer journey
               </p>
             </div>
@@ -99,11 +99,11 @@ export default function AIChatPage() {
               <div className="flex-1 overflow-y-auto mb-6 space-y-4">
                 {messages.length === 0 ? (
                   <div className="text-center py-12">
-                    <Bot className="w-16 h-16 mx-auto text-gray-400 mb-4" />
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                    <Bot className="w-16 h-16 mx-auto text-secondary mb-4" />
+                    <h3 className="text-lg font-semibold text-primary mb-2">
                       Welcome to your AI Assistant
                     </h3>
-                    <p className="text-muted-foreground mb-6">
+                    <p className="text-secondary mb-6">
                       Ask me anything about content creation, growth strategies, or brand partnerships
                     </p>
                     
@@ -112,15 +112,15 @@ export default function AIChatPage() {
                       {examplePrompts.map((prompt, index) => (
                         <Card 
                           key={index} 
-                          className="rounded-2xl shadow-sm cursor-pointer hover:shadow-md transition-shadow"
+                          className="rounded-2xl shadow-elevated bg-elevated border-subtle hover-lift cursor-pointer"
                           onClick={() => handleExamplePrompt(prompt.prompt)}
                         >
                           <CardContent className="p-4">
                             <div className="flex items-start space-x-3">
                               <prompt.icon className="w-5 h-5 text-purple-600 mt-1" />
                               <div>
-                                <h4 className="font-semibold text-sm">{prompt.title}</h4>
-                                <p className="text-xs text-muted-foreground">{prompt.description}</p>
+                                <h4 className="font-semibold text-sm text-primary">{prompt.title}</h4>
+                                <p className="text-xs text-secondary">{prompt.description}</p>
                               </div>
                             </div>
                           </CardContent>
@@ -138,16 +138,16 @@ export default function AIChatPage() {
                         <div
                           className={`max-w-[80%] rounded-2xl p-4 ${
                             message.role === "user"
-                              ? "bg-primary text-primary-foreground"
-                              : "bg-muted text-muted-foreground"
+                              ? "bg-purple-600 text-white"
+                              : "bg-gray-100 dark:bg-gray-800 text-primary"
                           }`}
                         >
                           <div className="flex items-start space-x-2">
                             {message.role === "assistant" && (
-                              <Bot className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                              <Bot className="w-5 h-5 text-purple-600 mt-1 flex-shrink-0" />
                             )}
                             {message.role === "user" && (
-                              <User className="w-5 h-5 text-primary-foreground mt-1 flex-shrink-0" />
+                              <User className="w-5 h-5 text-white mt-1 flex-shrink-0" />
                             )}
                             <div className="flex-1">
                               <p className="text-sm whitespace-pre-wrap">{message.content}</p>
@@ -161,13 +161,13 @@ export default function AIChatPage() {
                     ))}
                     {isLoading && (
                       <div className="flex justify-start">
-                        <div className="bg-gray-100 rounded-2xl p-4">
+                        <div className="bg-gray-100 dark:bg-gray-800 rounded-2xl p-4">
                           <div className="flex items-center space-x-2">
                             <Bot className="w-5 h-5 text-purple-600" />
                             <div className="flex space-x-1">
-                              <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                              <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "0.1s" }}></div>
-                              <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "0.2s" }}></div>
+                              <div className="w-2 h-2 bg-gray-400 dark:bg-gray-500 rounded-full animate-bounce"></div>
+                              <div className="w-2 h-2 bg-gray-400 dark:bg-gray-500 rounded-full animate-bounce" style={{ animationDelay: "0.1s" }}></div>
+                              <div className="w-2 h-2 bg-gray-400 dark:bg-gray-500 rounded-full animate-bounce" style={{ animationDelay: "0.2s" }}></div>
                             </div>
                           </div>
                         </div>
@@ -178,13 +178,13 @@ export default function AIChatPage() {
               </div>
 
               {/* Input Area */}
-              <div className="border-t pt-4">
+              <div className="border-t border-subtle pt-4">
                 <div className="flex space-x-2">
                   <Textarea
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     placeholder="Ask me anything about your influencer journey..."
-                    className="flex-1 min-h-[60px] max-h-[120px] resize-none rounded-2xl"
+                    className="flex-1 min-h-[60px] max-h-[120px] resize-none rounded-2xl border-subtle bg-surface text-primary"
                     onKeyDown={(e) => {
                       if (e.key === "Enter" && !e.shiftKey) {
                         e.preventDefault();
@@ -195,12 +195,12 @@ export default function AIChatPage() {
                   <Button
                     onClick={() => handleSendMessage(input)}
                     disabled={!input.trim() || isLoading}
-                    className="bg-blue-600 hover:bg-blue-700 rounded-2xl px-4"
+                    className="bg-purple-600 hover:bg-purple-700 rounded-2xl px-4"
                   >
                     <Send className="w-4 h-4" />
                   </Button>
                 </div>
-                <p className="text-xs text-muted-foreground mt-2">
+                <p className="text-xs text-secondary mt-2">
                   Press Enter to send, Shift+Enter for new line
                 </p>
               </div>

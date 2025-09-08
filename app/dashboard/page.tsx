@@ -46,11 +46,11 @@ export default function Page() {
   return (
     <SidebarLayout defaultOpen={isOpen}>
       <AppSidebar />
-      <main className="flex flex-1 flex-col p-2 transition-all duration-300 ease-in-out">
-        <div className="h-full rounded-md border-2 border-dashed">
+      <main className="flex flex-1 flex-col p-2 transition-all duration-300 ease-in-out bg-surface">
+        <div className="h-full rounded-md border-2 border-dashed border-subtle bg-surface pb-6">
           <SidebarTrigger />
           <div className="px-8">
-            <div className="text-2xl font-bold my-4">
+            <div className="text-2xl font-bold my-4 text-primary">
               <h2>Welcome back, Rick!</h2>
             </div>
 
@@ -62,13 +62,13 @@ export default function Page() {
               {cardsData.map((elem, ind) => {
                 const ChartComponent = componentRegistry[elem.component]; // Get component dynamically
                 return (
-                  <Card key={ind} className="min-w-[200px] min-h-[240px]">
+                  <Card key={ind} className="min-w-[200px] min-h-[240px] bg-elevated border-subtle shadow-elevated hover-lift">
                     <CardContent className="grid gap-2 mt-6">
                       <div className="flex justify-between items-center">
-                        <p className="text-md font-semibold">{elem.title}</p>
+                        <p className="text-md font-semibold text-primary">{elem.title}</p>
                       </div>
-                      <p className="text-2xl font-bold">{elem.content}</p>
-                      <p className="text-sm text-muted-foreground">{elem.footer}</p>
+                      <p className="text-2xl font-bold text-primary">{elem.content}</p>
+                      <p className="text-sm text-secondary">{elem.footer}</p>
                       {ChartComponent && <ChartComponent data={elem.data} />}
                     </CardContent>
                   </Card>
@@ -80,10 +80,10 @@ export default function Page() {
               id="second-row-div"
               className="grid grid-cols-2 gap-6 mt-6 max-w-full"
             >
-              <Card className="min-w-[300px] min-h-[240px] max-h-[440px] flex flex-col overflow-hidden">
+              <Card className="min-w-[300px] min-h-[240px] max-h-[440px] flex flex-col overflow-hidden bg-elevated border-subtle shadow-elevated hover-lift">
                 <CardHeader>
-                  <CardTitle>Campaigns List</CardTitle>
-                  <CardDescription>
+                  <CardTitle className="text-primary">Campaigns List</CardTitle>
+                  <CardDescription className="text-secondary">
                     All your ongoing projects, collabs and campaigns
                   </CardDescription>
                 </CardHeader>
@@ -103,10 +103,10 @@ export default function Page() {
               </Card>
               <div className="grid grid-cols-2 gap-4">
                 {/* <RadialChart /> */}
-                <Card className="min-w-[200px] min-h-[240px] max-h-[440px]">
+                <Card className="min-w-[200px] min-h-[240px] max-h-[440px] bg-elevated border-subtle shadow-elevated hover-lift">
                   <CardHeader>
-                    <CardTitle>Countries</CardTitle>
-                    <CardDescription>Top 4</CardDescription>
+                    <CardTitle className="text-primary">Countries</CardTitle>
+                    <CardDescription className="text-secondary">Top 4</CardDescription>
                   </CardHeader>
                   <CardContent className="grid gap-4">
                     <DoughnutChart />
@@ -135,18 +135,18 @@ export default function Page() {
                     </CardContent>
                   </div>
                 </Card>
-                <Card className="min-w-[200px] min-h-[240px] max-h-[440px]">
+                <Card className="min-w-[200px] min-h-[240px] max-h-[440px] bg-elevated border-subtle shadow-elevated hover-lift">
                   <CardHeader>
-                    <CardTitle>Notifications</CardTitle>
-                    <CardDescription>
+                    <CardTitle className="text-primary">Notifications</CardTitle>
+                    <CardDescription className="text-secondary">
                       You have 3 unread messages.
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="grid gap-4">
-                    <div className=" flex items-center space-x-4 rounded-md border p-4">
-                      <BellRing />
+                    <div className=" flex items-center space-x-4 rounded-md border border-subtle p-4 bg-surface">
+                      <BellRing className="text-purple-600" />
                       <div className="flex-1 space-y-1">
-                        <p className="text-sm font-medium leading-none">
+                        <p className="text-sm font-medium leading-none text-primary">
                           Push Notifications
                         </p>
                         <p className="text-sm text-muted-foreground">

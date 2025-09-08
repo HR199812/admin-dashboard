@@ -37,7 +37,7 @@ export function NavMain({
         <li key={item.title}>
           <Link
             href={item.url}
-            className="min-w-8 flex h-8 flex-1 items-center gap-2 overflow-hidden rounded-md px-1.5 text-sm font-medium outline-none ring-ring transition-all hover:bg-accent hover:text-accent-foreground focus-visible:ring-2"
+            className="min-w-8 flex h-8 flex-1 items-center gap-2 overflow-hidden rounded-md px-1.5 text-sm font-medium text-secondary transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-primary focus-visible:ring-2 focus-visible:ring-purple-500/50 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-900"
           >
             <item.icon className={`h-4 w-4 shrink-0 ${item.color || 'text-muted-foreground'}`} />
             <div className="flex flex-1 overflow-hidden">
@@ -64,7 +64,7 @@ function SidebarSearch({
   if (isMobile) {
     return (
       <Drawer>
-        <DrawerTrigger className="min-w-8 flex h-8 w-full flex-1 items-center gap-2 overflow-hidden rounded-md px-1.5 text-sm font-medium outline-none ring-ring transition-all hover:bg-accent hover:text-accent-foreground focus-visible:ring-2 data-[state=open]:bg-accent data-[state=open]:text-accent-foreground">
+        <DrawerTrigger className="min-w-8 flex h-8 w-full flex-1 items-center gap-2 overflow-hidden rounded-md px-1.5 text-sm font-medium text-secondary transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-primary focus-visible:ring-2 focus-visible:ring-purple-500/50 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-900 data-[state=open]:bg-gray-100 dark:data-[state=open]:bg-gray-800 data-[state=open]:text-primary">
           <Search className="h-4 w-4 shrink-0" />
           <div className="flex flex-1 overflow-hidden">
             <div className="line-clamp-1 pr-6">Search</div>
@@ -108,7 +108,7 @@ function SidebarSearch({
 
   return (
     <Popover>
-      <PopoverTrigger className="min-w-8 flex h-8 w-full flex-1 items-center gap-2 overflow-hidden rounded-md px-1.5 text-sm font-medium outline-none ring-ring transition-all hover:bg-accent hover:text-accent-foreground focus-visible:ring-2 data-[state=open]:bg-accent data-[state=open]:text-accent-foreground">
+      <PopoverTrigger className="min-w-8 flex h-8 w-full flex-1 items-center gap-2 overflow-hidden rounded-md px-1.5 text-sm font-medium text-secondary transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-primary focus-visible:ring-2 focus-visible:ring-purple-500/50 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-900 data-[state=open]:bg-gray-100 dark:data-[state=open]:bg-gray-800 data-[state=open]:text-primary">
         <Search className="h-4 w-4 shrink-0" />
         <div className="flex flex-1 overflow-hidden">
           <div className="line-clamp-1 pr-6">Search</div>

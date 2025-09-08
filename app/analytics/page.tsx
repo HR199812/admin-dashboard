@@ -53,27 +53,27 @@ export default function AnalyticsPage() {
   return (
     <SidebarLayout defaultOpen={isOpen}>
       <AppSidebar />
-      <main className="flex flex-1 flex-col p-2 transition-all duration-300 ease-in-out">
-        <div className="h-full rounded-md border-2 border-dashed">
+      <main className="flex flex-1 flex-col p-2 transition-all duration-300 ease-in-out bg-surface">
+        <div className="h-full rounded-md border-2 border-dashed border-subtle bg-surface">
           <SidebarTrigger />
           <div className="px-8 py-6">
             <div className="mb-6">
-              <h1 className="text-3xl font-bold text-gray-900">Analytics</h1>
-              <p className="text-muted-foreground">
+              <h1 className="text-3xl font-bold text-primary">Analytics</h1>
+              <p className="text-secondary">
                 Track your growth, engagement, and revenue performance
               </p>
             </div>
 
             {/* KPI Cards */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-              <Card className="rounded-2xl shadow-sm">
+              <Card className="rounded-2xl shadow-elevated bg-elevated border-subtle hover-lift">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm font-medium text-muted-foreground">
+                      <p className="text-sm font-medium text-secondary">
                         Total Followers
                       </p>
-                      <p className="text-2xl font-bold">203K</p>
+                      <p className="text-2xl font-bold text-primary">203K</p>
                       <p className="text-sm text-green-600 flex items-center">
                         <TrendingUp className="w-4 h-4 mr-1" />
                         +12.5% vs last month
@@ -83,14 +83,14 @@ export default function AnalyticsPage() {
                   </div>
                 </CardContent>
               </Card>
-              <Card className="rounded-2xl shadow-sm">
+              <Card className="rounded-2xl shadow-elevated bg-elevated border-subtle hover-lift">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm font-medium text-muted-foreground">
+                      <p className="text-sm font-medium text-secondary">
                         Engagement Rate
                       </p>
-                      <p className="text-2xl font-bold">4.2%</p>
+                      <p className="text-2xl font-bold text-primary">4.2%</p>
                       <p className="text-sm text-green-600 flex items-center">
                         <TrendingUp className="w-4 h-4 mr-1" />
                         +0.3% vs last month
@@ -100,14 +100,14 @@ export default function AnalyticsPage() {
                   </div>
                 </CardContent>
               </Card>
-              <Card className="rounded-2xl shadow-sm">
+              <Card className="rounded-2xl shadow-elevated bg-elevated border-subtle hover-lift">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm font-medium text-muted-foreground">
+                      <p className="text-sm font-medium text-secondary">
                         Monthly Revenue
                       </p>
-                      <p className="text-2xl font-bold">$28K</p>
+                      <p className="text-2xl font-bold text-primary">$28K</p>
                       <p className="text-sm text-green-600 flex items-center">
                         <TrendingUp className="w-4 h-4 mr-1" />
                         +15.2% vs last month
@@ -117,14 +117,14 @@ export default function AnalyticsPage() {
                   </div>
                 </CardContent>
               </Card>
-              <Card className="rounded-2xl shadow-sm">
+              <Card className="rounded-2xl shadow-elevated bg-elevated border-subtle hover-lift">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm font-medium text-muted-foreground">
+                      <p className="text-sm font-medium text-secondary">
                         Avg. CPM
                       </p>
-                      <p className="text-2xl font-bold">$8.50</p>
+                      <p className="text-2xl font-bold text-primary">$8.50</p>
                       <p className="text-sm text-green-600 flex items-center">
                         <TrendingUp className="w-4 h-4 mr-1" />
                         +$0.50 vs last month
@@ -139,10 +139,10 @@ export default function AnalyticsPage() {
             {/* Charts Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
               {/* Follower Growth Chart */}
-              <Card className="rounded-2xl shadow-sm">
+              <Card className="rounded-2xl shadow-elevated bg-elevated border-subtle hover-lift">
                 <CardHeader>
-                  <CardTitle>Follower Growth</CardTitle>
-                  <CardDescription>Monthly follower growth over time</CardDescription>
+                  <CardTitle className="text-primary">Follower Growth</CardTitle>
+                  <CardDescription className="text-secondary">Monthly follower growth over time</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <ResponsiveContainer width="100%" height={300}>
@@ -164,10 +164,10 @@ export default function AnalyticsPage() {
               </Card>
 
               {/* Monthly Revenue Chart */}
-              <Card className="rounded-2xl shadow-sm">
+              <Card className="rounded-2xl shadow-elevated bg-elevated border-subtle hover-lift">
                 <CardHeader>
-                  <CardTitle>Monthly Revenue</CardTitle>
-                  <CardDescription>Revenue trends by month</CardDescription>
+                  <CardTitle className="text-primary">Monthly Revenue</CardTitle>
+                  <CardDescription className="text-secondary">Revenue trends by month</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <ResponsiveContainer width="100%" height={300}>
@@ -186,10 +186,10 @@ export default function AnalyticsPage() {
             {/* Bottom Row Charts */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {/* Revenue Breakdown by Platform */}
-              <Card className="rounded-2xl shadow-sm">
+              <Card className="rounded-2xl shadow-elevated bg-elevated border-subtle hover-lift">
                 <CardHeader>
-                  <CardTitle>Revenue by Platform</CardTitle>
-                  <CardDescription>Revenue breakdown across platforms</CardDescription>
+                  <CardTitle className="text-primary">Revenue by Platform</CardTitle>
+                  <CardDescription className="text-secondary">Revenue breakdown across platforms</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <ResponsiveContainer width="100%" height={300}>
@@ -215,19 +215,19 @@ export default function AnalyticsPage() {
               </Card>
 
               {/* Engagement Breakdown */}
-              <Card className="rounded-2xl shadow-sm">
+              <Card className="rounded-2xl shadow-elevated bg-elevated border-subtle hover-lift">
                 <CardHeader>
-                  <CardTitle>Engagement Breakdown</CardTitle>
-                  <CardDescription>Engagement metrics by type</CardDescription>
+                  <CardTitle className="text-primary">Engagement Breakdown</CardTitle>
+                  <CardDescription className="text-secondary">Engagement metrics by type</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="grid grid-cols-2 gap-8 p-4">
                     {engagementData.map((item, index) => (
-                      <div key={index} className="text-center p-4 rounded-lg bg-muted/30 hover:bg-muted/50 transition-colors">
+                      <div key={index} className="text-center p-4 rounded-lg bg-gray-100/50 dark:bg-gray-800/50 hover:bg-gray-200/50 dark:hover:bg-gray-700/50 transition-colors">
                         <div className="text-4xl font-bold mb-3" style={{ color: item.color }}>
                           {item.count.toLocaleString()}
                         </div>
-                        <div className="text-sm font-medium text-muted-foreground uppercase tracking-wide">
+                        <div className="text-sm font-medium text-secondary uppercase tracking-wide">
                           {item.type}
                         </div>
                       </div>
@@ -238,20 +238,20 @@ export default function AnalyticsPage() {
             </div>
 
             {/* AI Forecast Card */}
-            <Card className="rounded-2xl shadow-sm mt-6 bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200">
+            <Card className="rounded-2xl shadow-elevated bg-elevated border-subtle hover-lift mt-6 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 border-blue-200 dark:border-blue-800">
               <CardHeader>
-                <CardTitle className="flex items-center">
+                <CardTitle className="flex items-center text-primary">
                   <TrendingUp className="w-5 h-5 mr-2 text-purple-600" />
                   AI Revenue Forecast
                 </CardTitle>
-                <CardDescription>
+                <CardDescription className="text-secondary">
                   Projected revenue for next month based on current trends
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="text-center">
                   <p className="text-4xl font-bold text-purple-600 mb-2">$32,500</p>
-                  <p className="text-muted-foreground">
+                  <p className="text-secondary">
                     Expected revenue for July 2024
                   </p>
                   <p className="text-sm text-green-600 mt-2">

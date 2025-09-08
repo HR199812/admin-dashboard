@@ -38,59 +38,66 @@ import {
   DollarSign,
   AlertCircle
 } from "lucide-react";
-import { useSidebarStore } from "@/lib/store";
+import { useSidebarStore, useSettingsStore } from "@/lib/store";
 import { useTheme } from "next-themes";
-import { useState } from "react";
 import { LanguageSelector } from "@/components/language-selector";
 
 export default function SettingsPage() {
   const { isOpen } = useSidebarStore();
   const { theme, setTheme } = useTheme();
-  const [notifications, setNotifications] = useState({
-    email: true,
-    push: true,
-    sms: false,
-    marketing: false,
-  });
-
-  const handleNotificationChange = (key: string, value: boolean) => {
-    setNotifications(prev => ({ ...prev, [key]: value }));
-  };
+  
+  // Zustand store
+  const {
+    profile,
+    notifications,
+    subscription,
+    teamMembers,
+    language,
+    updateProfile,
+    updateNotifications,
+    updateSubscription,
+    addTeamMember,
+    updateTeamMember,
+    removeTeamMember,
+    setLanguage,
+    resetProfile,
+    resetNotifications,
+  } = useSettingsStore();
 
   return (
     <SidebarLayout defaultOpen={isOpen}>
       <AppSidebar />
-      <main className="flex flex-1 flex-col p-2 transition-all duration-300 ease-in-out">
-        <div className="h-full rounded-md border-2 border-dashed">
+      <main className="flex flex-1 flex-col p-2 transition-all duration-300 ease-in-out bg-surface">
+        <div className="h-full rounded-md border-2 border-dashed border-subtle bg-surface">
           <SidebarTrigger />
           <div className="px-8 py-6">
             <div className="mb-6">
-              <h1 className="text-3xl font-bold text-gray-900">Settings</h1>
-              <p className="text-muted-foreground">
+              <h1 className="text-3xl font-bold text-primary">Settings</h1>
+              <p className="text-secondary">
                 Manage your profile, preferences, and account settings
               </p>
             </div>
 
             <Tabs defaultValue="general" className="space-y-6">
-              <TabsList className="grid w-full grid-cols-7">
-                <TabsTrigger value="general" className="data-[state=active]:bg-purple-600 data-[state=active]:text-white">General</TabsTrigger>
-                <TabsTrigger value="appearance" className="data-[state=active]:bg-purple-600 data-[state=active]:text-white">Appearance</TabsTrigger>
-                <TabsTrigger value="notifications" className="data-[state=active]:bg-purple-600 data-[state=active]:text-white">Notifications</TabsTrigger>
-                <TabsTrigger value="billing" className="data-[state=active]:bg-purple-600 data-[state=active]:text-white">Billing</TabsTrigger>
-                <TabsTrigger value="subscription" className="data-[state=active]:bg-purple-600 data-[state=active]:text-white">Subscription</TabsTrigger>
-                <TabsTrigger value="team" className="data-[state=active]:bg-purple-600 data-[state=active]:text-white">Team</TabsTrigger>
-                <TabsTrigger value="language" className="data-[state=active]:bg-purple-600 data-[state=active]:text-white">Language</TabsTrigger>
+              <TabsList className="grid w-full grid-cols-7 bg-elevated border-subtle">
+                <TabsTrigger value="general" className="data-[state=active]:bg-purple-600 data-[state=active]:text-white text-secondary hover:text-primary">General</TabsTrigger>
+                <TabsTrigger value="appearance" className="data-[state=active]:bg-purple-600 data-[state=active]:text-white text-secondary hover:text-primary">Appearance</TabsTrigger>
+                <TabsTrigger value="notifications" className="data-[state=active]:bg-purple-600 data-[state=active]:text-white text-secondary hover:text-primary">Notifications</TabsTrigger>
+                <TabsTrigger value="billing" className="data-[state=active]:bg-purple-600 data-[state=active]:text-white text-secondary hover:text-primary">Billing</TabsTrigger>
+                <TabsTrigger value="subscription" className="data-[state=active]:bg-purple-600 data-[state=active]:text-white text-secondary hover:text-primary">Subscription</TabsTrigger>
+                <TabsTrigger value="team" className="data-[state=active]:bg-purple-600 data-[state=active]:text-white text-secondary hover:text-primary">Team</TabsTrigger>
+                <TabsTrigger value="language" className="data-[state=active]:bg-purple-600 data-[state=active]:text-white text-secondary hover:text-primary">Language</TabsTrigger>
               </TabsList>
 
               {/* General Settings */}
               <TabsContent value="general" className="space-y-6">
-                <Card className="rounded-2xl shadow-sm">
+                <Card className="rounded-2xl shadow-elevated bg-elevated border-subtle hover-lift">
                   <CardHeader>
-                    <CardTitle className="flex items-center">
+                    <CardTitle className="flex items-center text-primary">
                       <User className="w-5 h-5 mr-2 text-purple-600" />
                       Profile Information
                     </CardTitle>
-                    <CardDescription>
+                    <CardDescription className="text-secondary">
                       Update your personal information and profile details
                     </CardDescription>
                   </CardHeader>
@@ -114,34 +121,61 @@ export default function SettingsPage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <Label htmlFor="firstName">First Name</Label>
-                        <Input id="firstName" defaultValue="Rick" />
+                        <Input 
+                          id="firstName" 
+                          value={profile.firstName}
+                          onChange={(e) => updateProfile({ firstName: e.target.value })}
+                        />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="lastName">Last Name</Label>
-                        <Input id="lastName" defaultValue="Sanchez" />
+                        <Input 
+                          id="lastName" 
+                          value={profile.lastName}
+                          onChange={(e) => updateProfile({ lastName: e.target.value })}
+                        />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="email">Email</Label>
-                        <Input id="email" type="email" defaultValue="rick.sanchez@influential.com" />
+                        <Input 
+                          id="email" 
+                          type="email" 
+                          value={profile.email}
+                          onChange={(e) => updateProfile({ email: e.target.value })}
+                        />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="phone">Phone</Label>
-                        <Input id="phone" type="tel" defaultValue="+1 (555) 123-4567" />
+                        <Input 
+                          id="phone" 
+                          type="tel" 
+                          value={profile.phone}
+                          onChange={(e) => updateProfile({ phone: e.target.value })}
+                        />
                       </div>
                       <div className="space-y-2 md:col-span-2">
                         <Label htmlFor="bio">Bio</Label>
                         <Input 
                           id="bio" 
-                          defaultValue="Lifestyle & beauty content creator. Sharing authentic moments and inspiring others to live their best life." 
+                          value={profile.bio}
+                          onChange={(e) => updateProfile({ bio: e.target.value })}
                         />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="location">Location</Label>
-                        <Input id="location" defaultValue="Los Angeles, CA" />
+                        <Input 
+                          id="location" 
+                          value={profile.location}
+                          onChange={(e) => updateProfile({ location: e.target.value })}
+                        />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="website">Website</Label>
-                        <Input id="website" defaultValue="https://ricksanchez.com" />
+                        <Input 
+                          id="website" 
+                          value={profile.website}
+                          onChange={(e) => updateProfile({ website: e.target.value })}
+                        />
                       </div>
                     </div>
 
@@ -152,13 +186,13 @@ export default function SettingsPage() {
                   </CardContent>
                 </Card>
 
-                <Card className="rounded-2xl shadow-sm">
+                <Card className="rounded-2xl shadow-elevated bg-elevated border-subtle hover-lift">
                   <CardHeader>
-                    <CardTitle className="flex items-center">
+                    <CardTitle className="flex items-center text-primary">
                       <Shield className="w-5 h-5 mr-2 text-red-600" />
                       Security
                     </CardTitle>
-                    <CardDescription>
+                    <CardDescription className="text-secondary">
                       Manage your password and security settings
                     </CardDescription>
                   </CardHeader>
@@ -182,13 +216,13 @@ export default function SettingsPage() {
 
               {/* Appearance Settings */}
               <TabsContent value="appearance" className="space-y-6">
-                <Card className="rounded-2xl shadow-sm">
+                <Card className="rounded-2xl shadow-elevated bg-elevated border-subtle hover-lift">
                   <CardHeader>
-                    <CardTitle className="flex items-center">
+                    <CardTitle className="flex items-center text-primary">
                       <Palette className="w-5 h-5 mr-2 text-purple-600" />
                       Theme & Appearance
                     </CardTitle>
-                    <CardDescription>
+                    <CardDescription className="text-secondary">
                       Customize the look and feel of your dashboard
                     </CardDescription>
                   </CardHeader>
@@ -248,13 +282,13 @@ export default function SettingsPage() {
 
               {/* Notifications Settings */}
               <TabsContent value="notifications" className="space-y-6">
-                <Card className="rounded-2xl shadow-sm">
+                <Card className="rounded-2xl shadow-elevated bg-elevated border-subtle hover-lift">
                   <CardHeader>
-                    <CardTitle className="flex items-center">
+                    <CardTitle className="flex items-center text-primary">
                       <Bell className="w-5 h-5 mr-2 text-orange-600" />
                       Notification Preferences
                     </CardTitle>
-                    <CardDescription>
+                    <CardDescription className="text-secondary">
                       Choose how you want to be notified about updates
                     </CardDescription>
                   </CardHeader>
@@ -268,8 +302,8 @@ export default function SettingsPage() {
                           </p>
                         </div>
                         <Switch 
-                          checked={notifications.email}
-                          onCheckedChange={(value) => handleNotificationChange("email", value)}
+                          checked={notifications.emailNotifications}
+                          onCheckedChange={(value) => updateNotifications({ emailNotifications: value })}
                         />
                       </div>
 
@@ -281,8 +315,8 @@ export default function SettingsPage() {
                           </p>
                         </div>
                         <Switch 
-                          checked={notifications.push}
-                          onCheckedChange={(value) => handleNotificationChange("push", value)}
+                          checked={notifications.pushNotifications}
+                          onCheckedChange={(value) => updateNotifications({ pushNotifications: value })}
                         />
                       </div>
 
@@ -294,8 +328,8 @@ export default function SettingsPage() {
                           </p>
                         </div>
                         <Switch 
-                          checked={notifications.sms}
-                          onCheckedChange={(value) => handleNotificationChange("sms", value)}
+                          checked={notifications.smsNotifications}
+                          onCheckedChange={(value) => updateNotifications({ smsNotifications: value })}
                         />
                       </div>
 
@@ -307,8 +341,60 @@ export default function SettingsPage() {
                           </p>
                         </div>
                         <Switch 
-                          checked={notifications.marketing}
-                          onCheckedChange={(value) => handleNotificationChange("marketing", value)}
+                          checked={notifications.marketingEmails}
+                          onCheckedChange={(value) => updateNotifications({ marketingEmails: value })}
+                        />
+                      </div>
+
+                      <div className="flex items-center justify-between">
+                        <div className="space-y-1">
+                          <Label>Security Alerts</Label>
+                          <p className="text-sm text-muted-foreground">
+                            Get notified about security-related activities
+                          </p>
+                        </div>
+                        <Switch 
+                          checked={notifications.securityAlerts}
+                          onCheckedChange={(value) => updateNotifications({ securityAlerts: value })}
+                        />
+                      </div>
+
+                      <div className="flex items-center justify-between">
+                        <div className="space-y-1">
+                          <Label>Weekly Reports</Label>
+                          <p className="text-sm text-muted-foreground">
+                            Receive weekly performance reports
+                          </p>
+                        </div>
+                        <Switch 
+                          checked={notifications.weeklyReports}
+                          onCheckedChange={(value) => updateNotifications({ weeklyReports: value })}
+                        />
+                      </div>
+
+                      <div className="flex items-center justify-between">
+                        <div className="space-y-1">
+                          <Label>Campaign Updates</Label>
+                          <p className="text-sm text-muted-foreground">
+                            Get notified about campaign status changes
+                          </p>
+                        </div>
+                        <Switch 
+                          checked={notifications.campaignUpdates}
+                          onCheckedChange={(value) => updateNotifications({ campaignUpdates: value })}
+                        />
+                      </div>
+
+                      <div className="flex items-center justify-between">
+                        <div className="space-y-1">
+                          <Label>Team Activity</Label>
+                          <p className="text-sm text-muted-foreground">
+                            Get notified about team member activities
+                          </p>
+                        </div>
+                        <Switch 
+                          checked={notifications.teamActivity}
+                          onCheckedChange={(value) => updateNotifications({ teamActivity: value })}
                         />
                       </div>
                     </div>
@@ -318,13 +404,13 @@ export default function SettingsPage() {
 
               {/* Billing Settings */}
               <TabsContent value="billing" className="space-y-6">
-                <Card className="rounded-2xl shadow-sm">
+                <Card className="rounded-2xl shadow-elevated bg-elevated border-subtle hover-lift">
                   <CardHeader>
-                    <CardTitle className="flex items-center">
+                    <CardTitle className="flex items-center text-primary">
                       <CreditCard className="w-5 h-5 mr-2 text-green-600" />
                       Billing & Subscription
                     </CardTitle>
-                    <CardDescription>
+                    <CardDescription className="text-secondary">
                       Manage your subscription and payment methods
                     </CardDescription>
                   </CardHeader>
@@ -369,13 +455,13 @@ export default function SettingsPage() {
 
               {/* Subscription Settings */}
               <TabsContent value="subscription" className="space-y-6">
-                <Card className="rounded-2xl shadow-sm">
+                <Card className="rounded-2xl shadow-elevated bg-elevated border-subtle hover-lift">
                   <CardHeader>
-                    <CardTitle className="flex items-center">
+                    <CardTitle className="flex items-center text-primary">
                       <Crown className="w-5 h-5 mr-2 text-yellow-600" />
                       Current Plan
                     </CardTitle>
-                    <CardDescription>
+                    <CardDescription className="text-secondary">
                       Manage your subscription plan and features
                     </CardDescription>
                   </CardHeader>
@@ -386,16 +472,24 @@ export default function SettingsPage() {
                           <Zap className="h-6 w-6 text-primary" />
                         </div>
                         <div>
-                          <h4 className="font-semibold text-lg">Premium Plan</h4>
+                          <h4 className="font-semibold text-lg capitalize">{subscription.plan} Plan</h4>
                           <p className="text-sm text-muted-foreground">
-                            $29/month • Billed annually
+                            {subscription.plan === 'free' ? 'Free' : subscription.plan === 'premium' ? '$29/month • Billed annually' : '$99/month • Billed annually'}
                           </p>
-                          <Badge className="mt-1 bg-gradient-to-r from-green-500 to-emerald-500 text-white border-0">Active</Badge>
+                          <Badge className={`mt-1 ${
+                            subscription.status === 'active' 
+                              ? 'bg-gradient-to-r from-green-500 to-emerald-500' 
+                              : subscription.status === 'cancelled'
+                              ? 'bg-gradient-to-r from-red-500 to-rose-500'
+                              : 'bg-gradient-to-r from-yellow-500 to-orange-500'
+                          } text-white border-0`}>
+                            {subscription.status.charAt(0).toUpperCase() + subscription.status.slice(1)}
+                          </Badge>
                         </div>
                       </div>
                       <div className="text-right">
                         <p className="text-sm text-muted-foreground">Next billing</p>
-                        <p className="font-semibold">Feb 15, 2024</p>
+                        <p className="font-semibold">{subscription.nextBillingDate}</p>
                       </div>
                     </div>
 
@@ -405,21 +499,25 @@ export default function SettingsPage() {
                           <Check className="h-4 w-4 text-green-500" />
                           <span className="font-medium">Social Accounts</span>
                         </div>
-                        <p className="text-sm text-muted-foreground">10 accounts</p>
+                        <p className="text-sm text-muted-foreground">{subscription.limits.socialAccounts} accounts</p>
                       </div>
                       <div className="p-4 border rounded-lg">
                         <div className="flex items-center space-x-2 mb-2">
                           <Check className="h-4 w-4 text-green-500" />
                           <span className="font-medium">AI Chat</span>
                         </div>
-                        <p className="text-sm text-muted-foreground">Unlimited queries</p>
+                        <p className="text-sm text-muted-foreground">
+                          {subscription.limits.aiChatQueries === 999999 ? 'Unlimited queries' : `${subscription.limits.aiChatQueries} queries`}
+                        </p>
                       </div>
                       <div className="p-4 border rounded-lg">
                         <div className="flex items-center space-x-2 mb-2">
                           <Check className="h-4 w-4 text-green-500" />
                           <span className="font-medium">Campaigns</span>
                         </div>
-                        <p className="text-sm text-muted-foreground">Unlimited</p>
+                        <p className="text-sm text-muted-foreground">
+                          {subscription.limits.campaigns === 999999 ? 'Unlimited' : `${subscription.limits.campaigns} campaigns`}
+                        </p>
                       </div>
                     </div>
 
@@ -438,13 +536,13 @@ export default function SettingsPage() {
                   </CardContent>
                 </Card>
 
-                <Card className="rounded-2xl shadow-sm">
+                <Card className="rounded-2xl shadow-elevated bg-elevated border-subtle hover-lift">
                   <CardHeader>
-                    <CardTitle className="flex items-center">
+                    <CardTitle className="flex items-center text-primary">
                       <DollarSign className="w-5 h-5 mr-2" />
                       Usage & Limits
                     </CardTitle>
-                    <CardDescription>
+                    <CardDescription className="text-secondary">
                       Track your current usage against plan limits
                     </CardDescription>
                   </CardHeader>
@@ -453,53 +551,53 @@ export default function SettingsPage() {
                       <div className="flex items-center justify-between">
                         <div>
                           <p className="font-medium">Social Media Accounts</p>
-                          <p className="text-sm text-muted-foreground">7 of 10 used</p>
+                          <p className="text-sm text-muted-foreground">{subscription.usage.socialAccounts} of {subscription.limits.socialAccounts} used</p>
                         </div>
                         <div className="w-24 bg-muted rounded-full h-2">
-                          <div className="bg-primary h-2 rounded-full" style={{ width: '70%' }}></div>
+                          <div className="bg-primary h-2 rounded-full" style={{ width: `${(subscription.usage.socialAccounts / subscription.limits.socialAccounts) * 100}%` }}></div>
                         </div>
                       </div>
 
                       <div className="flex items-center justify-between">
                         <div>
                           <p className="font-medium">AI Chat Queries</p>
-                          <p className="text-sm text-muted-foreground">1,247 this month</p>
+                          <p className="text-sm text-muted-foreground">{subscription.usage.aiChatQueries.toLocaleString()} this month</p>
                         </div>
                         <div className="w-24 bg-muted rounded-full h-2">
-                          <div className="bg-green-500 h-2 rounded-full" style={{ width: '45%' }}></div>
+                          <div className="bg-green-500 h-2 rounded-full" style={{ width: `${subscription.limits.aiChatQueries === 999999 ? 15 : (subscription.usage.aiChatQueries / subscription.limits.aiChatQueries) * 100}%` }}></div>
                         </div>
                       </div>
 
                       <div className="flex items-center justify-between">
                         <div>
                           <p className="font-medium">Active Campaigns</p>
-                          <p className="text-sm text-muted-foreground">3 of unlimited</p>
+                          <p className="text-sm text-muted-foreground">{subscription.usage.campaigns} of {subscription.limits.campaigns === 999999 ? 'unlimited' : subscription.limits.campaigns}</p>
                         </div>
                         <div className="w-24 bg-muted rounded-full h-2">
-                          <div className="bg-blue-500 h-2 rounded-full" style={{ width: '15%' }}></div>
+                          <div className="bg-blue-500 h-2 rounded-full" style={{ width: `${subscription.limits.campaigns === 999999 ? 15 : (subscription.usage.campaigns / subscription.limits.campaigns) * 100}%` }}></div>
                         </div>
                       </div>
 
                       <div className="flex items-center justify-between">
                         <div>
                           <p className="font-medium">Storage Used</p>
-                          <p className="text-sm text-muted-foreground">2.3 GB of 10 GB</p>
+                          <p className="text-sm text-muted-foreground">{subscription.usage.storage} GB of {subscription.limits.storage} GB</p>
                         </div>
                         <div className="w-24 bg-muted rounded-full h-2">
-                          <div className="bg-yellow-500 h-2 rounded-full" style={{ width: '23%' }}></div>
+                          <div className="bg-yellow-500 h-2 rounded-full" style={{ width: `${(subscription.usage.storage / subscription.limits.storage) * 100}%` }}></div>
                         </div>
                       </div>
                     </div>
                   </CardContent>
                 </Card>
 
-                <Card className="rounded-2xl shadow-sm">
+                <Card className="rounded-2xl shadow-elevated bg-elevated border-subtle hover-lift">
                   <CardHeader>
-                    <CardTitle className="flex items-center">
+                    <CardTitle className="flex items-center text-primary">
                       <AlertCircle className="w-5 h-5 mr-2" />
                       Plan Recommendations
                     </CardTitle>
-                    <CardDescription>
+                    <CardDescription className="text-secondary">
                       Based on your usage, we recommend these optimizations
                     </CardDescription>
                   </CardHeader>
@@ -536,13 +634,13 @@ export default function SettingsPage() {
 
               {/* Team Settings */}
               <TabsContent value="team" className="space-y-6">
-                <Card className="rounded-2xl shadow-sm">
+                <Card className="rounded-2xl shadow-elevated bg-elevated border-subtle hover-lift">
                   <CardHeader>
-                    <CardTitle className="flex items-center">
+                    <CardTitle className="flex items-center text-primary">
                       <Users className="w-5 h-5 mr-2 text-cyan-600" />
                       Team Management
                     </CardTitle>
-                    <CardDescription>
+                    <CardDescription className="text-secondary">
                       Manage team members and their permissions
                     </CardDescription>
                   </CardHeader>
@@ -551,48 +649,68 @@ export default function SettingsPage() {
                       <div>
                         <h4 className="font-semibold">Team Members</h4>
                         <p className="text-sm text-muted-foreground">
-                          You have 2 team members
+                          You have {teamMembers.length} team members
                         </p>
                       </div>
-                      <Button className="bg-purple-600 hover:bg-purple-700">
+                      <Button 
+                        className="bg-purple-600 hover:bg-purple-700"
+                        onClick={() => addTeamMember({
+                          name: 'Jerry Smith',
+                          email: 'jerry.smith@influential.com',
+                          role: 'viewer',
+                          avatar: 'JS',
+                          status: 'active'
+                        })}
+                      >
                         <Users className="w-4 h-4 mr-2 text-white" />
                         Invite Member
                       </Button>
                     </div>
 
                     <div className="space-y-4">
-                      <div className="flex items-center justify-between p-4 border rounded-lg">
-                        <div className="flex items-center space-x-3">
-                          <Avatar>
-                            <AvatarImage src="https://github.com/shadcn.png" />
-                            <AvatarFallback>MS</AvatarFallback>
-                          </Avatar>
-                          <div>
-                            <p className="font-medium">Morty Smith</p>
-                            <p className="text-sm text-muted-foreground">morty.smith@influential.com</p>
+                      {teamMembers.map((member) => (
+                        <div key={member.id} className="flex items-center justify-between p-4 border rounded-lg">
+                          <div className="flex items-center space-x-3">
+                            <Avatar>
+                              <AvatarImage src="https://github.com/shadcn.png" />
+                              <AvatarFallback>{member.avatar}</AvatarFallback>
+                            </Avatar>
+                            <div>
+                              <p className="font-medium">{member.name}</p>
+                              <p className="text-sm text-muted-foreground">{member.email}</p>
+                            </div>
+                          </div>
+                          <div className="flex items-center space-x-2">
+                            <Badge className={`${
+                              member.role === 'owner' 
+                                ? 'bg-gradient-to-r from-amber-500 to-orange-500' 
+                                : member.role === 'editor'
+                                ? 'bg-gradient-to-r from-blue-500 to-cyan-500'
+                                : 'bg-gradient-to-r from-gray-500 to-slate-500'
+                            } text-white border-0`}>
+                              {member.role.charAt(0).toUpperCase() + member.role.slice(1)}
+                            </Badge>
+                            <Button 
+                              className="bg-purple-600 hover:bg-purple-700 text-white" 
+                              size="sm"
+                              onClick={() => updateTeamMember(member.id, { 
+                                role: member.role === 'owner' ? 'editor' : member.role === 'editor' ? 'viewer' : 'owner' 
+                              })}
+                            >
+                              Edit
+                            </Button>
+                            {member.role !== 'owner' && (
+                              <Button 
+                                variant="outline" 
+                                size="sm"
+                                onClick={() => removeTeamMember(member.id)}
+                              >
+                                Remove
+                              </Button>
+                            )}
                           </div>
                         </div>
-                        <div className="flex items-center space-x-2">
-                          <Badge className="bg-gradient-to-r from-amber-500 to-orange-500 text-white border-0">Owner</Badge>
-                          <Button className="bg-purple-600 hover:bg-purple-700 text-white" size="sm">Edit</Button>
-                        </div>
-                      </div>
-
-                      <div className="flex items-center justify-between p-4 border rounded-lg">
-                        <div className="flex items-center space-x-3">
-                          <Avatar>
-                            <AvatarFallback>SS</AvatarFallback>
-                          </Avatar>
-                          <div>
-                            <p className="font-medium">Summer Smith</p>
-                            <p className="text-sm text-muted-foreground">summer.smith@influential.com</p>
-                          </div>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <Badge className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white border-0">Editor</Badge>
-                          <Button className="bg-purple-600 hover:bg-purple-700 text-white" size="sm">Edit</Button>
-                        </div>
-                      </div>
+                      ))}
                     </div>
                   </CardContent>
                 </Card>
@@ -600,13 +718,13 @@ export default function SettingsPage() {
 
               {/* Language Settings */}
               <TabsContent value="language" className="space-y-6">
-                <Card className="rounded-2xl shadow-sm">
+                <Card className="rounded-2xl shadow-elevated bg-elevated border-subtle hover-lift">
                   <CardHeader>
-                    <CardTitle className="flex items-center">
+                    <CardTitle className="flex items-center text-primary">
                       <Globe className="w-5 h-5 mr-2 text-indigo-600" />
                       Language & Region
                     </CardTitle>
-                    <CardDescription>
+                    <CardDescription className="text-secondary">
                       Choose your preferred language and region settings
                     </CardDescription>
                   </CardHeader>
@@ -614,7 +732,7 @@ export default function SettingsPage() {
                     <div className="space-y-4">
                       <div>
                         <Label className="text-sm font-medium">
-                          Current Language
+                          Current Language: {language.toUpperCase()}
                         </Label>
                         <div className="mt-2">
                           <LanguageSelector />
@@ -671,6 +789,137 @@ export default function SettingsPage() {
                 </Card>
               </TabsContent>
             </Tabs>
+
+            {/* Demo Section - Showcase Store Functionality */}
+            <Card className="rounded-2xl shadow-sm mt-6">
+              <CardHeader>
+                <CardTitle className="flex items-center">
+                  <Zap className="w-5 h-5 mr-2 text-purple-600" />
+                  Demo Controls - Showcase Store Functionality
+                </CardTitle>
+                <CardDescription className="text-secondary">
+                  Interactive controls to demonstrate the Zustand store in action
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                  <div className="space-y-2">
+                    <Label className="text-sm font-medium">Change Plan</Label>
+                    <div className="flex space-x-2">
+                      <Button 
+                        size="sm" 
+                        variant="outline"
+                        onClick={() => updateSubscription({ plan: 'free' })}
+                      >
+                        Free
+                      </Button>
+                      <Button 
+                        size="sm" 
+                        variant="outline"
+                        onClick={() => updateSubscription({ plan: 'premium' })}
+                      >
+                        Premium
+                      </Button>
+                      <Button 
+                        size="sm" 
+                        variant="outline"
+                        onClick={() => updateSubscription({ plan: 'pro' })}
+                      >
+                        Pro
+                      </Button>
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label className="text-sm font-medium">Update Usage</Label>
+                    <div className="flex space-x-2">
+                      <Button 
+                        size="sm" 
+                        variant="outline"
+                        onClick={() => updateSubscription({ 
+                          usage: { 
+                            ...subscription.usage, 
+                            socialAccounts: Math.min(subscription.usage.socialAccounts + 1, subscription.limits.socialAccounts)
+                          } 
+                        })}
+                      >
+                        +1 Account
+                      </Button>
+                      <Button 
+                        size="sm" 
+                        variant="outline"
+                        onClick={() => updateSubscription({ 
+                          usage: { 
+                            ...subscription.usage, 
+                            aiChatQueries: subscription.usage.aiChatQueries + 100
+                          } 
+                        })}
+                      >
+                        +100 Queries
+                      </Button>
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label className="text-sm font-medium">Reset Settings</Label>
+                    <div className="flex space-x-2">
+                      <Button 
+                        size="sm" 
+                        variant="outline"
+                        onClick={resetProfile}
+                      >
+                        Reset Profile
+                      </Button>
+                      <Button 
+                        size="sm" 
+                        variant="outline"
+                        onClick={resetNotifications}
+                      >
+                        Reset Notifications
+                      </Button>
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label className="text-sm font-medium">Change Language</Label>
+                    <div className="flex space-x-2">
+                      <Button 
+                        size="sm" 
+                        variant="outline"
+                        onClick={() => setLanguage('en')}
+                      >
+                        EN
+                      </Button>
+                      <Button 
+                        size="sm" 
+                        variant="outline"
+                        onClick={() => setLanguage('es')}
+                      >
+                        ES
+                      </Button>
+                      <Button 
+                        size="sm" 
+                        variant="outline"
+                        onClick={() => setLanguage('fr')}
+                      >
+                        FR
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="p-4 bg-muted/50 rounded-lg">
+                  <h4 className="font-medium mb-2">Current Store State:</h4>
+                  <div className="text-sm space-y-1">
+                    <p><strong>Plan:</strong> {subscription.plan} ({subscription.status})</p>
+                    <p><strong>Usage:</strong> {subscription.usage.socialAccounts}/{subscription.limits.socialAccounts} accounts, {subscription.usage.aiChatQueries} queries</p>
+                    <p><strong>Team:</strong> {teamMembers.length} members</p>
+                    <p><strong>Language:</strong> {language}</p>
+                    <p><strong>Notifications:</strong> {Object.values(notifications).filter(Boolean).length}/{Object.keys(notifications).length} enabled</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </main>
