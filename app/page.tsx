@@ -36,29 +36,29 @@ const stats = LANDING_PAGE.stats;
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-surface">
       {/* Navigation */}
-      <nav className="border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <nav className="border-b border-subtle bg-surface/95 backdrop-blur supports-[backdrop-filter]:bg-surface/60">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-2">
               <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                 <span className="text-primary-foreground font-bold text-sm">ID</span>
               </div>
-              <span className="font-bold text-xl">{COMPANY.name}</span>
+              <span className="font-bold text-xl text-primary">Influencer Dashboard</span>
             </div>
             
             <div className="hidden md:flex items-center space-x-8">
-              <Link href={ROUTES.HOME} className="text-foreground hover:text-primary transition-colors">
+              <Link href={ROUTES.HOME} className="text-primary hover:text-primary transition-colors">
                 {UI_TEXT.navigation.home}
               </Link>
-              <Link href={ROUTES.ABOUT} className="text-muted-foreground hover:text-primary transition-colors">
+              <Link href={ROUTES.ABOUT} className="text-secondary hover:text-primary transition-colors">
                 {UI_TEXT.navigation.about}
               </Link>
-              <Link href={ROUTES.PRICING} className="text-muted-foreground hover:text-primary transition-colors">
+              <Link href={ROUTES.PRICING} className="text-secondary hover:text-primary transition-colors">
                 {UI_TEXT.navigation.pricing}
               </Link>
-              <Link href={ROUTES.CONTACT} className="text-muted-foreground hover:text-primary transition-colors">
+              <Link href={ROUTES.CONTACT} className="text-secondary hover:text-primary transition-colors">
                 {UI_TEXT.navigation.contact}
               </Link>
             </div>
@@ -90,7 +90,7 @@ export default function LandingPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto"
+              className="text-xl md:text-2xl text-secondary mb-8 max-w-3xl mx-auto"
             >
               {LANDING_PAGE.hero.subtitle}
             </motion.p>
@@ -108,7 +108,7 @@ export default function LandingPage() {
                 </Button>
               </Link>
               <Link href={ROUTES.CONTACT}>
-                <Button variant="outline" size="lg" className="text-lg px-8 py-6">
+                <Button variant="outline" size="lg" className="text-lg px-8 py-6 border-subtle text-primary hover:bg-gray-100 dark:hover:bg-gray-800">
                   {LANDING_PAGE.hero.secondaryCta}
                 </Button>
               </Link>
@@ -137,7 +137,7 @@ export default function LandingPage() {
                 }`}>
                   {stat.number}
                 </div>
-                <div className="text-muted-foreground">
+                <div className="text-secondary">
                   {stat.label}
                 </div>
               </motion.div>
@@ -154,7 +154,7 @@ export default function LandingPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-3xl md:text-4xl font-bold text-foreground mb-4"
+              className="text-3xl md:text-4xl font-bold text-primary mb-4"
             >
               Everything You Need to Succeed
             </motion.h2>
@@ -162,7 +162,7 @@ export default function LandingPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-xl text-muted-foreground max-w-2xl mx-auto"
+              className="text-xl text-secondary max-w-2xl mx-auto"
             >
               Powerful tools and insights designed to help influencers grow their audience, 
               increase engagement, and maximize revenue.
@@ -177,7 +177,7 @@ export default function LandingPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
               >
-                <Card className="h-full hover:shadow-lg transition-all duration-300 hover:scale-105 border-gradient-primary">
+                <Card className="h-full shadow-elevated bg-elevated border-subtle hover-lift">
                   <CardHeader>
                     <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-4 ${
                       index === 0 ? 'bg-gradient-primary' : 
@@ -202,7 +202,7 @@ export default function LandingPage() {
       </section>
 
       {/* Revenue & Growth Section */}
-      <section className="py-20 bg-muted/50">
+      <section className="py-20 bg-surface">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -210,10 +210,10 @@ export default function LandingPage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
                 {LANDING_PAGE.revenueSection.title}
               </h2>
-              <p className="text-xl text-muted-foreground mb-8">
+              <p className="text-xl text-secondary mb-8">
                 {LANDING_PAGE.revenueSection.description}
               </p>
               <div className="space-y-4">
@@ -227,7 +227,7 @@ export default function LandingPage() {
                       <div className={`w-8 h-8 ${bgColors[index]} rounded-full flex items-center justify-center`}>
                         <IconComponent className={`h-4 w-4 ${colors[index]}`} />
                       </div>
-                      <span className="text-foreground">{feature}</span>
+                      <span className="text-primary">{feature}</span>
                     </div>
                   );
                 })}
@@ -240,27 +240,27 @@ export default function LandingPage() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative"
             >
-              <Card className="p-8">
+              <Card className="p-8 shadow-elevated bg-elevated border-subtle">
                 <div className="space-y-6">
                   <div className="flex items-center justify-between">
                     <h3 className="text-lg font-semibold">Revenue Analytics</h3>
                     <div className="text-2xl font-bold text-primary">{LANDING_PAGE.revenueSection.mockupStats.revenue}</div>
                   </div>
                   <div className="h-32 bg-gradient-to-r from-primary/20 to-primary/5 rounded-lg flex items-end justify-center">
-                    <div className="text-muted-foreground text-sm">Dashboard Preview</div>
+                    <div className="text-secondary text-sm">Dashboard Preview</div>
                   </div>
                   <div className="grid grid-cols-3 gap-4 text-center">
                     <div>
-                      <div className="text-2xl font-bold text-foreground">{LANDING_PAGE.revenueSection.mockupStats.growth}</div>
-                      <div className="text-sm text-muted-foreground">Growth</div>
+                      <div className="text-2xl font-bold text-primary">{LANDING_PAGE.revenueSection.mockupStats.growth}</div>
+                      <div className="text-sm text-secondary">Growth</div>
                     </div>
                     <div>
-                      <div className="text-2xl font-bold text-foreground">{LANDING_PAGE.revenueSection.mockupStats.campaigns}</div>
-                      <div className="text-sm text-muted-foreground">Campaigns</div>
+                      <div className="text-2xl font-bold text-primary">{LANDING_PAGE.revenueSection.mockupStats.campaigns}</div>
+                      <div className="text-sm text-secondary">Campaigns</div>
                     </div>
                     <div>
-                      <div className="text-2xl font-bold text-foreground">{LANDING_PAGE.revenueSection.mockupStats.success}</div>
-                      <div className="text-sm text-muted-foreground">Success</div>
+                      <div className="text-2xl font-bold text-primary">{LANDING_PAGE.revenueSection.mockupStats.success}</div>
+                      <div className="text-sm text-secondary">Success</div>
                     </div>
                   </div>
                 </div>
@@ -278,7 +278,7 @@ export default function LandingPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-3xl md:text-4xl font-bold text-foreground mb-4"
+              className="text-3xl md:text-4xl font-bold text-primary mb-4"
             >
               Trusted by Top Influencers
             </motion.h2>
@@ -286,7 +286,7 @@ export default function LandingPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-xl text-muted-foreground"
+              className="text-xl text-secondary"
             >
               See what our community is saying about their success
             </motion.p>
@@ -300,14 +300,14 @@ export default function LandingPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
               >
-                <Card className="h-full">
+                <Card className="h-full shadow-elevated bg-elevated border-subtle hover-lift">
                   <CardContent className="p-6">
                     <div className="flex items-center mb-4">
                       {[...Array(testimonial.rating)].map((_, i) => (
                         <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
                       ))}
                     </div>
-                    <p className="text-muted-foreground mb-6 italic">
+                    <p className="text-secondary mb-6 italic">
                       &ldquo;{testimonial.content}&rdquo;
                     </p>
                     <div className="flex items-center space-x-3">
@@ -317,8 +317,8 @@ export default function LandingPage() {
                         </span>
                       </div>
                       <div>
-                        <div className="font-semibold text-foreground">{testimonial.name}</div>
-                        <div className="text-sm text-muted-foreground">{testimonial.role}</div>
+                        <div className="font-semibold text-primary">{testimonial.name}</div>
+                        <div className="text-sm text-secondary">{testimonial.role}</div>
                       </div>
                     </div>
                   </CardContent>
@@ -354,7 +354,7 @@ export default function LandingPage() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-muted/50 py-12">
+      <footer className="bg-surface py-12">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="col-span-1 md:col-span-2">
@@ -362,33 +362,33 @@ export default function LandingPage() {
                 <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                   <span className="text-primary-foreground font-bold text-sm">ID</span>
                 </div>
-                <span className="font-bold text-xl">{COMPANY.name}</span>
+                <span className="font-bold text-xl text-primary">Influencer Dashboard</span>
               </div>
-              <p className="text-muted-foreground max-w-md">
+              <p className="text-secondary max-w-md">
                 {COMPANY.tagline}
               </p>
             </div>
             
             <div>
-              <h3 className="font-semibold text-foreground mb-4">{UI_TEXT.footer.company}</h3>
+              <h3 className="font-semibold text-primary mb-4">{UI_TEXT.footer.company}</h3>
               <ul className="space-y-2">
-                <li><Link href={ROUTES.ABOUT} className="text-muted-foreground hover:text-primary transition-colors">{UI_TEXT.footer.links.about}</Link></li>
-                <li><Link href={ROUTES.PRICING} className="text-muted-foreground hover:text-primary transition-colors">{UI_TEXT.footer.links.pricing}</Link></li>
-                <li><Link href={ROUTES.CONTACT} className="text-muted-foreground hover:text-primary transition-colors">{UI_TEXT.footer.links.contact}</Link></li>
+                <li><Link href={ROUTES.ABOUT} className="text-secondary hover:text-primary transition-colors">{UI_TEXT.footer.links.about}</Link></li>
+                <li><Link href={ROUTES.PRICING} className="text-secondary hover:text-primary transition-colors">{UI_TEXT.footer.links.pricing}</Link></li>
+                <li><Link href={ROUTES.CONTACT} className="text-secondary hover:text-primary transition-colors">{UI_TEXT.footer.links.contact}</Link></li>
               </ul>
             </div>
             
             <div>
-              <h3 className="font-semibold text-foreground mb-4">{UI_TEXT.footer.legal}</h3>
+              <h3 className="font-semibold text-primary mb-4">{UI_TEXT.footer.legal}</h3>
               <ul className="space-y-2">
-                <li><Link href="/terms" className="text-muted-foreground hover:text-primary transition-colors">{UI_TEXT.footer.links.terms}</Link></li>
-                <li><Link href="/privacy" className="text-muted-foreground hover:text-primary transition-colors">{UI_TEXT.footer.links.privacy}</Link></li>
+                <li><Link href="/terms" className="text-secondary hover:text-primary transition-colors">{UI_TEXT.footer.links.terms}</Link></li>
+                <li><Link href="/privacy" className="text-secondary hover:text-primary transition-colors">{UI_TEXT.footer.links.privacy}</Link></li>
               </ul>
             </div>
           </div>
           
-          <div className="border-t border-border mt-8 pt-8 text-center">
-            <p className="text-muted-foreground">
+          <div className="border-t border-subtle mt-8 pt-8 text-center">
+            <p className="text-secondary">
               {UI_TEXT.footer.copyright}
             </p>
           </div>

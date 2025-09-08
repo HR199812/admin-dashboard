@@ -47,11 +47,11 @@ body {
   }
   
   .border-subtle {
-    @apply border-gray-200 dark:border-gray-300;
+    @apply border-gray-300 dark:border-gray-200;
   }
   
   .shadow-elevated {
-    @apply shadow-sm dark:shadow-2xl;
+    @apply shadow-md dark:shadow-2xl;
   }
   
   .hover-lift {
@@ -213,7 +213,7 @@ body {
     --warning-foreground: 0 0% 98%;
     --info: 199 89% 48%;
     --info-foreground: 0 0% 98%;
-    --border: 0 0% 25%;
+    --border: 0 0% 35%;
     --input: 0 0% 14.9%;
     --ring: 262 83% 58%;
     --chart-1: 262 83% 58%;

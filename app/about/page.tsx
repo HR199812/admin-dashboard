@@ -68,29 +68,29 @@ const values = [
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-surface">
       {/* Navigation */}
-      <nav className="border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <nav className="border-b border-subtle bg-surface/95 backdrop-blur supports-[backdrop-filter]:bg-surface/60">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-2">
               <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                 <span className="text-primary-foreground font-bold text-sm">ID</span>
               </div>
-              <span className="font-bold text-xl">Influencer Dashboard</span>
+              <span className="font-bold text-xl text-primary">Influencer Dashboard</span>
             </div>
             
             <div className="hidden md:flex items-center space-x-8">
-              <Link href="/" className="text-muted-foreground hover:text-primary transition-colors">
+              <Link href="/" className="text-secondary hover:text-primary transition-colors">
                 Home
               </Link>
-              <Link href="/about" className="text-foreground hover:text-primary transition-colors">
+              <Link href="/about" className="text-primary hover:text-primary transition-colors">
                 About
               </Link>
-              <Link href="/pricing" className="text-muted-foreground hover:text-primary transition-colors">
+              <Link href="/pricing" className="text-secondary hover:text-primary transition-colors">
                 Pricing
               </Link>
-              <Link href="/contact" className="text-muted-foreground hover:text-primary transition-colors">
+              <Link href="/contact" className="text-secondary hover:text-primary transition-colors">
                 Contact
               </Link>
             </div>
@@ -113,7 +113,7 @@ export default function AboutPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-4xl md:text-6xl font-bold text-foreground mb-6"
+              className="text-4xl md:text-6xl font-bold text-primary mb-6"
             >
               Empowering Creators to{" "}
               <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
@@ -125,7 +125,7 @@ export default function AboutPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto"
+              className="text-xl md:text-2xl text-secondary mb-8 max-w-3xl mx-auto"
             >
               We&apos;re on a mission to democratize influence and help creators build sustainable, 
               profitable businesses through cutting-edge technology and AI-powered insights.
@@ -135,7 +135,7 @@ export default function AboutPage() {
       </section>
 
       {/* Mission & Vision Section */}
-      <section className="py-20 bg-muted/50">
+      <section className="py-20 bg-surface">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <motion.div
@@ -147,14 +147,14 @@ export default function AboutPage() {
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
                   <Target className="h-6 w-6 text-primary" />
                 </div>
-                <h2 className="text-3xl font-bold text-foreground">Our Mission</h2>
+                <h2 className="text-3xl font-bold text-primary">Our Mission</h2>
               </div>
-              <p className="text-lg text-muted-foreground mb-6">
+              <p className="text-lg text-secondary mb-6">
                 To empower every creator with the tools, insights, and opportunities they need 
                 to turn their passion into a profitable business. We believe that influence 
                 should be accessible to everyone, not just a select few.
               </p>
-              <p className="text-muted-foreground">
+              <p className="text-secondary">
                 By combining AI technology with deep creator insights, we&apos;re building the 
                 future of influencer marketing where creators have full control over their 
                 brand partnerships, audience growth, and revenue streams.
@@ -170,14 +170,14 @@ export default function AboutPage() {
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
                   <Eye className="h-6 w-6 text-primary" />
                 </div>
-                <h2 className="text-3xl font-bold text-foreground">Our Vision</h2>
+                <h2 className="text-3xl font-bold text-primary">Our Vision</h2>
               </div>
-              <p className="text-lg text-muted-foreground mb-6">
+              <p className="text-lg text-secondary mb-6">
                 A world where every creator has the power to build a sustainable business 
                 from their content, where brands and creators collaborate seamlessly, and 
                 where influence is measured by impact, not just follower count.
               </p>
-              <p className="text-muted-foreground">
+              <p className="text-secondary">
                 We envision a creator economy that&apos;s fair, transparent, and profitable for 
                 everyone involved, powered by technology that amplifies human creativity 
                 rather than replacing it.
@@ -195,7 +195,7 @@ export default function AboutPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-3xl md:text-4xl font-bold text-foreground mb-4"
+              className="text-3xl md:text-4xl font-bold text-primary mb-4"
             >
               Our Values
             </motion.h2>
@@ -203,7 +203,7 @@ export default function AboutPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-xl text-muted-foreground max-w-2xl mx-auto"
+              className="text-xl text-secondary max-w-2xl mx-auto"
             >
               The principles that guide everything we do and every decision we make.
             </motion.p>
@@ -217,7 +217,7 @@ export default function AboutPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
               >
-                <Card className="h-full text-center">
+                <Card className="h-full text-center shadow-elevated bg-elevated border-subtle hover-lift">
                   <CardHeader>
                     <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
                       <value.icon className="h-8 w-8 text-primary" />
@@ -237,14 +237,14 @@ export default function AboutPage() {
       </section>
 
       {/* Team Section */}
-      <section className="py-20 bg-muted/50">
+      <section className="py-20 bg-surface">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <motion.h2 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-3xl md:text-4xl font-bold text-foreground mb-4"
+              className="text-3xl md:text-4xl font-bold text-primary mb-4"
             >
               Meet Our Team
             </motion.h2>
@@ -252,7 +252,7 @@ export default function AboutPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-xl text-muted-foreground max-w-2xl mx-auto"
+              className="text-xl text-secondary max-w-2xl mx-auto"
             >
               The passionate individuals behind our mission to empower creators worldwide.
             </motion.p>
@@ -266,7 +266,7 @@ export default function AboutPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
               >
-                <Card className="h-full text-center">
+                <Card className="h-full text-center shadow-elevated bg-elevated border-subtle hover-lift">
                   <CardHeader>
                     <Avatar className="w-20 h-20 mx-auto mb-4">
                       <AvatarFallback className="text-lg font-semibold">
@@ -279,7 +279,7 @@ export default function AboutPage() {
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground text-sm">
+                    <p className="text-secondary text-sm">
                       {member.description}
                     </p>
                   </CardContent>
@@ -303,10 +303,10 @@ export default function AboutPage() {
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
                   <Heart className="h-6 w-6 text-primary" />
                 </div>
-                <h2 className="text-3xl font-bold text-foreground">Our Story</h2>
+                <h2 className="text-3xl font-bold text-primary">Our Story</h2>
               </div>
               
-              <div className="space-y-6 text-lg text-muted-foreground">
+              <div className="space-y-6 text-lg text-secondary">
                 <p>
                   Influencer Dashboard was born from a simple observation: creators were struggling 
                   to turn their passion into profit. Despite having millions of followers, many 
@@ -366,7 +366,7 @@ export default function AboutPage() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-muted/50 py-12">
+      <footer className="bg-surface py-12">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="col-span-1 md:col-span-2">
@@ -374,35 +374,35 @@ export default function AboutPage() {
                 <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                   <span className="text-primary-foreground font-bold text-sm">ID</span>
                 </div>
-                <span className="font-bold text-xl">Influencer Dashboard</span>
+                <span className="font-bold text-xl text-primary">Influencer Dashboard</span>
               </div>
-              <p className="text-muted-foreground max-w-md">
+              <p className="text-secondary max-w-md">
                 Empowering influencers with AI-powered tools to maximize their reach, 
                 engagement, and revenue potential.
               </p>
             </div>
             
             <div>
-              <h3 className="font-semibold text-foreground mb-4">Company</h3>
+              <h3 className="font-semibold text-primary mb-4">Company</h3>
               <ul className="space-y-2">
-                <li><Link href="/about" className="text-muted-foreground hover:text-primary transition-colors">About Us</Link></li>
-                <li><Link href="/pricing" className="text-muted-foreground hover:text-primary transition-colors">Pricing</Link></li>
-                <li><Link href="/contact" className="text-muted-foreground hover:text-primary transition-colors">Contact Us</Link></li>
-                <li><Link href="/demo" className="text-muted-foreground hover:text-primary transition-colors">Demo</Link></li>
+                <li><Link href="/about" className="text-secondary hover:text-primary transition-colors">About Us</Link></li>
+                <li><Link href="/pricing" className="text-secondary hover:text-primary transition-colors">Pricing</Link></li>
+                <li><Link href="/contact" className="text-secondary hover:text-primary transition-colors">Contact Us</Link></li>
+                <li><Link href="/demo" className="text-secondary hover:text-primary transition-colors">Demo</Link></li>
               </ul>
             </div>
             
             <div>
-              <h3 className="font-semibold text-foreground mb-4">Legal</h3>
+              <h3 className="font-semibold text-primary mb-4">Legal</h3>
               <ul className="space-y-2">
-                <li><Link href="/terms" className="text-muted-foreground hover:text-primary transition-colors">Terms of Service</Link></li>
-                <li><Link href="/privacy" className="text-muted-foreground hover:text-primary transition-colors">Privacy Policy</Link></li>
+                <li><Link href="/terms" className="text-secondary hover:text-primary transition-colors">Terms of Service</Link></li>
+                <li><Link href="/privacy" className="text-secondary hover:text-primary transition-colors">Privacy Policy</Link></li>
               </ul>
             </div>
           </div>
           
-          <div className="border-t border-border mt-8 pt-8 text-center">
-            <p className="text-muted-foreground">
+          <div className="border-t border-subtle mt-8 pt-8 text-center">
+            <p className="text-secondary">
               © 2024 Influencer Dashboard. All rights reserved.
             </p>
           </div>
