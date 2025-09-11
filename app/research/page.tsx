@@ -16,7 +16,12 @@ import {
   Target, 
   Lightbulb,
   ArrowUpRight,
-  Zap
+  Zap,
+  TrendingUp,
+  Users,
+  Instagram,
+  Youtube,
+  MessageSquare
 } from "lucide-react";
 import { useSidebarStore } from "@/lib/store";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
@@ -153,23 +158,55 @@ const trendAnalysisData = [
 const getEngagementColor = (level: string) => {
   switch (level) {
     case "Very High":
-      return "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400";
+      return "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400 border-emerald-200 dark:border-emerald-800";
     case "High":
-      return "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-400";
+      return "bg-violet-100 text-violet-800 dark:bg-violet-900/30 dark:text-violet-400 border-violet-200 dark:border-violet-800";
     case "Medium":
-      return "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400";
+      return "bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400 border-amber-200 dark:border-amber-800";
     case "Low":
-      return "bg-gray-100 text-gray-800 dark:bg-gray-800/50 dark:text-gray-400";
+      return "bg-slate-100 text-slate-800 dark:bg-slate-800/50 dark:text-slate-400 border-slate-200 dark:border-slate-700";
     default:
-      return "bg-gray-100 text-gray-800 dark:bg-gray-800/50 dark:text-gray-400";
+      return "bg-slate-100 text-slate-800 dark:bg-slate-800/50 dark:text-slate-400 border-slate-200 dark:border-slate-700";
   }
 };
 
 const getMatchScoreColor = (score: number) => {
-  if (score >= 90) return "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400";
-  if (score >= 80) return "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-400";
-  if (score >= 70) return "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400";
-  return "bg-gray-100 text-gray-800 dark:bg-gray-800/50 dark:text-gray-400";
+  if (score >= 90) return "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400 border-emerald-200 dark:border-emerald-800";
+  if (score >= 80) return "bg-violet-100 text-violet-800 dark:bg-violet-900/30 dark:text-violet-400 border-violet-200 dark:border-violet-800";
+  if (score >= 70) return "bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400 border-amber-200 dark:border-amber-800";
+  return "bg-slate-100 text-slate-800 dark:bg-slate-800/50 dark:text-slate-400 border-slate-200 dark:border-slate-700";
+};
+
+const getCategoryColor = (category: string) => {
+  switch (category) {
+    case "Fashion":
+      return "bg-pink-100 text-pink-800 dark:bg-pink-900/30 dark:text-pink-400 border-pink-200 dark:border-pink-800";
+    case "Beauty":
+      return "bg-rose-100 text-rose-800 dark:bg-rose-900/30 dark:text-rose-400 border-rose-200 dark:border-rose-800";
+    case "Lifestyle":
+      return "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400 border-blue-200 dark:border-blue-800";
+    case "Food":
+      return "bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400 border-orange-200 dark:border-orange-800";
+    case "Fitness":
+      return "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400 border-green-200 dark:border-green-800";
+    case "Tech":
+      return "bg-indigo-100 text-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-400 border-indigo-200 dark:border-indigo-800";
+    default:
+      return "bg-slate-100 text-slate-800 dark:bg-slate-800/50 dark:text-slate-400 border-slate-200 dark:border-slate-700";
+  }
+};
+
+const getPlatformColor = (platform: string) => {
+  switch (platform) {
+    case "Instagram":
+      return "bg-gradient-to-r from-purple-100 to-pink-100 text-purple-800 dark:from-purple-900/30 dark:to-pink-900/30 dark:text-purple-400 border-purple-200 dark:border-purple-800";
+    case "YouTube":
+      return "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400 border-red-200 dark:border-red-800";
+    case "TikTok":
+      return "bg-slate-100 text-slate-800 dark:bg-slate-800/50 dark:text-slate-400 border-slate-200 dark:border-slate-700";
+    default:
+      return "bg-slate-100 text-slate-800 dark:bg-slate-800/50 dark:text-slate-400 border-slate-200 dark:border-slate-700";
+  }
 };
 
 export default function ResearchPage() {
@@ -229,13 +266,16 @@ export default function ResearchPage() {
                         </div>
                         <div className="flex justify-between items-center">
                           <span className="text-sm text-secondary">Engagement</span>
-                          <Badge className={getEngagementColor(topic.engagement)}>
+                          <Badge className={`${getEngagementColor(topic.engagement)} flex items-center`}>
+                            <Users className="w-3 h-3 mr-1" />
                             {topic.engagement}
                           </Badge>
                         </div>
                         <div className="flex justify-between items-center">
                           <span className="text-sm text-secondary">Category</span>
-                          <Badge variant="outline" className="border-subtle">{topic.category}</Badge>
+                          <Badge variant="outline" className={`${getCategoryColor(topic.category)} border`}>
+                            {topic.category}
+                          </Badge>
                         </div>
                       </div>
                     </CardContent>
@@ -278,7 +318,8 @@ export default function ResearchPage() {
                           <CardTitle className="text-lg text-primary">{competitor.name}</CardTitle>
                           <CardDescription className="text-secondary">{competitor.category} • {competitor.followers} followers</CardDescription>
                         </div>
-                        <Badge variant="outline" className="text-green-600 border-subtle">
+                        <Badge variant="outline" className="text-green-600 border-green-200 dark:border-green-800 flex items-center">
+                          <TrendingUp className="w-3 h-3 mr-1" />
                           {competitor.growth}
                         </Badge>
                       </div>
@@ -297,11 +338,23 @@ export default function ResearchPage() {
                       <div>
                         <p className="text-sm text-secondary mb-2">Platforms</p>
                         <div className="flex flex-wrap gap-1">
-                          {competitor.platforms.map((platform, idx) => (
-                            <Badge key={idx} variant="secondary" className="text-xs">
-                              {platform}
-                            </Badge>
-                          ))}
+                          {competitor.platforms.map((platform, idx) => {
+                            const getPlatformIcon = (platform: string) => {
+                              switch (platform) {
+                                case "Instagram": return Instagram;
+                                case "YouTube": return Youtube;
+                                case "TikTok": return MessageSquare;
+                                default: return MessageSquare;
+                              }
+                            };
+                            const PlatformIcon = getPlatformIcon(platform);
+                            return (
+                              <Badge key={idx} variant="secondary" className={`text-xs flex items-center ${getPlatformColor(platform)}`}>
+                                <PlatformIcon className="w-3 h-3 mr-1" />
+                                {platform}
+                              </Badge>
+                            );
+                          })}
                         </div>
                       </div>
                     </CardContent>
@@ -323,7 +376,8 @@ export default function ResearchPage() {
                           <CardDescription className="text-secondary">{opportunity.category}</CardDescription>
                         </div>
                         <div className="text-right">
-                          <Badge className={getMatchScoreColor(opportunity.matchScore)}>
+                          <Badge className={`${getMatchScoreColor(opportunity.matchScore)} flex items-center`}>
+                            <Target className="w-3 h-3 mr-1" />
                             {opportunity.matchScore}% Match
                           </Badge>
                           <p className="text-sm text-secondary mt-1">
@@ -344,11 +398,23 @@ export default function ResearchPage() {
                       <div>
                         <p className="text-sm text-secondary mb-2">Platforms</p>
                         <div className="flex flex-wrap gap-1">
-                          {opportunity.platforms.map((platform, idx) => (
-                            <Badge key={idx} variant="outline" className="text-xs border-subtle">
-                              {platform}
-                            </Badge>
-                          ))}
+                          {opportunity.platforms.map((platform, idx) => {
+                            const getPlatformIcon = (platform: string) => {
+                              switch (platform) {
+                                case "Instagram": return Instagram;
+                                case "YouTube": return Youtube;
+                                case "TikTok": return MessageSquare;
+                                default: return MessageSquare;
+                              }
+                            };
+                            const PlatformIcon = getPlatformIcon(platform);
+                            return (
+                              <Badge key={idx} variant="outline" className={`text-xs flex items-center ${getPlatformColor(platform)} border`}>
+                                <PlatformIcon className="w-3 h-3 mr-1" />
+                                {platform}
+                              </Badge>
+                            );
+                          })}
                         </div>
                       </div>
                       <div className="flex space-x-2 pt-2">
@@ -357,7 +423,7 @@ export default function ResearchPage() {
                           Apply Now
                         </Button>
                         <Button size="sm" variant="outline" className="flex-1 border-subtle">
-                          <Lightbulb className="w-4 h-4 mr-1" />
+                          <Lightbulb className="w-4 h-4 mr-1 text-yellow-600" />
                           Save
                         </Button>
                       </div>

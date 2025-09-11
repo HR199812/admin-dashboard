@@ -70,7 +70,7 @@ export function NavUser({
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <Link href="/appSettings/general">
+          <Link href="/settings">
             <DropdownMenuItem className="gap-2 hover:bg-gray-100 dark:hover:bg-gray-800 text-primary transition-all duration-200">
               <BadgeCheck className="h-4 w-4 text-purple-600" />
               Account

@@ -9,7 +9,8 @@ import {
   CardContent,
 } from "@/components/ui/card";
 import { SidebarLayout, SidebarTrigger } from "@/components/ui/sidebar";
-import { TrendingUp, Users, Heart, DollarSign } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { TrendingUp, Users, Heart, DollarSign, MessageCircle, Share2, Bookmark } from "lucide-react";
 import { useSidebarStore } from "@/lib/store";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar, PieChart, Pie, Cell } from "recharts";
 
@@ -24,18 +25,18 @@ const followerGrowthData = [
 ];
 
 const revenueBreakdownData = [
-  { platform: "YouTube", revenue: 25000, color: "#FF0000" },
-  { platform: "Instagram", revenue: 18000, color: "#E4405F" },
-  { platform: "TikTok", revenue: 12000, color: "#000000" },
-  { platform: "Twitter", revenue: 8000, color: "#1DA1F2" },
-  { platform: "Other", revenue: 5000, color: "#6B7280" },
+  { platform: "YouTube", revenue: 25000, color: "hsl(0 50% 70%)" },
+  { platform: "Instagram", revenue: 18000, color: "hsl(330 40% 65%)" },
+  { platform: "TikTok", revenue: 12000, color: "hsl(100 30% 70%)" },
+  { platform: "Twitter", revenue: 8000, color: "hsl(200 40% 65%)" },
+  { platform: "Other", revenue: 5000, color: "hsl(0 0% 60%)" },
 ];
 
 const engagementData = [
-  { type: "Likes", count: 125000, color: "#EF4444" },
-  { type: "Comments", count: 8500, color: "#3B82F6" },
-  { type: "Shares", count: 12000, color: "#10B981" },
-  { type: "Saves", count: 6800, color: "#F59E0B" },
+  { type: "Likes", count: 125000, color: "hsl(0 70% 55%)", icon: Heart, bgColor: "bg-red-100 dark:bg-red-900/30", textColor: "text-red-600 dark:text-red-400" },
+  { type: "Comments", count: 8500, color: "hsl(200 70% 55%)", icon: MessageCircle, bgColor: "bg-blue-100 dark:bg-blue-900/30", textColor: "text-blue-600 dark:text-blue-400" },
+  { type: "Shares", count: 12000, color: "hsl(142 50% 50%)", icon: Share2, bgColor: "bg-green-100 dark:bg-green-900/30", textColor: "text-green-600 dark:text-green-400" },
+  { type: "Saves", count: 6800, color: "hsl(38 70% 55%)", icon: Bookmark, bgColor: "bg-yellow-100 dark:bg-yellow-900/30", textColor: "text-yellow-600 dark:text-yellow-400" },
 ];
 
 const monthlyRevenueData = [
@@ -154,9 +155,9 @@ export default function AnalyticsPage() {
                       <Line 
                         type="monotone" 
                         dataKey="followers" 
-                        stroke="#3B82F6" 
+                        stroke="hsl(var(--info))" 
                         strokeWidth={3}
-                        dot={{ fill: "#3B82F6", strokeWidth: 2, r: 4 }}
+                        dot={{ fill: "hsl(var(--info))", strokeWidth: 2, r: 4 }}
                       />
                     </LineChart>
                   </ResponsiveContainer>
@@ -176,7 +177,7 @@ export default function AnalyticsPage() {
                       <XAxis dataKey="month" />
                       <YAxis />
                       <Tooltip />
-                      <Bar dataKey="revenue" fill="#10B981" radius={[4, 4, 0, 0]} />
+                      <Bar dataKey="revenue" fill="hsl(var(--success))" radius={[4, 4, 0, 0]} />
                     </BarChart>
                   </ResponsiveContainer>
                 </CardContent>
@@ -200,7 +201,10 @@ export default function AnalyticsPage() {
                         cy="50%"
                         labelLine={false}
                         label={({ platform, percent }) => `${platform} ${(percent * 100).toFixed(0)}%`}
-                        outerRadius={80}
+                        outerRadius={100}
+                        innerRadius={30}
+                        paddingAngle={12}
+                        cornerRadius={4}
                         fill="#8884d8"
                         dataKey="revenue"
                       >
@@ -221,17 +225,21 @@ export default function AnalyticsPage() {
                   <CardDescription className="text-secondary">Engagement metrics by type</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid grid-cols-2 gap-8 p-4">
-                    {engagementData.map((item, index) => (
-                      <div key={index} className="text-center p-4 rounded-lg bg-gray-100/50 dark:bg-gray-800/50 hover:bg-gray-200/50 dark:hover:bg-gray-700/50 transition-colors">
-                        <div className="text-4xl font-bold mb-3" style={{ color: item.color }}>
-                          {item.count.toLocaleString()}
+                  <div className="grid grid-cols-2 gap-4 p-4">
+                    {engagementData.map((item, index) => {
+                      const IconComponent = item.icon;
+                      return (
+                        <div key={index} className="text-center p-4 rounded-lg bg-gray-100/50 dark:bg-gray-800/50 hover:bg-gray-200/50 dark:hover:bg-gray-700/50 transition-colors">
+                          <Badge className={`${item.bgColor} ${item.textColor} border-0 mb-3 flex items-center justify-center w-fit mx-auto`}>
+                            <IconComponent className="w-4 h-4 mr-2" />
+                            {item.type}
+                          </Badge>
+                          <div className="text-3xl font-bold text-primary">
+                            {item.count.toLocaleString()}
+                          </div>
                         </div>
-                        <div className="text-sm font-medium text-secondary uppercase tracking-wide">
-                          {item.type}
-                        </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 </CardContent>
               </Card>

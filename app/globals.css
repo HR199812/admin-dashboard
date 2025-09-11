@@ -47,7 +47,11 @@ body {
   }
   
   .border-subtle {
-    @apply border-gray-300 dark:border-gray-700;
+    @apply border-gray-300 dark:border-gray-600;
+  }
+  
+  .border-visible {
+    @apply border-gray-300 dark:border-gray-500;
   }
   
   .shadow-elevated {
@@ -213,8 +217,8 @@ body {
     --warning-foreground: 0 0% 98%;
     --info: 199 89% 48%;
     --info-foreground: 0 0% 98%;
-    --border: 0 0% 35%;
-    --input: 0 0% 14.9%;
+    --border: 0 0% 45%;
+    --input: 0 0% 25%;
     --ring: 262 83% 58%;
     --chart-1: 262 83% 58%;
     --chart-2: 142 76% 36%;
