@@ -108,7 +108,7 @@ export default function LandingPage() {
                 </Button>
               </Link>
               <Link href={ROUTES.CONTACT}>
-                <Button variant="outline" size="lg" className="text-lg px-8 py-6 border-subtle text-primary hover:bg-gray-100 dark:hover:bg-gray-800">
+                <Button variant="outline" size="lg" className="text-lg px-8 py-6 border-subtle text-primary hover:bg-accent hover:text-accent-foreground">
                   {LANDING_PAGE.hero.secondaryCta}
                 </Button>
               </Link>

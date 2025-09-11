@@ -27,11 +27,11 @@ body {
   
   /* Enhanced Theme Utilities */
   .bg-elevated {
-    @apply bg-white/95 dark:bg-gray-800/95;
+    @apply bg-white dark:bg-gray-800/95 backdrop-blur-sm;
   }
   
   .bg-surface {
-    @apply bg-gray-50/50 dark:bg-gray-900/95;
+    @apply bg-white dark:bg-gray-900/95 backdrop-blur-sm;
   }
   
   .text-primary {
@@ -47,7 +47,7 @@ body {
   }
   
   .border-subtle {
-    @apply border-gray-300 dark:border-gray-200;
+    @apply border-gray-300 dark:border-gray-700;
   }
   
   .shadow-elevated {
@@ -223,11 +223,11 @@ body {
     --chart-5: 0 84% 60%;
   }
   * {
-    @apply border-border;
+    @apply border-border transition-colors duration-200;
   }
   
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground transition-colors duration-300;
   }
 }
 
